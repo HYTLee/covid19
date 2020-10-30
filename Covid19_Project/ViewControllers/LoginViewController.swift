@@ -64,6 +64,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         profileController.profileName = self.loginData
         controller.dataPass = self.loginData
         self.navigationController?.pushViewController(controller, animated: true)
+        
+        self.loginTextField.text = ""
+        self.passwordTextField.text = ""
+    }
+    
+    
+    @IBAction func unwindFromProfile(_ sender: UIStoryboardSegue) {
+        
     }
     
     

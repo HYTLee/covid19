@@ -102,6 +102,9 @@
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" systemColor="systemRedColor"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ukw-Zr-bgu" kind="unwind" unwindAction="unwindFromProfile:" id="ycZ-SO-ioG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
@@ -114,6 +117,7 @@
                     <navigationItem key="navigationItem" id="Cyc-JT-5hM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-To-ZSt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ukw-Zr-bgu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3407.2463768115945" y="807.58928571428567"/>
         </scene>
