@@ -67,6 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
+        loginBtn.isEnabled = false
     }
     
     
