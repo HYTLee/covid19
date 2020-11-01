@@ -41,10 +41,12 @@ extension NewsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "News", for: indexPath) as! NewsCell
-        cell.backgroundColor = .lightGray
         cell.titleLabel.text = initialNews[indexPath.row].title
         cell.authorLabel.text = initialNews[indexPath.row].author
 
+        cell.layer.borderWidth = 5
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 5
            return cell
     }
     

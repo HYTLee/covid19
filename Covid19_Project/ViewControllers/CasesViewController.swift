@@ -41,7 +41,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     let country = inittialCountries[indexPath.row].country
         let confirmed = inittialCountries[indexPath.row].Latest.confirmed
         let death = inittialCountries[indexPath.row].Latest.death
-        cell.countryLable.text = "\(country)    Confirmed: \(String(confirmed))   Death: \(String(death))"
+        cell.textLabel?.text = "\(country)    Confirmed: \(String(confirmed))   Death: \(String(death))"
 
         
         return cell
