@@ -25,6 +25,7 @@ class CasesViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Cases"
 
+
     }
     
 }
@@ -37,8 +38,10 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
-    
-        cell.countryLable.text = inittialCountries[indexPath.row].country
+    let country = inittialCountries[indexPath.row].country
+        let confirmed = inittialCountries[indexPath.row].Latest.confirmed
+        let death = inittialCountries[indexPath.row].Latest.death
+        cell.countryLable.text = "\(country)    Confirmed: \(String(confirmed))   Death: \(String(death))"
 
         
         return cell

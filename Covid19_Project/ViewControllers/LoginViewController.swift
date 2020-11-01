@@ -26,8 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         loginTopConstarint.constant += view.bounds.height
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +69,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
         loginBtn.isEnabled = false
+    }
+    
+    
+  
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     

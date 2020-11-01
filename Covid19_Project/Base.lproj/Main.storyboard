@@ -80,51 +80,29 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" rowHeight="48" id="2Sf-cj-4hx" customClass="CountryTableCell" customModule="Covid19_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="48"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" id="2Sf-cj-4hx" customClass="CountryTableCell" customModule="Covid19_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Sf-cj-4hx" id="EHC-uo-pra" customClass="CountryTableCell" customModule="Covid19_Project" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="55"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ped-YH-aDN">
-                                                    <rect key="frame" x="20" y="14" width="61" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNM-6I-XgZ">
-                                                    <rect key="frame" x="100" y="14" width="80.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3V-AO-5cX">
-                                                    <rect key="frame" x="220" y="13.5" width="41" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ped-YH-aDN">
+                                                    <rect key="frame" x="20" y="21" width="355" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SNM-6I-XgZ" secondAttribute="bottom" constant="2.5" id="0Dp-cJ-Lo7"/>
-                                                <constraint firstItem="SNM-6I-XgZ" firstAttribute="leading" secondItem="ped-YH-aDN" secondAttribute="trailing" constant="19" id="7xF-6k-s1G"/>
-                                                <constraint firstItem="SNM-6I-XgZ" firstAttribute="top" secondItem="EHC-uo-pra" secondAttribute="topMargin" constant="3" id="C05-OY-MV7"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="m3V-AO-5cX" secondAttribute="trailing" constant="133" id="Jxa-91-oTj"/>
-                                                <constraint firstItem="m3V-AO-5cX" firstAttribute="leading" secondItem="SNM-6I-XgZ" secondAttribute="trailing" constant="39.5" id="Leo-ft-Bpx"/>
-                                                <constraint firstItem="m3V-AO-5cX" firstAttribute="top" secondItem="EHC-uo-pra" secondAttribute="topMargin" constant="2.5" id="Us2-Ow-HTY"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="m3V-AO-5cX" secondAttribute="bottom" constant="2.5" id="XpF-WP-grO"/>
-                                                <constraint firstItem="ped-YH-aDN" firstAttribute="top" secondItem="EHC-uo-pra" secondAttribute="topMargin" constant="3" id="ciT-Ig-jH5"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ped-YH-aDN" secondAttribute="bottom" constant="2.5" id="fVS-wE-uNR"/>
-                                                <constraint firstItem="m3V-AO-5cX" firstAttribute="leading" secondItem="SNM-6I-XgZ" secondAttribute="trailing" constant="39.5" id="lV0-b1-62E"/>
-                                                <constraint firstItem="ped-YH-aDN" firstAttribute="leading" secondItem="EHC-uo-pra" secondAttribute="leadingMargin" id="mKu-Xu-bPE"/>
-                                                <constraint firstItem="SNM-6I-XgZ" firstAttribute="leading" secondItem="ped-YH-aDN" secondAttribute="trailing" constant="19" id="nJv-2u-Xk6"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ped-YH-aDN" secondAttribute="bottom" constant="2" id="KuJ-yO-0w3"/>
+                                                <constraint firstItem="ped-YH-aDN" firstAttribute="trailing" secondItem="EHC-uo-pra" secondAttribute="trailingMargin" id="aUj-Lo-NMY"/>
+                                                <constraint firstItem="ped-YH-aDN" firstAttribute="leading" secondItem="EHC-uo-pra" secondAttribute="leadingMargin" id="ajy-eH-7mo"/>
+                                                <constraint firstItem="ped-YH-aDN" firstAttribute="top" secondItem="EHC-uo-pra" secondAttribute="topMargin" constant="10" id="tLN-RD-i1f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="confirmedLabel" destination="SNM-6I-XgZ" id="Vq6-Zw-mE4"/>
                                             <outlet property="countryLable" destination="ped-YH-aDN" id="5Vh-aY-YSK"/>
-                                            <outlet property="deadLabel" destination="m3V-AO-5cX" id="Igu-Lx-499"/>
                                             <segue destination="oIo-md-11S" kind="show" identifier="ShowDetails" id="rPe-iM-364"/>
                                         </connections>
                                     </tableViewCell>
@@ -218,15 +196,27 @@
                                     <segue destination="ukw-Zr-bgu" kind="unwind" unwindAction="unwindFromProfile:" id="ycZ-SO-ioG"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggf-Sk-bTa">
+                                <rect key="frame" x="121" y="116" width="172" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="189" id="GLd-Hx-gs7"/>
+                            <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="ggf-Sk-bTa" secondAttribute="trailing" constant="121" id="HRD-2Z-OjH"/>
+                            <constraint firstItem="ggf-Sk-bTa" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="28" id="QHX-S5-SS6"/>
+                            <constraint firstItem="ggf-Sk-bTa" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="121" id="XCP-Aj-YYS"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="juU-t0-N8y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cyc-JT-5hM"/>
+                    <connections>
+                        <outlet property="profileNameLabel" destination="ggf-Sk-bTa" id="0Jh-Hp-Zv8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-To-ZSt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="ukw-Zr-bgu" userLabel="Exit" sceneMemberID="exit"/>
