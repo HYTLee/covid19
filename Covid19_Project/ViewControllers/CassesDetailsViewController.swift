@@ -24,6 +24,14 @@ class CassesDetailsViewController: UIViewController {
         self.title = country
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
 
    
 }
