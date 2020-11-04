@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         loginTopConstarint.constant += view.bounds.height
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        loginTextField.text = UserDefaults.standard.value(forKey: "lastUserLogin") as? String
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,9 +48,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 loginBtn.isEnabled = false
             }
         }
+    
     @IBAction func loginAction(_ sender: UIButton) {
         openNewsView()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -65,15 +68,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         profileController.profileName = self.loginData
         controller.dataPass = self.loginData
         self.navigationController?.pushViewController(controller, animated: true)
-        
+        saveLogin(loginText: self.loginTextField.text!)
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
         loginBtn.isEnabled = false
     }
     
     
-  
-
+    func saveLogin(loginText: String)  {
+        let userLoginKey = "lastUserLogin"
+        _ = UserDefaults.standard.string(forKey: userLoginKey)
+        UserDefaults.standard.setValue(loginText, forKey: userLoginKey)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
