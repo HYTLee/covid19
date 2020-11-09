@@ -107,7 +107,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
 
-        cell.textLabel?.text = "\(response[indexPath.row].country)  Casses: \(response[indexPath.row].infected ?? 0) "
+        cell.textLabel?.text = "\(response[indexPath.row].country)  Casses: \(response[indexPath.row].infected ?? 0)  Recovered: \(response[indexPath.row].recovered ?? 0) "
         return cell
     }
     
@@ -116,7 +116,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "ShowDetails" {
             if let indexpath = self.tableView.indexPathForSelectedRow{
                 let casesDetails = segue.destination as! CassesDetailsViewController
-      //          casesDetails.recovered = inittialCountries[indexpath.row].recovered
+                casesDetails.recovered = response[indexpath.row].recovered ?? 0
                 casesDetails.cases = response[indexpath.row].infected ?? 0
                 casesDetails.country = response[indexpath.row].country
             }
