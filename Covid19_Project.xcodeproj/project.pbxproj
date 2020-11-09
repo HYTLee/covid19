@@ -22,7 +22,7 @@
 		80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F5C254C291100DAB0CB /* ProfileViewController.swift */; };
 		80B66F63254C521100DAB0CB /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F62254C521100DAB0CB /* Article.swift */; };
 		80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F6A254C66F300DAB0CB /* NewsCell.swift */; };
-		80B66F70254DC48C00DAB0CB /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F6F254DC48C00DAB0CB /* Country.swift */; };
+		80B66F70254DC48C00DAB0CB /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F6F254DC48C00DAB0CB /* Case.swift */; };
 		80B66F75254DC80300DAB0CB /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F74254DC80300DAB0CB /* CountryTableCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 		80B66F5C254C291100DAB0CB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		80B66F62254C521100DAB0CB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		80B66F6A254C66F300DAB0CB /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
-		80B66F6F254DC48C00DAB0CB /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		80B66F6F254DC48C00DAB0CB /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		80B66F74254DC80300DAB0CB /* CountryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				80B66F62254C521100DAB0CB /* Article.swift */,
-				80B66F6F254DC48C00DAB0CB /* Country.swift */,
+				80B66F6F254DC48C00DAB0CB /* Case.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
 				80B66F58254C28A500DAB0CB /* CasesViewController.swift in Sources */,
 				80B66F75254DC80300DAB0CB /* CountryTableCell.swift in Sources */,
-				80B66F70254DC48C00DAB0CB /* Country.swift in Sources */,
+				80B66F70254DC48C00DAB0CB /* Case.swift in Sources */,
 				80B66F16254C247400DAB0CB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

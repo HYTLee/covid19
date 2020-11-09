@@ -13,13 +13,13 @@ class CassesDetailsViewController: UIViewController {
     @IBOutlet weak var casesLabel: UILabel!
     
     var country = "Country"
-    var death = 0
+    var recovered = 0
     var cases = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        deathLabel.text = "Death: \(String(death))"
+        deathLabel.text = "Recovered: \(String(recovered))"
         casesLabel.text = "Cases: \(cases)"
         self.title = country
     }

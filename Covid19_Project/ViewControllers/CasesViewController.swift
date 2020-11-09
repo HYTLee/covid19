@@ -6,26 +6,94 @@
 //
 
 import UIKit
+import Foundation
 
 class CasesViewController: UIViewController {
     
+    let loader = UIActivityIndicatorView()
     @IBOutlet weak var tableView: UITableView!
+    var response = [Case]()
+
     
-    
-    
-    let inittialCountries: [Country] = [
-        Country(country: "Belarus", Latest: Latest(confirmed: 20, death: 5) ),
-        Country(country: "Swizeland", Latest: Latest(confirmed: 5, death: 0)),
-        Country(country: "USA", Latest: Latest(confirmed: 1200, death: 100))
-    ]
+    func setLoader()  {
+        self.view.addSubview(loader)
         
-    
+        loader.translatesAutoresizingMaskIntoConstraints = false
+        
+        let loaderTopConstr = NSLayoutConstraint(
+            item: loader,
+            attribute: .top,
+            relatedBy: .equal,
+            toItem: self.view,
+            attribute: .centerY ,
+            multiplier: 1,
+            constant: -100)
+        
+        let loaderLeftConstr = NSLayoutConstraint(
+            item: loader,
+            attribute: .leading,
+            relatedBy: .equal,
+            toItem: self.view,
+            attribute: .centerX,
+            multiplier: 1,
+            constant: -100)
+        
+        
+        let loaderHeightConstr = NSLayoutConstraint(
+            item: loader,
+            attribute: .height,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 200)
+        
+        let loaderWidthConstr = NSLayoutConstraint(
+            item: loader,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: 200)
+        
+        self.view.addConstraints([loaderTopConstr, loaderLeftConstr, loaderHeightConstr, loaderWidthConstr])
+        loader.isHidden = false
+        loader.startAnimating()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Cases"
+        setLoader()
+        tableView.isHidden = true
+        
+        let session = URLSession(configuration: .default)
 
-
+        guard  let covidURL = URL(string: "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true")
+        else {return}
+        let urlRequest = URLRequest(url: covidURL)
+       let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
+            if let error = error{
+                print(error)
+        }
+        
+        if let data = data {
+            do {
+                self.response = try JSONDecoder().decode([Case].self, from: data)
+                print(self.response.count)
+                DispatchQueue.main.async { [self] in
+                    loader.stopAnimating()
+                    loader.isHidden = true
+                    tableView.isHidden = false
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print(error)
+            }
+        }
+        }
+        dataTask.resume()
     }
     
 }
@@ -33,17 +101,13 @@ class CasesViewController: UIViewController {
 
 extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return  inittialCountries.count
+        return response.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
-    let country = inittialCountries[indexPath.row].country
-        let confirmed = inittialCountries[indexPath.row].Latest.confirmed
-        let death = inittialCountries[indexPath.row].Latest.death
-        cell.textLabel?.text = "\(country)    Confirmed: \(String(confirmed))   Death: \(String(death))"
 
-        
+        cell.textLabel?.text = "\(response[indexPath.row].country)  Casses: \(response[indexPath.row].infected ?? 0) "
         return cell
     }
     
@@ -52,13 +116,14 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "ShowDetails" {
             if let indexpath = self.tableView.indexPathForSelectedRow{
                 let casesDetails = segue.destination as! CassesDetailsViewController
-                casesDetails.death = inittialCountries[indexpath.row].Latest.death
-                casesDetails.cases = inittialCountries[indexpath.row].Latest.confirmed
-                casesDetails.country = inittialCountries[indexpath.row].country
-
-                
+      //          casesDetails.recovered = inittialCountries[indexpath.row].recovered
+                casesDetails.cases = response[indexpath.row].infected ?? 0
+                casesDetails.country = response[indexpath.row].country
             }
         }
     }
+        
     
 }
+
+

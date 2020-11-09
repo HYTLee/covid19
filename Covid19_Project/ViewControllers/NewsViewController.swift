@@ -18,11 +18,7 @@ class NewsViewController: UIViewController {
         Article(author: "He", title: "Smth"),
         Article(author: "She", title: "Another one"),
         Article(author: "Me", title: "Breaking News"),
-        Article(author: "He", title: "Smth"),
-        Article(author: "She", title: "Another one"),
-        Article(author: "Me", title: "Breaking News"),
-        Article(author: "He", title: "Smth"),
-        Article(author: "She", title: "Another one")
+       
     ]
     
     
