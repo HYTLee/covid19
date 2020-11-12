@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     let loginTextField = UITextField(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
     let passwordTextField = UITextField(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
     let loginBtn = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+    let userLoginKey = "Login Key"
+
 
     
     override func viewDidLoad() {
@@ -78,6 +80,7 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.borderWidth = 1
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.delegate = self
+        passwordTextField.isSecureTextEntry = true
         
         let passTopConstr = NSLayoutConstraint(
             item: passwordTextField,
@@ -185,12 +188,13 @@ class LoginViewController: UIViewController {
         let userDataViewController = tabBarVC.viewControllers![2] as! UserDataViewController
         userDataViewController.userNameLabelText = self.loginTextField.text
         navigationController?.pushViewController(tabBarVC, animated: true)
+        saveUserLogin(loginText: loginTextField.text ?? "Nothing to save")
         loginTextField.text = ""
         passwordTextField.text = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
-    
+        loginTextField.text = UserDefaults.standard.value(forKey: userLoginKey) as? String
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -210,6 +214,11 @@ class LoginViewController: UIViewController {
             [weak self] in self?.view.layoutIfNeeded()
         }
     }
+    
+    func saveUserLogin(loginText: String)  {
+        UserDefaults.standard.string(forKey: userLoginKey)
+        UserDefaults.standard.setValue(loginText, forKey: userLoginKey)
+    }
 }
 
 
@@ -221,11 +230,7 @@ extension LoginViewController: UITextFieldDelegate {
             loginBtn.isEnabled = true
         }
         else {loginBtn.isEnabled = false}
-        
     }
-    
-  
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
