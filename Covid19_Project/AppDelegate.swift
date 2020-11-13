@@ -4,17 +4,15 @@
 //
 //  Created by AP Yauheni Hramiashkevich on 10/30/20.
 //
-
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+        FirebaseApp.configure()
         return true
     }
 

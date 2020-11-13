@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>897187051761-k97jk5qs02r0lpjfgh73p90m4t9k9pfg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.897187051761-k97jk5qs02r0lpjfgh73p90m4t9k9pfg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDkGK4N5mCsBFAfZ4-6RSezmn-nYCT731U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>897187051761</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.hramiashkevich.Covid19-Project</string>
+	<key>PROJECT_ID</key>
+	<string>covid19-hr</string>
+	<key>STORAGE_BUCKET</key>
+	<string>covid19-hr.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:897187051761:ios:87ec0a5ff1e11b930fd150</string>
+	<key>DATABASE_URL</key>
+	<string>https://covid19-hr.firebaseio.com</string>
+</dict>
+</plist>

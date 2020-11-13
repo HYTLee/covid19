@@ -23,6 +23,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginBtn.isEnabled = false
         loginTextField.delegate = self
         passwordTextField.delegate = self
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
