@@ -68,9 +68,30 @@ class CasesViewController: UIViewController {
         setLoader()
         tableView.isHidden = true
         getStatisticsFromApi()
-        
+        configureRefreshControl()
         
     }
+    func configureRefreshControl () {
+       // Add the refresh control to your UIScrollView object.
+       tableView.refreshControl = UIRefreshControl()
+       tableView.refreshControl?.isHidden = false
+       tableView.refreshControl?.addTarget(self, action:
+                                          #selector(handleRefreshControl),
+                                          for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+       // Update your content…
+        getStatisticsFromApi()
+        
+       // Dismiss the refresh control.
+       DispatchQueue.main.async {
+          self.tableView.refreshControl?.endRefreshing()
+      //  print("Reload has been finished")
+       }
+    }
+    
+    
     
     func getStatisticsFromApi()  {
         let session = URLSession(configuration: .default)
