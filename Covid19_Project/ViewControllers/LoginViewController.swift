@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginTopConstarint: NSLayoutConstraint!
     
     
-    var loginData = ""
+    var loginData: String?
     
     
     override func viewDidLoad() {
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func saveLogin(loginText: String)  {
         let userLoginKey = "lastUserLogin"
-        _ = UserDefaults.standard.string(forKey: userLoginKey)
+        UserDefaults.standard.string(forKey: userLoginKey)
         UserDefaults.standard.setValue(loginText, forKey: userLoginKey)
     }
     

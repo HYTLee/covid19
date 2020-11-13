@@ -8,7 +8,7 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    var dataPass: String!
+    var dataPass: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,7 @@ class TabBarController: UITabBarController {
         let navController = self.viewControllers![2] as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController
         vc.profileName = dataPass
-        
-
-        let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
-         UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+    
         
 
     }

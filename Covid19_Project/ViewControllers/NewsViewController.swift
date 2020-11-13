@@ -26,7 +26,7 @@ class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "News"
-            collectionView.dataSource = self
+        collectionView.dataSource = self
     }
 }
 

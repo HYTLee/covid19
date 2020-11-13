@@ -67,7 +67,12 @@ class CasesViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = "Cases"
         setLoader()
         tableView.isHidden = true
+        getStatisticsFromApi()
         
+        
+    }
+    
+    func getStatisticsFromApi()  {
         let session = URLSession(configuration: .default)
 
         guard  let covidURL = URL(string: "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true")
@@ -82,11 +87,11 @@ class CasesViewController: UIViewController {
             do {
                 self.response = try JSONDecoder().decode([Case].self, from: data)
                 print(self.response.count)
-                DispatchQueue.main.async { [self] in
-                    loader.stopAnimating()
-                    loader.isHidden = true
-                    tableView.isHidden = false
-                    self.tableView.reloadData()
+                DispatchQueue.main.async { [weak self] in
+                    self?.loader.stopAnimating()
+                    self?.loader.isHidden = true
+                    self?.tableView.isHidden = false
+                    self?.tableView.reloadData()
                 }
             } catch {
                 print(error)
