@@ -26,6 +26,7 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "News"
         collectionView.dataSource = self
+        collectionView.delegate = self
         getNewses()
     }
     
@@ -112,7 +113,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
                     cell.backgroundColor = UIColor(patternImage: (unfilteredImage!))
                 } else {
                     cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
-                }
+                }	
                 }
             }
         }
@@ -120,6 +121,10 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
 
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        openNewsInSafari(indexPath.row)
+    }
+    
     
   
 }
