@@ -15,10 +15,12 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var titleLabelInCell: UILabel!
     @IBOutlet weak var authorLabelInCell: UILabel!
    
+    var operQuew: OperationQueue?
 
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,11 @@ class NewsViewController: UIViewController {
         dataTask.resume()
     }
     
+    
+    func downloadImage()  {
+        
+    }
+    
     func openNewsInSafari(_ which: Int) {
         if let url = URL(string: newses?.articles[which].url ?? "https://www.raywenderlich.com/5293-operation-and-operationqueue-tutorial-in-swift") {
             let config = SFSafariViewController.Configuration()
@@ -72,25 +79,47 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "News", for: indexPath) as! NewsCell
         cell.titleLabel.text = newses?.articles[indexPath.row].title
         cell.authorLabel.text = newses?.articles[indexPath.row].author
-        
-        guard let imageURL = URL(string:newses?.articles[indexPath.row].urlToImage ?? "http://www.raywenderlich.com/downloads/ClassicPhotosDictionary.plist"  ),
-          let imageData = try? Data(contentsOf: imageURL) else {
-            return cell
-        }
-
-        //1
-        let unfilteredImage = UIImage(data:imageData)
-        //2
-        cell.backgroundColor = UIColor(patternImage: (unfilteredImage ?? UIImage(named: "DefaultCellBackground"))!)
-        
         cell.layer.borderWidth = 5
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
+        
+        operQuew = OperationQueue()
+
+        let operation1 = BlockOperation{
+            guard let imageURL = URL(string:self.newses?.articles[indexPath.row].urlToImage ?? "http://www.raywenderlich.com/downloads/ClassicPhotosDictionary.plist"  ),
+          let imageData = try? Data(contentsOf: imageURL) else {
+                DispatchQueue.main.async {
+            cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
+                }
+            return
+        }
+        //1
+            let unfilteredImage = UIImage(data:imageData)
+            if !collectionView.isDragging && !collectionView.isDecelerating {
+                DispatchQueue.main.async{
+                if unfilteredImage != nil{
+                    cell.backgroundColor = UIColor(patternImage: (unfilteredImage!))
+                } else {
+                    cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
+                }
+            }
+            }
+            else {
+                while collectionView.isDragging == true && collectionView.isDecelerating == true {
+                }
+                DispatchQueue.main.async{
+                if unfilteredImage != nil{
+                    cell.backgroundColor = UIColor(patternImage: (unfilteredImage!))
+                } else {
+                    cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
+                }
+                }
+            }
+        }
+        operQuew?.addOperation(operation1)
         return cell
     }
+
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at:indexPath) as! UICollectionViewCell
-        print("Print")
-    }
+  
 }

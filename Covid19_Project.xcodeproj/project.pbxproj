@@ -26,7 +26,6 @@
 		80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F6A254C66F300DAB0CB /* NewsCell.swift */; };
 		80B66F70254DC48C00DAB0CB /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F6F254DC48C00DAB0CB /* Case.swift */; };
 		80B66F75254DC80300DAB0CB /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F74254DC80300DAB0CB /* CountryTableCell.swift */; };
-		80BBBA0B2561231900757FA1 /* pictureOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBA0A2561231900757FA1 /* pictureOperations.swift */; };
 		B00A02A15B91BBDD901D88E6 /* Pods_Covid19_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4A1FC240253A132C8BA50F /* Pods_Covid19_Project.framework */; };
 		DBF7E3CB39B65205C341F3D7 /* Pods_Covid19_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F612F9BDEF9616159C2D3A7 /* Pods_Covid19_ProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -78,7 +77,6 @@
 		80B66F6A254C66F300DAB0CB /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		80B66F6F254DC48C00DAB0CB /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		80B66F74254DC80300DAB0CB /* CountryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
-		80BBBA0A2561231900757FA1 /* pictureOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pictureOperations.swift; sourceTree = "<group>"; };
 		81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid19_Project_Covid19_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9153F91C90D15DED6AAA58EA /* Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-Covid19_Project-Covid19_ProjectUITests/Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		95EFD86F4CEC5C3E9C7C2B5F /* Pods-Covid19_Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project.debug.xcconfig"; path = "Target Support Files/Pods-Covid19_Project/Pods-Covid19_Project.debug.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 			children = (
 				80B66F62254C521100DAB0CB /* Article.swift */,
 				80B66F6F254DC48C00DAB0CB /* Case.swift */,
-				80BBBA0A2561231900757FA1 /* pictureOperations.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -478,7 +475,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
-				80BBBA0B2561231900757FA1 /* pictureOperations.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
 				80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */,

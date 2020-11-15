@@ -1,4 +1,6 @@
 
+import UIKit
+
 struct News: Codable {
     let status: String
     let totalResults: Int
@@ -15,5 +17,4 @@ struct Article: Codable {
 
 
 }
-
 
