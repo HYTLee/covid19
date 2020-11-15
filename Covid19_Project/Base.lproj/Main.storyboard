@@ -234,7 +234,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sL-5G-sxR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sL-5G-sxR">
                                                     <rect key="frame" x="10" y="23" width="100" height="62"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="62" id="hp6-0d-nq5"/>
@@ -244,10 +244,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGP-w1-FGC">
-                                                    <rect key="frame" x="34" y="115" width="100" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGP-w1-FGC">
+                                                    <rect key="frame" x="34" y="100" width="100" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="OwC-Bz-Zfw"/>
+                                                        <constraint firstAttribute="height" constant="50" id="OwC-Bz-Zfw"/>
                                                         <constraint firstAttribute="width" constant="100" id="omb-fl-zPa"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -257,7 +257,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="oGP-w1-FGC" firstAttribute="leading" secondItem="qOA-K0-GgC" secondAttribute="leading" constant="34" id="15v-0e-3Lp"/>
-                                                <constraint firstItem="oGP-w1-FGC" firstAttribute="top" secondItem="2sL-5G-sxR" secondAttribute="bottom" constant="30" id="WJR-Rf-4MK"/>
+                                                <constraint firstItem="oGP-w1-FGC" firstAttribute="top" secondItem="2sL-5G-sxR" secondAttribute="bottom" constant="15" id="WJR-Rf-4MK"/>
                                                 <constraint firstItem="2sL-5G-sxR" firstAttribute="centerX" secondItem="qOA-K0-GgC" secondAttribute="centerX" id="Y2r-5n-Vpz"/>
                                                 <constraint firstItem="2sL-5G-sxR" firstAttribute="top" secondItem="qOA-K0-GgC" secondAttribute="top" constant="23" id="Zhk-bY-ea2"/>
                                             </constraints>
