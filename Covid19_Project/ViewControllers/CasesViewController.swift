@@ -74,7 +74,6 @@ class CasesViewController: UIViewController {
     func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
        tableView.refreshControl = UIRefreshControl()
-       tableView.refreshControl?.isHidden = false
        tableView.refreshControl?.addTarget(self, action:
                                           #selector(handleRefreshControl),
                                           for: .valueChanged)

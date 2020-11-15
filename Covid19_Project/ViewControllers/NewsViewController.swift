@@ -28,6 +28,7 @@ class NewsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         getNewses()
+        configureRefreshControl()
     }
     
     func getNewses()  {
@@ -55,9 +56,19 @@ class NewsViewController: UIViewController {
         dataTask.resume()
     }
     
+    func configureRefreshControl () {
+       // Add the refresh control to your UIScrollView object.
+       collectionView.refreshControl = UIRefreshControl()
+       collectionView.refreshControl?.addTarget(self, action:
+                                          #selector(handleRefreshControl),
+                                          for: .valueChanged)
+    }
     
-    func downloadImage()  {
-        
+    @objc func handleRefreshControl() {
+        getNewses()
+        DispatchQueue.main.async {
+          self.collectionView.refreshControl?.endRefreshing()
+       }
     }
     
     func openNewsInSafari(_ which: Int) {
@@ -79,7 +90,12 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "News", for: indexPath) as! NewsCell
         cell.titleLabel.text = newses?.articles[indexPath.row].title
+        if newses?.articles[indexPath.row].author != nil {
         cell.authorLabel.text = newses?.articles[indexPath.row].author
+        } else {
+            cell.authorLabel.text = "Author is unknown"
+
+        }
         cell.layer.borderWidth = 5
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
@@ -96,10 +112,12 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         //1
             let unfilteredImage = UIImage(data:imageData)
+       
+            let filteredImage = unfilteredImage?.image(alpha: 0.2)
             if !collectionView.isDragging && !collectionView.isDecelerating {
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
-                    cell.backgroundColor = UIColor(patternImage: (unfilteredImage!))
+                    cell.backgroundColor = UIColor(patternImage: (filteredImage!))
                 } else {
                     cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
                 }
@@ -110,7 +128,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
-                    cell.backgroundColor = UIColor(patternImage: (unfilteredImage!))
+                    cell.backgroundColor = UIColor(patternImage: (filteredImage!))
                 } else {
                     cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
                 }	
@@ -124,7 +142,14 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openNewsInSafari(indexPath.row)
     }
-    
-    
-  
+}
+
+extension UIImage {
+    func image(alpha: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: .zero, blendMode: .normal, alpha: alpha)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }
