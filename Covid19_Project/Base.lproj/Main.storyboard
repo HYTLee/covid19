@@ -181,8 +181,11 @@
                                     <segue destination="ukw-Zr-bgu" kind="unwind" unwindAction="unwindFromProfile:" id="ycZ-SO-ioG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggf-Sk-bTa">
-                                <rect key="frame" x="121" y="116" width="172" height="50.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggf-Sk-bTa">
+                                <rect key="frame" x="111" y="126" width="193" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Ion-i9-R9X"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -191,10 +194,9 @@
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ggf-Sk-bTa" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="57v-MH-qoU"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="189" id="GLd-Hx-gs7"/>
-                            <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="ggf-Sk-bTa" secondAttribute="trailing" constant="121" id="HRD-2Z-OjH"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="28" id="QHX-S5-SS6"/>
-                            <constraint firstItem="ggf-Sk-bTa" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="121" id="XCP-Aj-YYS"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="juU-t0-N8y"/>
                         </constraints>
                     </view>
