@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" constant="226" id="LFb-It-r4k"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="029-aY-4nj">
                                 <rect key="frame" x="122" y="398" width="170" height="30"/>

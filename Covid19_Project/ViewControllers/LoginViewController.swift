@@ -54,6 +54,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         openNewsView()
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            if (string == " ") {
+              return false
+            }
+            return true
+        }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
@@ -91,9 +98,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func unwindFromProfile(_ sender: UIStoryboardSegue) {
         
     }
-    
-    
-   
-        
+}
 
+extension LoginViewController {
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        if (string == " ") {
+            return false
+        }
+        return true
+    }
 }
