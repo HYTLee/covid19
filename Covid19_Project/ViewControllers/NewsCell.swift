@@ -13,6 +13,10 @@ class NewsCell: UICollectionViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        backgroundColor = nil
+    }
     
     
 }

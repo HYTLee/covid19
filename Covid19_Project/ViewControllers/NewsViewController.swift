@@ -99,7 +99,11 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.layer.borderWidth = 5
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 5
-        
+        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
+        cell.backgroundView = UIView()
+        cell.backgroundView!.addSubview(imageView)
+
+
         operQuew = OperationQueue()
 
         let operation1 = BlockOperation{
@@ -114,6 +118,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             let unfilteredImage = UIImage(data:imageData)
        
             let filteredImage = unfilteredImage?.image(alpha: 0.2)
+        
             
             var isNotDraginAndDecelerating = true
             DispatchQueue.main.async {
@@ -128,7 +133,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             if  isNotDraginAndDecelerating == true {
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
-                    cell.backgroundColor = UIColor(patternImage: (filteredImage!))
+                    imageView.image = filteredImage
                 } else {
                     cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
                 }
@@ -139,8 +144,8 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 }
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
-                    cell.backgroundColor = UIColor(patternImage: (filteredImage!))
-                } else {
+                    imageView.image = filteredImage}
+                else {
                     cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
                 }	
                 }
