@@ -114,7 +114,18 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             let unfilteredImage = UIImage(data:imageData)
        
             let filteredImage = unfilteredImage?.image(alpha: 0.2)
-            if !collectionView.isDragging && !collectionView.isDecelerating {
+            
+            var isNotDraginAndDecelerating = true
+            DispatchQueue.main.async {
+                if !collectionView.isDragging && !collectionView.isDecelerating {
+                    isNotDraginAndDecelerating = true
+                }
+                else {
+                    isNotDraginAndDecelerating = false
+                }
+            }
+            
+            if  isNotDraginAndDecelerating == true {
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
                     cell.backgroundColor = UIColor(patternImage: (filteredImage!))
@@ -124,7 +135,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
             }
             else {
-                while collectionView.isDragging == true && collectionView.isDecelerating == true {
+                while isNotDraginAndDecelerating == false {
                 }
                 DispatchQueue.main.async{
                 if unfilteredImage != nil{
