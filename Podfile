@@ -6,6 +6,7 @@ target 'Covid19_Project' do
 # add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'
 pod 'Firebase/Crashlytics'
+pod 'KeychainAccess'
 
 
   # Pods for Covid19_Project

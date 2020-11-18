@@ -65,6 +65,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.1.0):
     - GoogleUtilities/Logger
+  - KeychainAccess (4.2.1)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
@@ -75,6 +76,7 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - KeychainAccess
 
 SPEC REPOS:
   trunk:
@@ -87,6 +89,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - KeychainAccess
     - nanopb
     - PromisesObjC
 
@@ -100,9 +103,10 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUtilities: f734da554aade8cc7928a31c2f3311897933a1bd
+  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
 
-PODFILE CHECKSUM: 0c42c8f8cff1387275e87f174f567eec5b445445
+PODFILE CHECKSUM: d24962755ee04fd1f6ca50b063cbe0a99bfbfbc7
 
 COCOAPODS: 1.10.0

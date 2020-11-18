@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainAccess
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,7 +24,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginBtn.isEnabled = false
         loginTextField.delegate = self
         passwordTextField.delegate = self
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +52,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func loginAction(_ sender: UIButton) {
         openNewsView()
+        savePasswordToKeyChain()
+        cleanTextfieldsAndDisableLoginBtn()
     }
+    
+    @IBAction func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
+        getPasswordFromKeChain()
+    }
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             if (string == " ") {
@@ -77,6 +84,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         controller.dataPass = self.loginData
         self.navigationController?.pushViewController(controller, animated: true)
         saveLogin(loginText: self.loginTextField.text!)
+        
+    }
+    
+    func cleanTextfieldsAndDisableLoginBtn()  {
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
         loginBtn.isEnabled = false
@@ -107,4 +118,72 @@ extension LoginViewController {
         }
         return true
     }
+}
+
+
+extension LoginViewController {
+    func savePasswordToKeyChain() {
+        let password = self.passwordTextField.text
+        print("password is \(password)")
+        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+        
+        if passwordTextField.text != nil {
+            DispatchQueue.global().async {
+                do {    
+                    // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
+                    try keychain
+                        .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
+                        .set( password!, key: "userPassword")
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func getPasswordFromKeChain() {
+        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+
+        DispatchQueue.global().async {
+            do {
+                let password = try keychain
+                    .authenticationPrompt("Authenticate to login to server")
+                    .get("userPassword")
+
+                print("password is: \(password)")
+                DispatchQueue.main.async {
+                    if password != nil{
+                    self.passwordTextField.text = password
+                    self.loginBtn.isEnabled = true
+                    }
+                }
+            } catch let error {
+                // Error handling if needed...
+            }
+        }    }
+    
+    func updatePassword() {
+        let password = self.passwordTextField.text ?? ""
+        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+        DispatchQueue.global().async {
+            do {
+                // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
+                try keychain
+                    .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
+                    .authenticationPrompt("Authenticate to update your access token")
+                    .set(password, key: "userPassword")
+            } catch let error {
+            }
+        }
+    }
+    
+    func deletePasswordKeyChain()  {
+        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+        do {
+            try keychain.remove("userPassword")
+        } catch let error {
+            // Error handling if needed...
+        }
+    }
+
 }
