@@ -1,11 +1,10 @@
+//
+//  Article.swift
+//  Covid19_Project
+//
+//  Created by AP Yauheni Hramiashkevich on 11/19/20.
+//
 
-import UIKit
-
-struct News: Codable {
-    let status: String
-    let totalResults: Int
-    let articles: [Article]
-}
 
 // MARK: - Article
 struct Article: Codable {
@@ -16,4 +15,3 @@ struct Article: Codable {
     let content: String?
 
 }
-

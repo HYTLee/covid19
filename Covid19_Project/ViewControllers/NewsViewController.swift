@@ -89,21 +89,17 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "News", for: indexPath) as! NewsCell
+        
         cell.titleLabel.text = newses?.articles[indexPath.row].title
         if newses?.articles[indexPath.row].author != nil {
-        cell.authorLabel.text = newses?.articles[indexPath.row].author
+            cell.authorLabel.text = newses?.articles[indexPath.row].author
         } else {
             cell.authorLabel.text = "Author is unknown"
-
         }
-        cell.layer.borderWidth = 5
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 5
-        let imageView = UIImageView(frame: CGRect(x: 10, y: 10, width: cell.frame.width - 10, height: cell.frame.height - 10))
+        
         cell.backgroundView = UIView()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
         cell.backgroundView!.addSubview(imageView)
-
-
         operQuew = OperationQueue()
 
         let operation1 = BlockOperation{

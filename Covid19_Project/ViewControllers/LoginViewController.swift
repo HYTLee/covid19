@@ -17,6 +17,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     var loginData: String?
+    let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+    let keychainKeyForPassword = "userPassword"
+
     
     
     override func viewDidLoad() {
@@ -34,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         loginTopConstarint.constant = 120
         UIView.animate(withDuration: 2, delay: 0, options: [.curveEaseOut], animations: {
           [weak self] in self?.view.layoutIfNeeded()
@@ -44,9 +47,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
             if ((loginTextField.text != "") && (passwordTextField.text != "")){
                 loginBtn.isEnabled = true
-
-            }else{
+                
+            }
+            else {
                 loginBtn.isEnabled = false
+                
             }
         }
     
@@ -124,16 +129,15 @@ extension LoginViewController {
 extension LoginViewController {
     func savePasswordToKeyChain() {
         let password = self.passwordTextField.text
-        print("password is \(password)")
-        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+        print("password is \(password ?? "")")
         
         if passwordTextField.text != nil {
             DispatchQueue.global().async {
                 do {    
                     // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
-                    try keychain
+                    try self.keychain
                         .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
-                        .set( password!, key: "userPassword")
+                        .set( password ?? "", key: self.keychainKeyForPassword)
                 } catch let error {
                     print(error)
                 }
@@ -142,15 +146,13 @@ extension LoginViewController {
     }
     
     func getPasswordFromKeChain() {
-        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
-
         DispatchQueue.global().async {
             do {
-                let password = try keychain
+                let password = try self.keychain
                     .authenticationPrompt("Authenticate to login to server")
-                    .get("userPassword")
+                    .get(self.keychainKeyForPassword)
 
-                print("password is: \(password)")
+                print("password is: \(password ?? "")")
                 DispatchQueue.main.async {
                     if password != nil{
                     self.passwordTextField.text = password
@@ -158,31 +160,30 @@ extension LoginViewController {
                     }
                 }
             } catch let error {
-                // Error handling if needed...
+                print(error)
             }
         }    }
     
     func updatePassword() {
         let password = self.passwordTextField.text ?? ""
-        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
         DispatchQueue.global().async {
             do {
                 // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
-                try keychain
+                try self.keychain
                     .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
                     .authenticationPrompt("Authenticate to update your access token")
-                    .set(password, key: "userPassword")
+                    .set(password, key: self.keychainKeyForPassword)
             } catch let error {
+                print(error)
             }
         }
     }
     
     func deletePasswordKeyChain()  {
-        let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
         do {
-            try keychain.remove("userPassword")
+            try self.keychain.remove(keychainKeyForPassword)
         } catch let error {
-            // Error handling if needed...
+            print(error)
         }
     }
 
