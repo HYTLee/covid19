@@ -16,7 +16,6 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var authorLabelInCell: UILabel!
    
     var operQuew: OperationQueue?
-
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
@@ -90,64 +89,28 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "News", for: indexPath) as! NewsCell
         
-        cell.titleLabel.text = newses?.articles[indexPath.row].title
+        if newses?.articles[indexPath.row].title != nil{
+            cell.titleLabel.text = newses?.articles[indexPath.row].title
+        }
+        else{
+            cell.titleLabel.text = "Title is unknown"
+        }
         if newses?.articles[indexPath.row].author != nil {
-            cell.authorLabel.text = newses?.articles[indexPath.row].author
-        } else {
+        cell.authorLabel.text = newses?.articles[indexPath.row].author
+        }
+        else{
             cell.authorLabel.text = "Author is unknown"
         }
-        
-        cell.backgroundView = UIView()
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: cell.frame.width, height: cell.frame.height))
-        cell.backgroundView!.addSubview(imageView)
-        operQuew = OperationQueue()
-
-        let operation1 = BlockOperation{
-            guard let imageURL = URL(string:self.newses?.articles[indexPath.row].urlToImage ?? "http://www.raywenderlich.com/downloads/ClassicPhotosDictionary.plist"  ),
-          let imageData = try? Data(contentsOf: imageURL) else {
-                DispatchQueue.main.async {
-            cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
-                }
-            return
-        }
-        //1
-            let unfilteredImage = UIImage(data:imageData)
        
-            let filteredImage = unfilteredImage?.image(alpha: 0.2)
         
+        
+        if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
+            print(url)
             
-            var isNotDraginAndDecelerating = true
-            DispatchQueue.main.async {
-                if !collectionView.isDragging && !collectionView.isDecelerating {
-                    isNotDraginAndDecelerating = true
-                }
-                else {
-                    isNotDraginAndDecelerating = false
-                }
-            }
+            cell.imageIV.loadImage(url: url)
             
-            if  isNotDraginAndDecelerating == true {
-                DispatchQueue.main.async{
-                if unfilteredImage != nil{
-                    imageView.image = filteredImage
-                } else {
-                    cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
-                }
-            }
-            }
-            else {
-                while isNotDraginAndDecelerating == false {
-                }
-                DispatchQueue.main.async{
-                if unfilteredImage != nil{
-                    imageView.image = filteredImage}
-                else {
-                    cell.backgroundColor = UIColor(patternImage: UIImage(named: "DefaultCellBackground")!)
-                }	
-                }
-            }
         }
-        operQuew?.addOperation(operation1)
+
         return cell
     }
 
@@ -156,12 +119,3 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-extension UIImage {
-    func image(alpha: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: .zero, blendMode: .normal, alpha: alpha)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-}

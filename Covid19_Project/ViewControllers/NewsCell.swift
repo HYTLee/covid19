@@ -11,13 +11,17 @@ class NewsCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    
+    var imageIV = NewsImaggeView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 
     
     override func setNeedsLayout() {
         layer.borderWidth = 5
         layer.masksToBounds = true
         layer.cornerRadius = 5
-        
+        backgroundView = UIView()
+        backgroundView?.addSubview(imageIV)
+       
     }
     
 
@@ -25,6 +29,5 @@ class NewsCell: UICollectionViewCell {
         super.prepareForReuse()
         backgroundView = nil
     }
-    
-    
 }
+
