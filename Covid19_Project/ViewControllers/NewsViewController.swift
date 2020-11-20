@@ -19,6 +19,8 @@ class NewsViewController: UIViewController {
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
+    var operQueue: OperationQueue?
+
 
 
     override func viewDidLoad() {
@@ -103,14 +105,11 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
        
         
-        
+      //  if collectionView.isDragging != true && collectionView.isDecelerating != true {
         if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
-            print(url)
-            
             cell.imageIV.loadImage(url: url)
-            
         }
-
+    //    } 
         return cell
     }
 

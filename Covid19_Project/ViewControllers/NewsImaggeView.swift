@@ -7,6 +7,7 @@
 
 import UIKit
 
+let imageCache = NSCache<AnyObject, AnyObject>()
 class NewsImaggeView: UIImageView {
     var task: URLSessionTask!
 
@@ -17,6 +18,11 @@ class NewsImaggeView: UIImageView {
         task.cancel()
         }
         
+        if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
+            self.image = imageFromCache.image(alpha: 0.2)
+            return
+        }
+        
          task = URLSession.shared.dataTask(with: url){ (data, response, error) in
             guard
                 let data = data,
@@ -25,11 +31,12 @@ class NewsImaggeView: UIImageView {
                 print("could not find image")
                 return
             }
+            imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
+
             DispatchQueue.main.async {
                 self.image = newImage.image(alpha: 0.2)
             }
         }
-        
         task.resume()
     }
 }
