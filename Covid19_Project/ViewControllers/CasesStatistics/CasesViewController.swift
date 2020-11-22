@@ -66,7 +66,7 @@ class CasesViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = "Cases"
         setLoader()
-        tableView.isHidden = true
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         getStatisticsFromApi()
         configureRefreshControl()
         
@@ -110,7 +110,7 @@ class CasesViewController: UIViewController {
                 DispatchQueue.main.async { [weak self] in
                     self?.loader.stopAnimating()
                     self?.loader.isHidden = true
-                    self?.tableView.isHidden = false
+                    self?.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
                     self?.tableView.reloadData()
                 }
             } catch {
@@ -132,7 +132,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
 
-        cell.textLabel?.text = "\(response[indexPath.row].country)  Casses: \(response[indexPath.row].infected ?? 0)  Recovered: \(response[indexPath.row].recovered ?? 0) "
+        cell.textLabel?.text = "\(response[indexPath.row].country ?? "Unknown country")  Casses: \(response[indexPath.row].infected ?? 0)  Recovered: \(response[indexPath.row].recovered ?? 0) "
         return cell
     }
     
@@ -141,9 +141,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "ShowDetails" {
             if let indexpath = self.tableView.indexPathForSelectedRow{
                 let casesDetails = segue.destination as! CassesDetailsViewController
-                casesDetails.recovered = response[indexpath.row].recovered ?? 0
-                casesDetails.cases = response[indexpath.row].infected ?? 0
-                casesDetails.country = response[indexpath.row].country
+                casesDetails.countryCase = self.response[indexpath.row]
             }
         }
     }

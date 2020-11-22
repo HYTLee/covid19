@@ -11,6 +11,7 @@ class CassesDetailsViewController: UIViewController {
 
     @IBOutlet weak var deathLabel: UILabel!
     @IBOutlet weak var casesLabel: UILabel!
+    var countryCase = Case()
     
     var country = "Country"
     var recovered = 0
@@ -18,7 +19,7 @@ class CassesDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setStatistics()
         deathLabel.text = "Recovered: \(String(recovered))"
         casesLabel.text = "Cases: \(cases)"
         self.title = country
@@ -30,6 +31,12 @@ class CassesDetailsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    func setStatistics()  {
+        self.country = countryCase.country ?? "Unknown Country"
+        self.recovered = countryCase.recovered ?? 0
+        self.cases = countryCase.infected ?? 0
     }
     
 

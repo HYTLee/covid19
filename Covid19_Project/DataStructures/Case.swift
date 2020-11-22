@@ -5,7 +5,7 @@
 struct Case: Decodable {
     var infected: Int?
     var recovered: Int?
-    var country: String
+    var country: String?
     
     private enum CodingKeys: String, CodingKey {
             case infected, recovered, country
@@ -14,7 +14,7 @@ struct Case: Decodable {
     init(infected: Int? = nil, recovered: Int? = nil, country: String? = nil) {
             self.infected = infected
             self.recovered = recovered
-            self.country = country!
+            self.country = country
         
     }
     
