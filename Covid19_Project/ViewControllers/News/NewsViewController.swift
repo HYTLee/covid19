@@ -15,12 +15,11 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var titleLabelInCell: UILabel!
     @IBOutlet weak var authorLabelInCell: UILabel!
    
-    var operQuew: OperationQueue?
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
-    var operQueue: OperationQueue?
 
+    let newsImage = NewsImaggeView()
 
 
     override func viewDidLoad() {
@@ -38,13 +37,13 @@ class NewsViewController: UIViewController {
         let request = URLRequest(url: newsApiUrl)
        let dataTask =  urlSessin.dataTask(with: request) { (data, response, error) in
         if error != nil {
-                print(error)
+            print(error ?? "Error is unknown")
             }
         
         if let data = data {
             do {
                 self.newses = try JSONDecoder().decode(News.self, from: data)
-                print(self.newses?.articles.count)
+                print(self.newses?.articles.count ?? "Number of articless is 0")
                 DispatchQueue.main.async { [self] in
                     self.collectionView.reloadData()
                 }
@@ -97,6 +96,7 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         else{
             cell.titleLabel.text = "Title is unknown"
         }
+        
         if newses?.articles[indexPath.row].author != nil {
         cell.authorLabel.text = newses?.articles[indexPath.row].author
         }
@@ -105,16 +105,20 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
        
         
-      //  if collectionView.isDragging != true && collectionView.isDecelerating != true {
+        if collectionView.cellForItem(at: indexPath) == nil {
         if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
             cell.imageIV.loadImage(url: url)
         }
-    //    } 
+       }
         return cell
     }
 
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openNewsInSafari(indexPath.row)
     }
+    
 }
+
+
+
 
