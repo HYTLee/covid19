@@ -163,8 +163,6 @@
 				80B66F1E254C247500DAB0CB /* LaunchScreen.storyboard */,
 				80B66F21254C247500DAB0CB /* Info.plist */,
 				8098AD5B255E787D00605806 /* GoogleService-Info.plist */,
-				80B99113256C236500E10855 /* Localizable.strings */,
-				80B9912C256C2EC500E10855 /* InfoPlist.strings */,
 			);
 			path = Covid19_Project;
 			sourceTree = "<group>";
@@ -212,6 +210,8 @@
 		80B9910D256C211200E10855 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				80B9912C256C2EC500E10855 /* InfoPlist.strings */,
+				80B99113256C236500E10855 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
