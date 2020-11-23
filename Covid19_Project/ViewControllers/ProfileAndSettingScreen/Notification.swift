@@ -20,12 +20,11 @@ class Notification {
     
     func scheduleNotification() {
         let content = UNMutableNotificationContent()
-
         content.title = "Covid 19"
-        content.body = "Don't forget to check recent news about pandemic"
+        content.body = NSLocalizedString("Don't forget to check recent news about pandemic", comment: "You like the result?")
         content.categoryIdentifier = "news"
         content.sound = UNNotificationSound.default
-
+        content.userInfo = ["type": "news"]
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)

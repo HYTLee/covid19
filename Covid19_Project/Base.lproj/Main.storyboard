@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter login " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-re-etE" userLabel="Enter login">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-re-etE" userLabel="Enter login">
                                 <rect key="frame" x="94" y="208" width="226" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="226" id="uQI-cR-EhL"/>
@@ -25,7 +25,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-5M-ThR">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4S3-5M-ThR">
                                 <rect key="frame" x="94" y="288" width="226" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="226" id="LFb-It-r4k"/>
@@ -45,12 +45,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOO-mA-uMp">
-                                <rect key="frame" x="122" y="350" width="170" height="30"/>
+                                <rect key="frame" x="82" y="350" width="250" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="170" id="ao9-1n-WlP"/>
+                                    <constraint firstAttribute="width" constant="250" id="ao9-1n-WlP"/>
                                     <constraint firstAttribute="height" constant="30" id="y5u-aB-ama"/>
                                 </constraints>
-                                <state key="normal" title="Last  password"/>
+                                <state key="normal" title="Last password"/>
                                 <connections>
                                     <action selector="tryToSetLastSuccessPasswordAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o5S-7X-PQe"/>
                                 </connections>
@@ -67,11 +67,11 @@
                             <constraint firstItem="HOO-mA-uMp" firstAttribute="top" secondItem="4S3-5M-ThR" secondAttribute="bottom" constant="28" id="azd-Ag-2L8"/>
                             <constraint firstItem="HOO-mA-uMp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="hKu-WC-RJ8"/>
                             <constraint firstItem="d4S-re-etE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="ihe-lG-QJd"/>
-                            <constraint firstItem="HOO-mA-uMp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="xmF-uX-py0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aDe-sM-Stc"/>
                     <connections>
+                        <outlet property="addLastSuccesPasswordBtn" destination="HOO-mA-uMp" id="ItU-VC-bxw"/>
                         <outlet property="loginBtn" destination="029-aY-4nj" id="EY3-3k-O4x"/>
                         <outlet property="loginTextField" destination="d4S-re-etE" id="OAU-Jh-DXR"/>
                         <outlet property="loginTopConstarint" destination="ihe-lG-QJd" id="BAp-BP-lzH"/>
@@ -208,9 +208,9 @@
                                 <rect key="frame" x="0.0" y="157" width="414" height="216"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dk8-Fd-y8Y">
-                                <rect key="frame" x="147" y="395" width="120" height="50"/>
+                                <rect key="frame" x="97" y="395" width="220" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="7mI-Xm-jEB"/>
+                                    <constraint firstAttribute="width" constant="220" id="7mI-Xm-jEB"/>
                                     <constraint firstAttribute="height" constant="50" id="A7m-PM-39V"/>
                                 </constraints>
                                 <state key="normal" title="Button">

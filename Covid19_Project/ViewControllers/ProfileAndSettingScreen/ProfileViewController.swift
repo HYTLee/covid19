@@ -20,7 +20,6 @@ class ProfileViewController: UIViewController {
     let notification = Notification()
     
     override func viewDidLoad() {
-        print(profileName ?? 0)
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = profileName
         self.profileNameLabel.text = profileName
@@ -29,8 +28,8 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        notification.getNotificationPermission()
         super.viewWillAppear(animated)
+        notification.getNotificationPermission()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -42,6 +41,7 @@ class ProfileViewController: UIViewController {
     
     func setLogoutButton()  {
         logoutBtn.layer.cornerRadius = 0.2 * logoutBtn.bounds.size.width
+        logoutBtn.setTitle(NSLocalizedString("Logout", comment: "You like the result?"), for: .normal)
         logoutBtn.clipsToBounds = true
     }
     
@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
         notificationBtn.layer.cornerRadius = 0.2 * logoutBtn.bounds.size.width
         notificationBtn.clipsToBounds = true
         notificationBtn.backgroundColor = .lightGray
-        notificationBtn.setTitle("Set Notification", for: .normal)
+        notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "You like the result?"), for: .normal)
     }
     
     func setTimeForNotification()  {

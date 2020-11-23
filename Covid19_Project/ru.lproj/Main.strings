@@ -1,0 +1,39 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "029-aY-4nj"; */
+"029-aY-4nj.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "2sL-5G-sxR"; */
+"2sL-5G-sxR.text" = "Title";
+
+/* Class = "UITextField"; placeholder = "Enter password"; ObjectID = "4S3-5M-ThR"; */
+"4S3-5M-ThR.placeholder" = "Enter password";
+
+/* Class = "UILabel"; text = "Confirmed: "; ObjectID = "C0u-SM-CZc"; */
+"C0u-SM-CZc.text" = "Confirmed: ";
+
+/* Class = "UILabel"; text = "Death: "; ObjectID = "FHL-gV-cFn"; */
+"FHL-gV-cFn.text" = "Death: ";
+
+/* Class = "UIButton"; normalTitle = "Last  password"; ObjectID = "HOO-mA-uMp"; */
+"HOO-mA-uMp.normalTitle" = "Last  password";
+
+/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "NKV-HL-w6r"; */
+"NKV-HL-w6r.title" = "Item 1";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "OjB-FG-z0L"; */
+"OjB-FG-z0L.title" = "Item 2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "dk8-Fd-y8Y"; */
+"dk8-Fd-y8Y.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "eLA-dI-jfG"; */
+"eLA-dI-jfG.normalTitle" = "Logout";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "fgP-ds-Ga7"; */
+"fgP-ds-Ga7.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ggf-Sk-bTa"; */
+"ggf-Sk-bTa.text" = "Label";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "oGP-w1-FGC"; */
+"oGP-w1-FGC.text" = "Author";

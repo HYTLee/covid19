@@ -8,7 +8,7 @@
 import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
-class NewsImaggeView: UIImageView {
+class NewsImageView: UIImageView {
     var task: URLSessionTask!
 
     func loadImage(url: URL)  {

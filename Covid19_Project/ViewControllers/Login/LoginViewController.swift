@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var loginTopConstarint: NSLayoutConstraint!
+    @IBOutlet weak var addLastSuccesPasswordBtn: UIButton!
     
     
     var loginData: String?
@@ -24,9 +25,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginBtn.isEnabled = false
+        setLoginTextField()
+        setPasswordTextField()
+        setLastPasswordBtn()
+        setLoginBtn()
         loginTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    func setLoginTextField()  {
+        let formatString = NSLocalizedString("Enter login",comment: "Enter login placeholder")
+        loginTextField.placeholder = String.localizedStringWithFormat(formatString)
+    }
+    
+    func setPasswordTextField()  {
+        let formatString = NSLocalizedString("Enter password",comment: "Enter password placeholder")
+        passwordTextField.placeholder = String.localizedStringWithFormat(formatString)
+    }
+    
+    func setLoginBtn()  {
+        loginBtn.isEnabled = false
+        loginBtn.setTitle(NSLocalizedString("Login", comment: "Login button text"), for: .normal)
+    }
+    
+    func setLastPasswordBtn()  {
+        addLastSuccesPasswordBtn.setTitle(NSLocalizedString("Password", comment: "Password buttn text"), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,11 +175,13 @@ extension LoginViewController {
                     .authenticationPrompt("Authenticate to login to server")
                     .get(self.keychainKeyForPassword)
 
-                print("password is: \(password ?? "")")
+            //    print("password is: \(password ?? "")")
                 DispatchQueue.main.async {
                     if password != nil{
                     self.passwordTextField.text = password
+                        if self.loginTextField.text != "" {
                     self.loginBtn.isEnabled = true
+                        }
                     }
                 }
             } catch let error {

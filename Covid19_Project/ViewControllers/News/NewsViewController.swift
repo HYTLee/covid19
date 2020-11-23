@@ -19,12 +19,12 @@ class NewsViewController: UIViewController {
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
 
-    let newsImage = NewsImaggeView()
+    let newsImage = NewsImageView()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "News"
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("News", comment: "You like the result?")
         collectionView.dataSource = self
         collectionView.delegate = self
         getNewses()

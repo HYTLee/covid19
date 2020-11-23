@@ -64,7 +64,7 @@ class CasesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "Cases"
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Statistics", comment: "You like the result?")
         setLoader()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         getStatisticsFromApi()

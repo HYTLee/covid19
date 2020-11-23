@@ -12,7 +12,7 @@ class NewsCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
-    var imageIV = NewsImaggeView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    var imageIV = NewsImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 
     
     override func setNeedsLayout() {
