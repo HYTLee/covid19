@@ -30,4 +30,11 @@ class Notification {
         center.add(request)
     }
     
+    func remodeAllScheduledNotifications()  {
+        center.removeAllPendingNotificationRequests()
+    }
+    
+    
+
+    
 }

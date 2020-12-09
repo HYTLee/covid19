@@ -204,11 +204,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="pWB-0r-xTC">
-                                <rect key="frame" x="0.0" y="157" width="414" height="216"/>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dk8-Fd-y8Y">
-                                <rect key="frame" x="97" y="395" width="220" height="50"/>
+                                <rect key="frame" x="97" y="329" width="220" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="7mI-Xm-jEB"/>
                                     <constraint firstAttribute="height" constant="50" id="A7m-PM-39V"/>
@@ -220,27 +217,47 @@
                                     <action selector="setNotification:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="pdZ-de-ZyJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set notification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KF-Ff-1hs">
+                                <rect key="frame" x="130" y="178" width="156" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="EIb-4C-iK9"/>
+                                    <constraint firstAttribute="width" constant="156" id="YeK-ki-iz7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notification time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioF-6z-ad2">
+                                <rect key="frame" x="97" y="250" width="220" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="DGB-Bd-rKx"/>
+                                    <constraint firstAttribute="width" constant="220" id="nz2-tu-fxI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ioF-6z-ad2" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="0aI-d7-izM"/>
+                            <constraint firstItem="3KF-Ff-1hs" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="1hV-03-Ctf"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="57v-MH-qoU"/>
-                            <constraint firstItem="pWB-0r-xTC" firstAttribute="trailing" secondItem="VQR-Ya-NCq" secondAttribute="trailing" id="Auh-Tj-mM6"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="400" id="GLd-Hx-gs7"/>
-                            <constraint firstItem="pWB-0r-xTC" firstAttribute="top" secondItem="ggf-Sk-bTa" secondAttribute="bottom" constant="10" id="NC3-Dh-toi"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="5" id="QHX-S5-SS6"/>
-                            <constraint firstItem="pWB-0r-xTC" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" id="WHs-S6-5uN"/>
+                            <constraint firstItem="ioF-6z-ad2" firstAttribute="top" secondItem="3KF-Ff-1hs" secondAttribute="bottom" constant="8" symbolic="YES" id="SUU-ep-3iT"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="cI9-ek-fCH"/>
+                            <constraint firstItem="3KF-Ff-1hs" firstAttribute="top" secondItem="ggf-Sk-bTa" secondAttribute="bottom" constant="29" id="idU-t7-B5Y"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="juU-t0-N8y"/>
-                            <constraint firstItem="dk8-Fd-y8Y" firstAttribute="top" secondItem="pWB-0r-xTC" secondAttribute="bottom" constant="25" id="tL0-Te-J5s"/>
+                            <constraint firstItem="dk8-Fd-y8Y" firstAttribute="top" secondItem="ioF-6z-ad2" secondAttribute="bottom" constant="50" id="swM-lF-KY8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cyc-JT-5hM"/>
                     <connections>
                         <outlet property="logoutBtn" destination="eLA-dI-jfG" id="A2w-Dd-mkZ"/>
                         <outlet property="notificationBtn" destination="dk8-Fd-y8Y" id="Eey-w9-WcS"/>
+                        <outlet property="notificationTextField" destination="ioF-6z-ad2" id="mZg-pV-PBT"/>
                         <outlet property="profileNameLabel" destination="ggf-Sk-bTa" id="0Jh-Hp-Zv8"/>
-                        <outlet property="timePicker" destination="pWB-0r-xTC" id="CLy-C8-e7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-To-ZSt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
