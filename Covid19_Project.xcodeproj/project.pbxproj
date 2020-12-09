@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67A8CA113C4A80C6796CCDCD /* Pods_Covid19_Project_Covid19_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */; };
+		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
 		8098AD5C255E787D00605806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8098AD5B255E787D00605806 /* GoogleService-Info.plist */; };
 		80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F13254C247400DAB0CB /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 		37534E5E5FAE674781CCC5D0 /* Pods-Covid19_ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Covid19_ProjectTests/Pods-Covid19_ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D4A1FC240253A132C8BA50F /* Pods_Covid19_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid19_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E351F7134EBF529BDB6E5CF /* Pods-Covid19_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project.release.xcconfig"; path = "Target Support Files/Pods-Covid19_Project/Pods-Covid19_Project.release.xcconfig"; sourceTree = "<group>"; };
+		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
 		8098AD5B255E787D00605806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80B66F10254C247400DAB0CB /* Covid19_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				80BBBC222567C70400757FA1 /* UIImageExtentions.swift */,
+				806F123B25812736006C74C9 /* UITableViewExtention.swift */,
 			);
 			path = ExtentionsForDefaultClasses;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */,
 				80BBBB6A2566578A00757FA1 /* Article.swift in Sources */,
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,

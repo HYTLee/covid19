@@ -69,8 +69,13 @@ class CasesViewController: UIViewController {
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         getStatisticsFromApi()
         configureRefreshControl()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.deselectSelectedRow(animated: true)
+    }
+    
     func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
        tableView.refreshControl = UIRefreshControl()
