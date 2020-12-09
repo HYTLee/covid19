@@ -11,6 +11,8 @@ import SafariServices
 
 class NewsViewController: UIViewController {
     
+    let dateParser = DateParser()
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabelInCell: UILabel!
     @IBOutlet weak var authorLabelInCell: UILabel!
@@ -103,7 +105,19 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
         else{
             cell.authorLabel.text = "Author is unknown"
         }
-       
+        
+        // get time from api and put it in cell label
+        dateParser.convertStringToDate(dateString: newses?.articles[indexPath.row].publishedAt ?? "2016-04-14T10:44:00+0000")
+        dateParser.convertDateToTimeStringShort()
+        
+        if newses?.articles[indexPath.row].publishedAt != nil {
+            cell.timeLabel.text = dateParser.dateString
+            }
+            else{
+                cell.authorLabel.text = "Time is unknown"
+            }
+        
+        
         
         if collectionView.cellForItem(at: indexPath) == nil {
         if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){

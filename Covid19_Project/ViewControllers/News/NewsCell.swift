@@ -11,6 +11,8 @@ class NewsCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+
     
     var imageIV = NewsImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 
