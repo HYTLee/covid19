@@ -1,5 +1,5 @@
 
-"Enter login"= "Enter login";
+"Enter login" = "Enter login";
 "Enter password" = "Enter password";
 "Login" = "Login";
 "Password" = "Last password";
@@ -9,3 +9,6 @@
 "Set Notification" = "Set Notification";
 "Logout" = "Logout";
 "Don't forget to check recent news about pandemic" = "Don't forget to check recent news about pandemic today";
+"Set notification" = "Set notification";
+"Share" = "Share";
+"Notification time" = "Notification time";

@@ -13,8 +13,12 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.items?[0].title = NSLocalizedString("News", comment: "You like the result?")
+        tabBar.items?[0].image = UIImage(named: "news.png")
         tabBar.items?[1].title = NSLocalizedString("Statistics", comment: "You like the result?")
+        tabBar.items?[1].image = UIImage(named: "statistics.png")
         tabBar.items?[2].title = NSLocalizedString("Profile", comment: "You like the result?")
+        tabBar.items?[2].image = UIImage(named: "profile.png")
+
         
         let navController = self.viewControllers![2] as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController

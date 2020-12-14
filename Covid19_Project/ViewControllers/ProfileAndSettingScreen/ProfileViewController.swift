@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var telegramBtn: UIButton!
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var notificationTextField: UITextField!
+    @IBOutlet weak var setNotificationLabel: UILabel!
     
     let timePicker = UIDatePicker()
     let toolBar = UIToolbar()
@@ -28,11 +29,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTelegramBtn()
-        setShareBtn()
+        self.setTelegramBtn()
+        self.setShareBtn()
         self.navigationController?.navigationBar.topItem?.title = profileName
         self.profileNameLabel.text = profileName
         self.setLogoutButton()
+        self.setNotificationLabelFunc()
         self.setNotificationBtn()
         self.setNotificationTextField()
         self.setDatePicker()
@@ -53,9 +55,13 @@ class ProfileViewController: UIViewController {
     }
     
     func setShareBtn()  {
+        shareBtn.setTitle(NSLocalizedString("Share", comment: "Share"), for: .normal)
         shareBtn.layer.cornerRadius = 0.1 * logoutBtn.bounds.size.width
         shareBtn.clipsToBounds = true
-        
+    }
+    
+    func setNotificationLabelFunc()  {
+        setNotificationLabel.text = NSLocalizedString("Set notification", comment: "Set notification")
     }
     
     func setTelegramBtn()  {
@@ -91,6 +97,7 @@ class ProfileViewController: UIViewController {
     func setNotificationTextField()  {
         notificationTextField.inputView = timePicker
         notificationTextField.inputAccessoryView = toolBar
+        notificationTextField.placeholder = NSLocalizedString("Notification time", comment: "Notification time")
     }
     
     func setNotificationBtn()  {
@@ -98,17 +105,14 @@ class ProfileViewController: UIViewController {
         notificationBtn.clipsToBounds = true
         notificationBtn.isEnabled = false
         notificationBtn.backgroundColor = .lightGray
-        notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "You like the result?"), for: .normal)
+        notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "Set notification"), for: .normal)
     }
     
     func setTimeForNotification()  {
         let date = dateFromPicker
-        if dateFromPicker != nil{
-            let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-            notification.dateComponents.hour = components.hour ?? 10
-            notification.dateComponents.minute = components.minute ?? 0
-        }
-
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        notification.dateComponents.hour = components.hour ?? 10
+        notification.dateComponents.minute = components.minute ?? 0
     }
     
     @IBAction func setNotification(_ sender: UIButton){
@@ -136,14 +140,11 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func openTelegramLink(_ sender: Any) {
-        let botURL = URL.init(string: "tg://resolve?domain=G_Hytl")
-
-        if UIApplication.shared.canOpenURL(botURL!) {
-            UIApplication.shared.openURL(botURL!)
-        } else {
-            print("App can't open url")
-        }
+    
         
+        if let url = URL(string: "tg://resolve?domain=G_Hytl") {
+            UIApplication.shared.open(url)
+        }
     }
     
 }

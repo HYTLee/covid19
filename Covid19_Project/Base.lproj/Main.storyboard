@@ -202,17 +202,17 @@
                                     <action selector="setNotification:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="pdZ-de-ZyJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set notification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KF-Ff-1hs">
-                                <rect key="frame" x="129" y="173" width="156" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KF-Ff-1hs">
+                                <rect key="frame" x="20" y="173" width="374" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="EIb-4C-iK9"/>
-                                    <constraint firstAttribute="width" constant="156" id="YeK-ki-iz7"/>
+                                    <constraint firstAttribute="width" constant="374" id="TX5-KO-WjD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notification time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioF-6z-ad2">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ioF-6z-ad2">
                                 <rect key="frame" x="97" y="245" width="220" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="DGB-Bd-rKx"/>
@@ -244,7 +244,7 @@
                                     <constraint firstAttribute="height" constant="30" id="eBS-ZN-z9o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Share">
+                                <state key="normal">
                                     <color key="titleColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -292,6 +292,7 @@
                         <outlet property="notificationBtn" destination="dk8-Fd-y8Y" id="Eey-w9-WcS"/>
                         <outlet property="notificationTextField" destination="ioF-6z-ad2" id="mZg-pV-PBT"/>
                         <outlet property="profileNameLabel" destination="ggf-Sk-bTa" id="0Jh-Hp-Zv8"/>
+                        <outlet property="setNotificationLabel" destination="3KF-Ff-1hs" id="5Da-1x-oco"/>
                         <outlet property="shareBtn" destination="cF9-zR-55P" id="yq3-bl-Wiv"/>
                         <outlet property="telegramBtn" destination="pFc-42-i5h" id="jye-c5-I92"/>
                     </connections>
