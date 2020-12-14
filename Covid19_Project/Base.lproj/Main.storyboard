@@ -222,11 +222,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLA-dI-jfG">
-                                <rect key="frame" x="145" y="588" width="124" height="91"/>
+                                <rect key="frame" x="270" y="488" width="124" height="120"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="124" id="Ro0-sR-ugh"/>
-                                    <constraint firstAttribute="height" constant="91" id="mfg-lc-aFn"/>
+                                    <constraint firstAttribute="height" constant="120" id="mfg-lc-aFn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Logout">
@@ -238,7 +238,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cF9-zR-55P">
                                 <rect key="frame" x="82" y="433" width="250" height="30"/>
-                                <color key="backgroundColor" red="0.71417061169999996" green="1" blue="0.93818442170000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="LzF-Hd-iba"/>
                                     <constraint firstAttribute="height" constant="30" id="eBS-ZN-z9o"/>
@@ -252,6 +252,20 @@
                                     <segue destination="YXz-P8-3yt" kind="presentation" id="2Rv-1D-PYk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFc-42-i5h">
+                                <rect key="frame" x="33" y="490" width="126" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="HBk-gV-tXY"/>
+                                    <constraint firstAttribute="width" constant="126" id="ZU6-vA-MeS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="openTelegramLink:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="MyG-w4-i5t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -259,13 +273,15 @@
                             <constraint firstItem="ioF-6z-ad2" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="0aI-d7-izM"/>
                             <constraint firstItem="3KF-Ff-1hs" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="1hV-03-Ctf"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="57v-MH-qoU"/>
-                            <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="500" id="GLd-Hx-gs7"/>
+                            <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="eLA-dI-jfG" secondAttribute="trailing" constant="20" id="CZn-sa-lAJ"/>
+                            <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="400" id="GLd-Hx-gs7"/>
+                            <constraint firstItem="pFc-42-i5h" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="33" id="JUD-aO-qHb"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="top" secondItem="dk8-Fd-y8Y" secondAttribute="bottom" constant="54" id="OiL-f4-tgH"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="5" id="QHX-S5-SS6"/>
                             <constraint firstItem="ioF-6z-ad2" firstAttribute="top" secondItem="3KF-Ff-1hs" secondAttribute="bottom" constant="8" symbolic="YES" id="SUU-ep-3iT"/>
+                            <constraint firstItem="pFc-42-i5h" firstAttribute="top" secondItem="cF9-zR-55P" secondAttribute="bottom" constant="27" id="X31-kc-ZzN"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="cI9-ek-fCH"/>
                             <constraint firstItem="3KF-Ff-1hs" firstAttribute="top" secondItem="ggf-Sk-bTa" secondAttribute="bottom" constant="29" id="idU-t7-B5Y"/>
-                            <constraint firstItem="eLA-dI-jfG" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="juU-t0-N8y"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="top" secondItem="ioF-6z-ad2" secondAttribute="bottom" constant="50" id="swM-lF-KY8"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="x0A-Bo-Xqc"/>
                         </constraints>
@@ -276,6 +292,8 @@
                         <outlet property="notificationBtn" destination="dk8-Fd-y8Y" id="Eey-w9-WcS"/>
                         <outlet property="notificationTextField" destination="ioF-6z-ad2" id="mZg-pV-PBT"/>
                         <outlet property="profileNameLabel" destination="ggf-Sk-bTa" id="0Jh-Hp-Zv8"/>
+                        <outlet property="shareBtn" destination="cF9-zR-55P" id="yq3-bl-Wiv"/>
+                        <outlet property="telegramBtn" destination="pFc-42-i5h" id="jye-c5-I92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-To-ZSt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

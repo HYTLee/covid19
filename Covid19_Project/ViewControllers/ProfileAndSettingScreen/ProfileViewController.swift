@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var notificationBtn: UIButton!
+    @IBOutlet weak var telegramBtn: UIButton!
+    @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var notificationTextField: UITextField!
     
     let timePicker = UIDatePicker()
@@ -26,6 +28,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTelegramBtn()
+        setShareBtn()
         self.navigationController?.navigationBar.topItem?.title = profileName
         self.profileNameLabel.text = profileName
         self.setLogoutButton()
@@ -46,6 +50,23 @@ class ProfileViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    func setShareBtn()  {
+        shareBtn.layer.cornerRadius = 0.1 * logoutBtn.bounds.size.width
+        shareBtn.clipsToBounds = true
+        
+    }
+    
+    func setTelegramBtn()  {
+        if let image = UIImage(named: "telegram.png"){
+            
+            telegramBtn.setBackgroundImage(image, for: .normal)
+            telegramBtn.contentVerticalAlignment = .fill
+            telegramBtn.contentHorizontalAlignment = .fill
+            telegramBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+        }
     }
     
     func setDatePicker()  {
@@ -112,8 +133,19 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func openShareScreen(_ sender: UIButton) {
+    }
+    
+    @IBAction func openTelegramLink(_ sender: Any) {
+        let botURL = URL.init(string: "tg://resolve?domain=G_Hytl")
+
+        if UIApplication.shared.canOpenURL(botURL!) {
+            UIApplication.shared.openURL(botURL!)
+        } else {
+            print("App can't open url")
+        }
         
     }
+    
 }
 
 extension ProfileViewController: UITextFieldDelegate {
