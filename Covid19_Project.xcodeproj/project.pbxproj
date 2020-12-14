@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		67A8CA113C4A80C6796CCDCD /* Pods_Covid19_Project_Covid19_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
+		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
 		8098AD5C255E787D00605806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8098AD5B255E787D00605806 /* GoogleService-Info.plist */; };
 		80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F13254C247400DAB0CB /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 		4D4A1FC240253A132C8BA50F /* Pods_Covid19_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid19_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E351F7134EBF529BDB6E5CF /* Pods-Covid19_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project.release.xcconfig"; path = "Target Support Files/Pods-Covid19_Project/Pods-Covid19_Project.release.xcconfig"; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
+		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
 		8098AD5B255E787D00605806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80B66F10254C247400DAB0CB /* Covid19_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		806F13142586106A006C74C9 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				806F130F25861059006C74C9 /* ShareViewController.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		80B66F07254C247400DAB0CB = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 				80BBBC1B2567C60B00757FA1 /* News */,
 				80BBBC172567C47B00757FA1 /* Login */,
 				80B66F4A254C275A00DAB0CB /* TabBarController.swift */,
+				806F13142586106A006C74C9 /* Share */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -559,6 +570,7 @@
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
 				80C7965025811071006D8459 /* DateParser.swift in Sources */,
+				806F131025861059006C74C9 /* ShareViewController.swift in Sources */,
 				80B990DA256A714900E10855 /* Notification.swift in Sources */,
 				80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */,
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
@@ -697,7 +709,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -753,7 +765,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -769,6 +781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RYSRRC8TVP;
@@ -779,6 +792,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hramiashkevich.Covid19-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -790,6 +804,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RYSRRC8TVP;
 				INFOPLIST_FILE = Covid19_Project/Info.plist;
@@ -799,6 +814,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hramiashkevich.Covid19-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -110,6 +110,10 @@ class ProfileViewController: UIViewController {
     @objc func cancelAction(){
         self.view.endEditing(true)
     }
+    
+    @IBAction func openShareScreen(_ sender: UIButton) {
+        
+    }
 }
 
 extension ProfileViewController: UITextFieldDelegate {
