@@ -67,5 +67,25 @@ class ShareViewController: UIViewController, CNContactPickerDelegate {
 
 extension ShareViewController: MFMailComposeViewControllerDelegate{
     
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if let _ = error {
+            controller.dismiss(animated: false)
+            return
+        }
+        
+        switch result {
+        case .cancelled:
+            print("Canceled")
+        case .failed:
+            print("Failed")
+        case .saved:
+            print("Saved")
+        case .sent:
+            print("Sent")
+        @unknown default:
+            print("Unknown")
+        }
+        controller.dismiss(animated: true)
+    }
     
 }
