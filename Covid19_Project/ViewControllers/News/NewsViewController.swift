@@ -116,14 +116,20 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             else{
                 cell.authorLabel.text = "Time is unknown"
             }
-        
-        
-        
-        if collectionView.cellForItem(at: indexPath) == nil {
-        if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
-            cell.imageIV.loadImage(url: url)
+    
+        // Operation to downloadImage
+        let mainQueue = DispatchQueue.main
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        let  operation = BlockOperation{ [self] in
+            if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
+                mainQueue.async {
+                    cell.imageIV.loadImage(url: url)
+                }
+            }
         }
-       }
+        queue.addOperation(operation)
+     
         return cell
     }
 
