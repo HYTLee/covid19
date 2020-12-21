@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		67A8CA113C4A80C6796CCDCD /* Pods_Covid19_Project_Covid19_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */; };
+		80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80038D7C258F51F4008BD6CF /* MapViewController.swift */; };
+		80038D82258F53F9008BD6CF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80038D81258F53F9008BD6CF /* Location.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -62,6 +64,8 @@
 		37534E5E5FAE674781CCC5D0 /* Pods-Covid19_ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Covid19_ProjectTests/Pods-Covid19_ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		4D4A1FC240253A132C8BA50F /* Pods_Covid19_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid19_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E351F7134EBF529BDB6E5CF /* Pods-Covid19_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project.release.xcconfig"; path = "Target Support Files/Pods-Covid19_Project/Pods-Covid19_Project.release.xcconfig"; sourceTree = "<group>"; };
+		80038D7C258F51F4008BD6CF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		80038D81258F53F9008BD6CF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				80B66F62254C521100DAB0CB /* News.swift */,
 				80B66F6F254DC48C00DAB0CB /* Case.swift */,
 				80BBBB692566578A00757FA1 /* Article.swift */,
+				80038D81258F53F9008BD6CF /* Location.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 			children = (
 				80B66F5C254C291100DAB0CB /* ProfileViewController.swift */,
 				80B990D9256A714900E10855 /* Notification.swift */,
+				80038D7C258F51F4008BD6CF /* MapViewController.swift */,
 			);
 			path = ProfileAndSettingScreen;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 				806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */,
 				80BBBB6A2566578A00757FA1 /* Article.swift in Sources */,
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
+				80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
 				80C7965025811071006D8459 /* DateParser.swift in Sources */,
@@ -576,6 +583,7 @@
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
+				80038D82258F53F9008BD6CF /* Location.swift in Sources */,
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
 				80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */,
 				80B66F58254C28A500DAB0CB /* CasesViewController.swift in Sources */,
@@ -785,13 +793,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = RYSRRC8TVP;
+				DEVELOPMENT_TEAM = 65V4QL3YW2;
 				INFOPLIST_FILE = Covid19_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hramiashkevich.Covid19Project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hramiashkevich.Covid1Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -808,13 +816,13 @@
 				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RYSRRC8TVP;
+				DEVELOPMENT_TEAM = 65V4QL3YW2;
 				INFOPLIST_FILE = Covid19_Project/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hramiashkevich.Covid19Project;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hramiashkevich.Covid1Project;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

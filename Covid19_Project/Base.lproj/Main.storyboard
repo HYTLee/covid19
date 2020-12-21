@@ -266,6 +266,18 @@
                                     <action selector="openTelegramLink:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="MyG-w4-i5t"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0d-Iv-bZZ">
+                                <rect key="frame" x="41" y="638" width="353" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6Jv-CA-7pA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Home location"/>
+                                <connections>
+                                    <action selector="openMapView:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="gQz-oT-L2a"/>
+                                    <segue destination="oqn-Ty-Phm" kind="show" id="ckL-Kq-va2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQR-Ya-NCq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -275,13 +287,17 @@
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="57v-MH-qoU"/>
                             <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="eLA-dI-jfG" secondAttribute="trailing" constant="20" id="CZn-sa-lAJ"/>
                             <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="400" id="GLd-Hx-gs7"/>
+                            <constraint firstItem="T0d-Iv-bZZ" firstAttribute="top" secondItem="eLA-dI-jfG" secondAttribute="bottom" constant="30" id="HV3-IC-xaD"/>
                             <constraint firstItem="pFc-42-i5h" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="33" id="JUD-aO-qHb"/>
+                            <constraint firstItem="T0d-Iv-bZZ" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="41" id="LkV-bx-P3k"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="top" secondItem="dk8-Fd-y8Y" secondAttribute="bottom" constant="54" id="OiL-f4-tgH"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="5" id="QHX-S5-SS6"/>
                             <constraint firstItem="ioF-6z-ad2" firstAttribute="top" secondItem="3KF-Ff-1hs" secondAttribute="bottom" constant="8" symbolic="YES" id="SUU-ep-3iT"/>
                             <constraint firstItem="pFc-42-i5h" firstAttribute="top" secondItem="cF9-zR-55P" secondAttribute="bottom" constant="27" id="X31-kc-ZzN"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="cI9-ek-fCH"/>
+                            <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="T0d-Iv-bZZ" secondAttribute="trailing" constant="20" id="fKT-0B-XOc"/>
                             <constraint firstItem="3KF-Ff-1hs" firstAttribute="top" secondItem="ggf-Sk-bTa" secondAttribute="bottom" constant="29" id="idU-t7-B5Y"/>
+                            <constraint firstItem="T0d-Iv-bZZ" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="p4B-15-xvu"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="top" secondItem="ioF-6z-ad2" secondAttribute="bottom" constant="50" id="swM-lF-KY8"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="x0A-Bo-Xqc"/>
                         </constraints>
@@ -301,6 +317,79 @@
                 <exit id="ukw-Zr-bgu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3407.2463768115945" y="807.58928571428567"/>
+        </scene>
+        <!--Address -->
+        <scene sceneID="Dkc-ch-aMg">
+            <objects>
+                <viewController id="oqn-Ty-Phm" customClass="MapViewController" customModule="Covid19_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="spp-Rx-Pmj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="w2G-F9-Nv8">
+                                <rect key="frame" x="0.0" y="391" width="414" height="422"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iRG-xr-Tzz">
+                                <rect key="frame" x="0.0" y="347" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qjF-4S-6dj"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home Adress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-ED-6vb">
+                                <rect key="frame" x="20" y="110" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mds-rN-1e3">
+                                <rect key="frame" x="20" y="158" width="374" height="30"/>
+                                <state key="normal" title="Set choosed on map adress"/>
+                                <connections>
+                                    <action selector="setChoosedAdress:" destination="oqn-Ty-Phm" eventType="touchUpInside" id="c9G-l2-f8u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIo-54-GcR">
+                                <rect key="frame" x="20" y="229" width="374" height="30"/>
+                                <state key="normal" title="Set notification"/>
+                                <connections>
+                                    <action selector="setNotificationForCurrentLocation:" destination="oqn-Ty-Phm" eventType="touchUpInside" id="aPe-eY-hLP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lUE-0T-M49"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lUE-0T-M49" firstAttribute="bottom" secondItem="w2G-F9-Nv8" secondAttribute="bottom" id="1WB-bc-iGO"/>
+                            <constraint firstItem="iRG-xr-Tzz" firstAttribute="top" secondItem="lUE-0T-M49" secondAttribute="top" constant="259" id="1wu-lO-Nre"/>
+                            <constraint firstItem="mds-rN-1e3" firstAttribute="leading" secondItem="lUE-0T-M49" secondAttribute="leading" constant="20" id="66j-ZJ-bKe"/>
+                            <constraint firstItem="KIo-54-GcR" firstAttribute="top" secondItem="mds-rN-1e3" secondAttribute="bottom" constant="41" id="6xy-wV-Ev9"/>
+                            <constraint firstItem="iRG-xr-Tzz" firstAttribute="leading" secondItem="lUE-0T-M49" secondAttribute="leading" id="Gk7-FE-LP5"/>
+                            <constraint firstItem="lUE-0T-M49" firstAttribute="trailing" secondItem="mds-rN-1e3" secondAttribute="trailing" constant="20" id="H8s-Ay-zwD"/>
+                            <constraint firstItem="zbr-ED-6vb" firstAttribute="top" secondItem="lUE-0T-M49" secondAttribute="top" constant="22" id="HVn-kr-UNt"/>
+                            <constraint firstItem="iRG-xr-Tzz" firstAttribute="centerX" secondItem="lUE-0T-M49" secondAttribute="centerX" id="HWb-xP-hKq"/>
+                            <constraint firstItem="w2G-F9-Nv8" firstAttribute="leading" secondItem="lUE-0T-M49" secondAttribute="leading" id="INN-Sy-kXb"/>
+                            <constraint firstItem="mds-rN-1e3" firstAttribute="top" secondItem="zbr-ED-6vb" secondAttribute="bottom" constant="24" id="NMw-b4-0zX"/>
+                            <constraint firstItem="w2G-F9-Nv8" firstAttribute="top" secondItem="lUE-0T-M49" secondAttribute="top" constant="303" id="Vpn-pc-4C4"/>
+                            <constraint firstItem="lUE-0T-M49" firstAttribute="trailing" secondItem="w2G-F9-Nv8" secondAttribute="trailing" id="YhQ-uP-8fw"/>
+                            <constraint firstItem="lUE-0T-M49" firstAttribute="trailing" secondItem="KIo-54-GcR" secondAttribute="trailing" constant="20" id="da9-g4-gg0"/>
+                            <constraint firstItem="lUE-0T-M49" firstAttribute="trailing" secondItem="zbr-ED-6vb" secondAttribute="trailing" constant="20" id="dkM-zW-WOW"/>
+                            <constraint firstItem="iRG-xr-Tzz" firstAttribute="trailing" secondItem="lUE-0T-M49" secondAttribute="trailing" id="ipe-Io-NXQ"/>
+                            <constraint firstItem="KIo-54-GcR" firstAttribute="leading" secondItem="lUE-0T-M49" secondAttribute="leading" constant="20" id="rmU-YD-j0e"/>
+                            <constraint firstItem="zbr-ED-6vb" firstAttribute="leading" secondItem="lUE-0T-M49" secondAttribute="leading" constant="20" id="vWm-9v-hRQ"/>
+                            <constraint firstItem="mds-rN-1e3" firstAttribute="top" secondItem="zbr-ED-6vb" secondAttribute="bottom" constant="24" id="zg4-W3-TXY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Address " id="Pt0-fS-0hx"/>
+                    <connections>
+                        <outlet property="addressSearchLine" destination="iRG-xr-Tzz" id="7d4-BB-WSN"/>
+                        <outlet property="homeAdressLabel" destination="zbr-ED-6vb" id="U58-Sm-gsr"/>
+                        <outlet property="mapView" destination="w2G-F9-Nv8" id="ldh-Fh-1UK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H1r-cZ-fnz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4340.579710144928" y="1197.9910714285713"/>
         </scene>
         <!--Share View Controller-->
         <scene sceneID="ayz-9w-vlb">
@@ -379,7 +468,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33s-9v-ZTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4339.130434782609" y="811.60714285714278"/>
+            <point key="canvasLocation" x="5023" y="607"/>
         </scene>
         <!--News View Controller-->
         <scene sceneID="eV1-RY-f8a">

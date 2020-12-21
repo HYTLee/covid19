@@ -6,13 +6,24 @@
 //
 import UIKit
 import Firebase
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let center = UNUserNotificationCenter.current()
+    let locationManager = CLLocationManager()
+    static let geoCoder = CLGeocoder()
+
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         FirebaseApp.configure()
+        /*center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+        } */
+     //   locationManager.requestAlwaysAuthorization()
+        
         return true
     }
 
@@ -29,7 +40,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

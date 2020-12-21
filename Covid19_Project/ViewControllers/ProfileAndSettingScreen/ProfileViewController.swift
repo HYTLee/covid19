@@ -46,6 +46,7 @@ class ProfileViewController: UIViewController {
         super.viewWillAppear(animated)
         notification.getNotificationPermission()
         navigationController?.setNavigationBarHidden(true, animated: false)
+
     }
     
     
@@ -146,6 +147,10 @@ class ProfileViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+    
+    @IBAction func openMapView(_ sender: Any) {
+    }
+    
     
 }
 
