@@ -12,3 +12,6 @@
 "Set notification" = "Установить ремайндер";
 "Share" = "Поделиться";
 "Notification time" = "Время для нотификации";
+"ADDRESS" = "Адрес";
+"Refresh address" = "Обновить текущий адрес";
+"Home location" = "Домашний адрес";

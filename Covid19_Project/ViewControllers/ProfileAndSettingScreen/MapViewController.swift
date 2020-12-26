@@ -12,58 +12,37 @@ import CoreLocation
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
     var locationManager:CLLocationManager!
     var currentLocationStr = "Current location"
-    @IBOutlet weak var addressSearchLine: UISearchBar!
     @IBOutlet weak var homeAdressLabel: UILabel!
+    @IBOutlet weak var notificationBtn: UIButton!
+    @IBOutlet weak var refreshBtn: UIButton!
     
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     
     @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = NSLocalizedString("ADDRESS", comment: "Title for vc")
+        self.setRefreshBtn()
+        self.setNotificationBtn()
         mapView.userTrackingMode = .follow
-        addressSearchLine.delegate = self
+        if latitude == nil || longitude == nil {
+            notificationBtn.isEnabled = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
             determineCurrentLocation()
+            getCurrentMapAddress()
+            if latitude != nil {
+                notificationBtn.isEnabled = true
+            }
         }
-    
-  
     
     @IBAction func setChoosedAdress(_ sender: Any) {
         getCurrentMapAddress()
-
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        addressSearchLine.resignFirstResponder()
-        
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(addressSearchLine.text!) { (placemarks:[CLPlacemark]?, error:Error?) in
-            if error == nil {
-                
-                let placemark = placemarks?.first
-                
-                let anno = MKPointAnnotation()
-                anno.coordinate = (placemark?.location?.coordinate)!
-                anno.title = self.addressSearchLine.text!
-            
-                self.mapView.addAnnotation(anno)
-                self.mapView.selectAnnotation(anno, animated: true)
-                
-                
-                
-            }else{
-                print(error?.localizedDescription ?? "error")
-            }
-            
-            
-        }
-        
-        
-    }
-    
 
     func getCurrentMapAddress()  {
         self.latitude = mapView.centerCoordinate.latitude
@@ -72,23 +51,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         address.reverseGeocodeLocation(CLLocation.init(latitude: latitude!, longitude:longitude!)) { (places, error) in
                 if error == nil{
                     if let place = places{
-                        self.homeAdressLabel.text = place.description
+                        let readableAddressString =  "\(place[0].country ?? "No country founded"), \(place[0].locality ?? "No street founded")"
+                        self.homeAdressLabel.text = readableAddressString
                     }
                 }
         }
     }
-        
-        
-
-  /*  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            let mUserLocation:CLLocation = locations[0] as CLLocation
-
-            let center = CLLocationCoordinate2D(latitude: mUserLocation.coordinate.latitude, longitude: mUserLocation.coordinate.longitude)
-            let mRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-
-            mapView.setRegion(mRegion, animated: true)
-        } */
     
+    func setRefreshBtn() {
+        refreshBtn.setTitle(NSLocalizedString("Refresh address", comment: "Refresh btn "), for: .normal)
+    }
+    
+    func setNotificationBtn()  {
+        notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "Set notification btn title"), for: .normal)
+    }
+        
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             print("Error - locationManager: \(error.localizedDescription)")
         }
@@ -98,14 +75,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-     //   locationManager.requestWhenInUseAuthorization()
+       // locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.distanceFilter = 20
-
-
-        if CLLocationManager.locationServicesEnabled() {
-         //  locationManager.startUpdatingLocation()
-        }
     }
     
 
@@ -117,20 +89,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-           
            for currentLocation in locations{
                print("\(index): \(currentLocation)")
            }
        }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-           print("Entered: \(region.identifier)")
+         //  print("Entered: \(region.identifier)")
        }
        
        func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
            print("Exited: \(region.identifier)")
            postLocalNotification()
-        print("User left home")
        }
     
     
@@ -152,15 +122,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
             
             else {
-                
                 print("added")
             }
         }
     }
-    
+
     @IBAction func setNotificationForCurrentLocation(_ sender: Any) {
         scheduleNotification()
+        setAlertThatNotificationEnabledForLocation()
     }
 
+    func setAlertThatNotificationEnabledForLocation()  {
+        let alert = UIAlertController(title: "Succes", message: "Notification enabled and will remind you when you leave the house", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
     
 }
+
+

@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var shareBtn: UIButton!
     @IBOutlet weak var notificationTextField: UITextField!
     @IBOutlet weak var setNotificationLabel: UILabel!
+    @IBOutlet weak var homeLocationBtn: UIButton!
     
     let timePicker = UIDatePicker()
     let toolBar = UIToolbar()
@@ -39,6 +40,7 @@ class ProfileViewController: UIViewController {
         self.setNotificationTextField()
         self.setDatePicker()
         self.setToolBar()
+        self.setHomeLocationBtn()
         notificationTextField.delegate = self
     }
     
@@ -74,6 +76,10 @@ class ProfileViewController: UIViewController {
             telegramBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
         }
+    }
+    
+    func setHomeLocationBtn()  {
+        homeLocationBtn.setTitle(NSLocalizedString("Home location", comment: "Home location btn title"), for: .normal)
     }
     
     func setDatePicker()  {
@@ -141,8 +147,6 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func openTelegramLink(_ sender: Any) {
-    
-        
         if let url = URL(string: "tg://resolve?domain=G_Hytl") {
             UIApplication.shared.open(url)
         }
