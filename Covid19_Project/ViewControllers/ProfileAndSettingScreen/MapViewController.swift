@@ -9,12 +9,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     var locationManager:CLLocationManager!
-    var currentLocationStr = "Current location"
+    var currentLocationStr = NSLocalizedString("Current location", comment: "Current location")
     @IBOutlet weak var homeAdressLabel: UILabel!
     @IBOutlet weak var notificationBtn: UIButton!
     @IBOutlet weak var refreshBtn: UIButton!
+    
     
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
@@ -27,13 +28,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.setRefreshBtn()
         self.setNotificationBtn()
         mapView.userTrackingMode = .follow
+        determineCurrentLocation()
         if latitude == nil || longitude == nil {
             notificationBtn.isEnabled = false
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            determineCurrentLocation()
+            
             getCurrentMapAddress()
             if latitude != nil {
                 notificationBtn.isEnabled = true
@@ -51,7 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         address.reverseGeocodeLocation(CLLocation.init(latitude: latitude!, longitude:longitude!)) { (places, error) in
                 if error == nil{
                     if let place = places{
-                        let readableAddressString =  "\(place[0].country ?? "No country founded"), \(place[0].locality ?? "No street founded")"
+                        let readableAddressString =  "\(place[0].country ?? "\(NSLocalizedString("No country founded", comment: "No country founded"))"), \(place[0].locality ?? "\(NSLocalizedString("No street founded", comment: "No street founded"))")"
                         self.homeAdressLabel.text = readableAddressString
                     }
                 }
@@ -61,6 +64,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func setRefreshBtn() {
         refreshBtn.setTitle(NSLocalizedString("Refresh address", comment: "Refresh btn "), for: .normal)
     }
+    
+  
     
     func setNotificationBtn()  {
         notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "Set notification btn title"), for: .normal)
@@ -98,7 +103,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
          //  print("Entered: \(region.identifier)")
        }
        
-       func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
            print("Exited: \(region.identifier)")
            postLocalNotification()
        }
@@ -108,8 +113,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         
-        content.title = "Allert"
-        content.body = "Don't forget to take mask"
+        content.title = NSLocalizedString("Allert", comment: "Allert")
+        content.body = NSLocalizedString("Don't forget to take mask", comment: "Don't forget to take mask")
         content.sound = UNNotificationSound.default
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -133,7 +138,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
 
     func setAlertThatNotificationEnabledForLocation()  {
-        let alert = UIAlertController(title: "Succes", message: "Notification enabled and will remind you when you leave the house", preferredStyle: .alert)
+        let alert = UIAlertController(title: "\(NSLocalizedString("Succes", comment: "Succes"))", message: "\(NSLocalizedString("Notification enabled and will remind you when you leave the house", comment: "Notification subtitile"))", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

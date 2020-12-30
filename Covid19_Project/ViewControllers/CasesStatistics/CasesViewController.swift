@@ -137,7 +137,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
 
-        cell.textLabel?.text = "\(response[indexPath.row].country ?? "Unknown country")  Casses: \(response[indexPath.row].infected ?? 0)  Recovered: \(response[indexPath.row].recovered ?? 0) "
+        cell.textLabel?.text = "\(response[indexPath.row].country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))")  \(NSLocalizedString("Cases", comment: "Cases")): \(response[indexPath.row].infected ?? 0)  \(NSLocalizedString("Recovered", comment: "Recovered")): \(response[indexPath.row].recovered ?? 0) "
         return cell
     }
     

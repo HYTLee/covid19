@@ -15,3 +15,14 @@
 "ADDRESS" = "Адрес";
 "Refresh address" = "Обновить текущий адрес";
 "Home location" = "Домашний адрес";
+"Cases" = "Заразились";
+"Recovered" = "Выздоровели";
+"Unknown country" = "Страна не известна";
+"Country" = "Страна";
+"Current location" = "Текущая локация";
+"No country founded" = "Страна не найдена";
+"No street founded" = "Улица не найдена";
+"Allert" = "Внимание";
+"Don't forget to take mask" = "Не забудь взять с собой маску";
+"Succes" = "Успех";
+"Notification enabled and will remind you when you leave the house" = "Уведомление включены и появятся когда вы покините дом";

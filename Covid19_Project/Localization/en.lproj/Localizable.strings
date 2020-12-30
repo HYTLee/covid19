@@ -15,3 +15,14 @@
 "ADDRESS" = "Address";
 "Refresh address" = "Refresh current address";
 "Home location" = "Home location";
+"Cases" = "Cases";
+"Recovered" = "Recovered";
+"Unknown country" = "Unknown country";
+"Country" = "Country";
+"Current location" = "Current location";
+"No country founded" = "No country founded";
+"No street founded" = "No street founded";
+"Allert" = "Allert";
+"Don't forget to take mask" = "Don't forget to take mask";
+"Succes" = "Succes";
+"Notification enabled and will remind you when you leave the house" = "Notification enabled and will remind you when you leave the house";

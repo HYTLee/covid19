@@ -13,15 +13,15 @@ class CassesDetailsViewController: UIViewController {
     @IBOutlet weak var casesLabel: UILabel!
     var countryCase = Case()
     
-    var country = "Country"
+    var country = "\(NSLocalizedString("Country", comment: "Country"))"
     var recovered = 0
     var cases = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatistics()
-        deathLabel.text = "Recovered: \(String(recovered))"
-        casesLabel.text = "Cases: \(cases)"
+        deathLabel.text = "\(NSLocalizedString("Recovered", comment: "Recovered")): \(String(recovered))"
+        casesLabel.text = "\(NSLocalizedString("Cases", comment: "Cases")): \(cases)"
         self.title = country
     }
     
@@ -34,7 +34,7 @@ class CassesDetailsViewController: UIViewController {
     }
     
     func setStatistics()  {
-        self.country = countryCase.country ?? "Unknown Country"
+        self.country = countryCase.country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))"
         self.recovered = countryCase.recovered ?? 0
         self.cases = countryCase.infected ?? 0
     }
