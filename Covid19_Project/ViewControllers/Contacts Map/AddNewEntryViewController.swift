@@ -56,6 +56,7 @@ class AddNewEntryViewController: UIViewController {
         }
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+            
         return false
       } else {
         return true

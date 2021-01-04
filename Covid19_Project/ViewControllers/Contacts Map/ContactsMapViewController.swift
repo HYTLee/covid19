@@ -97,6 +97,8 @@ class ContactsMapViewController: UIViewController {
         alertController.addAction(alertAction)
         
         present(alertController, animated: true, completion: nil)
+        self.mapView.setCenter(lastAnnotation.coordinate, animated: true
+        )
         
       } else {
         let specimen = ContactAnnotation(coordinate: mapView.centerCoordinate, title: "Empty", subtitle: "Uncategorized")
@@ -105,6 +107,8 @@ class ContactsMapViewController: UIViewController {
         lastAnnotation = specimen
       }
     }
+    
+  
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if (segue.identifier == "NewEntry") {
