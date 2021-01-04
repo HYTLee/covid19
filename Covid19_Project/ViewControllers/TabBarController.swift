@@ -18,7 +18,7 @@ class TabBarController: UITabBarController {
         tabBar.items?[1].image = UIImage(named: "statistics.png")
         tabBar.items?[2].title = NSLocalizedString("Profile", comment: "You like the result?")
         tabBar.items?[2].image = UIImage(named: "profile.png")
-
+        tabBar.items?[3].title = "Contacts map"
         
         let navController = self.viewControllers![2] as! UINavigationController
         let vc = navController.topViewController as! ProfileViewController

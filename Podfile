@@ -7,6 +7,7 @@ target 'Covid19_Project' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Crashlytics'
 pod 'KeychainAccess'
+pod 'RealmSwift'
 
 
   # Pods for Covid19_Project

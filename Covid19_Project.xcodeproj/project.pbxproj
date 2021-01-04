@@ -10,6 +10,14 @@
 		67A8CA113C4A80C6796CCDCD /* Pods_Covid19_Project_Covid19_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */; };
 		80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80038D7C258F51F4008BD6CF /* MapViewController.swift */; };
 		80038D82258F53F9008BD6CF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80038D81258F53F9008BD6CF /* Location.swift */; };
+		8010290325A21D6A00962BE4 /* ContactsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010290225A21D6A00962BE4 /* ContactsMapViewController.swift */; };
+		8010290C25A2217E00962BE4 /* ContactAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010290B25A2217E00962BE4 /* ContactAnnotation.swift */; };
+		8010291125A2241E00962BE4 /* AddNewEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010291025A2241E00962BE4 /* AddNewEntryViewController.swift */; };
+		8010291625A22DEB00962BE4 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010291525A22DEB00962BE4 /* CategoryTableViewController.swift */; };
+		8010292025A2310900962BE4 /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010291F25A2310900962BE4 /* LogTableViewController.swift */; };
+		8010292825A2379200962BE4 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010292725A2379200962BE4 /* LogCell.swift */; };
+		8010292D25A238E700962BE4 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010292C25A238E700962BE4 /* Contact.swift */; };
+		8010293225A2390C00962BE4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010293125A2390C00962BE4 /* Category.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -66,6 +74,14 @@
 		5E351F7134EBF529BDB6E5CF /* Pods-Covid19_Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project.release.xcconfig"; path = "Target Support Files/Pods-Covid19_Project/Pods-Covid19_Project.release.xcconfig"; sourceTree = "<group>"; };
 		80038D7C258F51F4008BD6CF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		80038D81258F53F9008BD6CF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8010290225A21D6A00962BE4 /* ContactsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsMapViewController.swift; sourceTree = "<group>"; };
+		8010290B25A2217E00962BE4 /* ContactAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAnnotation.swift; sourceTree = "<group>"; };
+		8010291025A2241E00962BE4 /* AddNewEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewEntryViewController.swift; sourceTree = "<group>"; };
+		8010291525A22DEB00962BE4 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		8010291F25A2310900962BE4 /* LogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
+		8010292725A2379200962BE4 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
+		8010292C25A238E700962BE4 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		8010293125A2390C00962BE4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +153,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8010290725A21D7000962BE4 /* Contacts Map */ = {
+			isa = PBXGroup;
+			children = (
+				8010290225A21D6A00962BE4 /* ContactsMapViewController.swift */,
+				8010291025A2241E00962BE4 /* AddNewEntryViewController.swift */,
+				8010291525A22DEB00962BE4 /* CategoryTableViewController.swift */,
+				8010291F25A2310900962BE4 /* LogTableViewController.swift */,
+				8010292725A2379200962BE4 /* LogCell.swift */,
+			);
+			path = "Contacts Map";
+			sourceTree = "<group>";
+		};
 		806F13142586106A006C74C9 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +240,7 @@
 				80BBBC172567C47B00757FA1 /* Login */,
 				80B66F4A254C275A00DAB0CB /* TabBarController.swift */,
 				806F13142586106A006C74C9 /* Share */,
+				8010290725A21D7000962BE4 /* Contacts Map */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -223,6 +252,9 @@
 				80B66F6F254DC48C00DAB0CB /* Case.swift */,
 				80BBBB692566578A00757FA1 /* Article.swift */,
 				80038D81258F53F9008BD6CF /* Location.swift */,
+				8010290B25A2217E00962BE4 /* ContactAnnotation.swift */,
+				8010292C25A238E700962BE4 /* Contact.swift */,
+				8010293125A2390C00962BE4 /* Category.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -580,14 +612,22 @@
 				806F131025861059006C74C9 /* ShareViewController.swift in Sources */,
 				80B990DA256A714900E10855 /* Notification.swift in Sources */,
 				80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */,
+				8010292025A2310900962BE4 /* LogTableViewController.swift in Sources */,
+				8010292825A2379200962BE4 /* LogCell.swift in Sources */,
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
 				80038D82258F53F9008BD6CF /* Location.swift in Sources */,
+				8010291125A2241E00962BE4 /* AddNewEntryViewController.swift in Sources */,
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
 				80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */,
+				8010291625A22DEB00962BE4 /* CategoryTableViewController.swift in Sources */,
+				8010292D25A238E700962BE4 /* Contact.swift in Sources */,
 				80B66F58254C28A500DAB0CB /* CasesViewController.swift in Sources */,
 				80B66F75254DC80300DAB0CB /* CountryTableCell.swift in Sources */,
+				8010290C25A2217E00962BE4 /* ContactAnnotation.swift in Sources */,
+				8010290325A21D6A00962BE4 /* ContactsMapViewController.swift in Sources */,
+				8010293225A2390C00962BE4 /* Category.swift in Sources */,
 				80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */,
 				80B66F70254DC48C00DAB0CB /* Case.swift in Sources */,
 				80B66F16254C247400DAB0CB /* SceneDelegate.swift in Sources */,
