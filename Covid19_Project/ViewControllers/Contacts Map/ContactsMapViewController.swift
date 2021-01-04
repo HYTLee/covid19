@@ -22,7 +22,6 @@ class ContactsMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView.delegate = self
-        populateMap()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
@@ -38,6 +37,10 @@ class ContactsMapViewController: UIViewController {
         centerToUsersLocation()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        populateMap()
+    }
     
     func centerToUsersLocation() {
         self.locationManager = CLLocationManager()
@@ -127,6 +130,9 @@ class ContactsMapViewController: UIViewController {
           contact: contact)
         mapView.addAnnotation(contactAnnotation)
       }
+        if lastAnnotation != nil {
+        mapView.addAnnotation(lastAnnotation)
+        }
     }
  
 }

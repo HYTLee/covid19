@@ -57,7 +57,11 @@ class CategoriesTableViewController: UITableViewController {
             let textField = alert?.textFields![0]
             try! self.realm.write(){
                let newCategory = Category()
-                newCategory.name = textField?.text ?? "Default name"
+                if textField?.text != ""{
+                    newCategory.name = textField?.text ?? "Default category"
+                } else {
+                    newCategory.name = "Default category"
+                }
                 self.realm.add(newCategory)
                 self.tableView.reloadData()
             }

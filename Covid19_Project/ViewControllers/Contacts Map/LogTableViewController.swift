@@ -16,6 +16,9 @@ class LogTableViewController: UITableViewController {
     //
     var contact = try! Realm().objects(Contact.self)
       .sorted(byKeyPath: "name", ascending: true)
+    
+    let realm = try! Realm()
+
     //
     // MARK: - IBActions
     //
@@ -71,10 +74,40 @@ class LogTableViewController: UITableViewController {
       return cell
     }
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(contact.count)
       return  contact.count
     }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            try! realm.write() {
+              
+                let cont = contact[indexPath.row]
+                realm.delete(cont)
+              }
+            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cont = contact[indexPath.row]
+        
+        
+        if cont.category.name == "Infected" {
+            cell.backgroundColor = .red
+        } else if cont.category.name == "Uninfected" {
+            cell.backgroundColor = .green
+        } else if cont.category.name == "Not sure" {
+            cell.backgroundColor = .gray
+        }
+    }
+    
   }
 
