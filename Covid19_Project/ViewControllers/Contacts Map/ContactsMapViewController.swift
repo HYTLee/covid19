@@ -23,6 +23,7 @@ class ContactsMapViewController: UIViewController {
         super.viewDidLoad()
         self.mapView.delegate = self
         populateMap()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
 

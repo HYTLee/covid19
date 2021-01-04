@@ -48,6 +48,26 @@ class CategoriesTableViewController: UITableViewController {
       }
     }
     
+    @IBAction func addNewCategoryBtnAction(_ sender: Any) {
+        let alert = UIAlertController(title: "Add category", message: "Enter new category", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter category"
+        }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0]
+            try! self.realm.write(){
+               let newCategory = Category()
+                newCategory.name = textField?.text ?? "Default name"
+                self.realm.add(newCategory)
+                self.tableView.reloadData()
+            }
+        }))
+
+        self.present(alert, animated: true, completion: nil)
+
+    }
+    
+    
 }
 
 extension CategoriesTableViewController {
@@ -66,4 +86,21 @@ extension CategoriesTableViewController {
         self.selectedCategory = categories[indexPath.row]
         return indexPath
     }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            try! realm.write() {
+              
+                let category = categories[indexPath.row]
+                realm.delete(category)
+              }
+            }
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        }
 }

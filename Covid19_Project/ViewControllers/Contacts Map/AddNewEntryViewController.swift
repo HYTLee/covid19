@@ -103,9 +103,9 @@ class AddNewEntryViewController: UIViewController {
       ) -> Bool {
         if validateFields() {
             if contact != nil {
-              updateContact()
+                self.updateContact()
             } else {
-              addNewContact()
+                self.addNewContact()
             }
           return true
         } else {

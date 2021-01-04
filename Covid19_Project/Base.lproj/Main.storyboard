@@ -639,11 +639,13 @@
                                     <constraint firstAttribute="height" constant="44" id="mvy-nl-QmY"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="SiU-gL-mlT"/>
                                     <barButtonItem systemItem="search" id="Udb-14-GZx">
                                         <connections>
                                             <action selector="searchForCurrentPosition:" destination="lUD-2u-RLb" id="lgu-od-Qb4"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="tUf-yP-dbw"/>
                                 </items>
                             </toolbar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gDF-Rs-xYE">
@@ -863,6 +865,11 @@
                                 <segue destination="jcj-Vf-vpN" kind="unwind" unwindAction="unwinWithoutSavingFromCategoriesWithSegue:" id="moz-4T-ofr"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="f4F-9v-4n9">
+                            <connections>
+                                <action selector="addNewCategoryBtnAction:" destination="ZnN-4T-PZC" id="d0b-CZ-Szp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zy9-7F-10n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -910,7 +917,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5eo-65-BS6"/>
+        <segue reference="7Pl-l7-rHH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
