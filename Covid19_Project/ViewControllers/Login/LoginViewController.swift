@@ -15,6 +15,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var loginTopConstarint: NSLayoutConstraint!
     @IBOutlet weak var addLastSuccesPasswordBtn: UIButton!
+    @IBOutlet weak var registrationBtn: UIButton!
+    
     
     
     var loginData: String?
@@ -31,7 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setLoginBtn()
         loginTextField.delegate = self
         passwordTextField.delegate = self
-    }
+        }
     
     func setLoginTextField()  {
         let formatString = NSLocalizedString("Enter login",comment: "Enter login placeholder")
@@ -137,6 +139,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func unwindFromProfile(_ sender: UIStoryboardSegue) {
         
     }
+    
+    @IBAction func registrationAction(_ sender: UIButton) {
+        
+    }
+    
+    
 }
 
 extension LoginViewController {

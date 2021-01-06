@@ -86,8 +86,8 @@ class ContactsMapViewController: UIViewController {
     
     func addNewPin() {
       if lastAnnotation != nil {
-        let alertController = UIAlertController(title: "Annotation already dropped",
-                                                message: "There is an annotation on screen.",
+        let alertController = UIAlertController(title: NSLocalizedString("Annotation already dropped", comment: "Annotation already dropped"),
+                                                message: NSLocalizedString("There is an annotation on screen.", comment: "There is an annotation on screen."),
                                                 preferredStyle: .alert)
         
         let alertAction = UIAlertAction(title: "OK", style: .destructive) { alert in
@@ -101,7 +101,7 @@ class ContactsMapViewController: UIViewController {
         )
         
       } else {
-        let specimen = ContactAnnotation(coordinate: mapView.centerCoordinate, title: "Empty", subtitle: "Uncategorized")
+        let specimen = ContactAnnotation(coordinate: mapView.centerCoordinate, title: NSLocalizedString("Empty", comment: "Empty"), subtitle: NSLocalizedString("Uncategorized", comment: "Uncategorized"))
         
         mapView.addAnnotation(specimen)
         lastAnnotation = specimen
@@ -188,7 +188,7 @@ extension ContactsMapViewController: MKMapViewDelegate {
           let detailDisclosure = UIButton(type: .detailDisclosure)
           annotationView.rightCalloutAccessoryView = detailDisclosure
           
-          if currentAnnotation.title == "Empty" {
+          if currentAnnotation.title == NSLocalizedString("Empty", comment: "Empty") {
             annotationView.isDraggable = true
           }
           
