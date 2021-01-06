@@ -7,6 +7,8 @@
 
 import UIKit
 import KeychainAccess
+import RealmSwift
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
@@ -16,12 +18,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginTopConstarint: NSLayoutConstraint!
     @IBOutlet weak var addLastSuccesPasswordBtn: UIButton!
     @IBOutlet weak var registrationBtn: UIButton!
+    @IBOutlet weak var skipLoginBtn: UIButton!
     
     
-    
+    let app = App(id: "application-0-tmrap")
     var loginData: String?
     let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     let keychainKeyForPassword = "userPassword"
+
 
     
     
@@ -106,11 +110,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func openNewsView(){
         self.loginData = loginTextField.text!
-    
         let story = UIStoryboard(name: "Main", bundle: nil)
         let controller = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
-        let profileController = story.instantiateViewController(identifier: "ProfileViewController") as! ProfileViewController
-        profileController.profileName = self.loginData
         controller.dataPass = self.loginData
         self.navigationController?.pushViewController(controller, animated: true)
         saveLogin(loginText: self.loginTextField.text!)
@@ -142,6 +143,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registrationAction(_ sender: UIButton) {
         
+    }
+    
+    @IBAction func loginWithoutAuthorithation(_ sender: Any) {
+        app.login(credentials: Credentials.anonymous) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("error is \(error.localizedDescription)")
+                    self.showAlertSmthWentWrong()
+                case .success(let user):
+                    print(user)
+                    self.pushNewsViewController()
+                }
+            }
+        }
+    }
+    
+    func pushNewsViewController()  {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
+        tabBarController.dataPass = "Anonimous"
+        self.navigationController?.pushViewController(tabBarController, animated: true)
+    }
+    
+    func showAlertSmthWentWrong()  {
+        let alertController = UIAlertController(title: "OOOPs",
+                                                message: "Smth went wrong",
+                                                preferredStyle: .alert)
+        
+        let alertAction = UIAlertAction(title: "OK", style: .destructive) { alert in
+          alertController.dismiss(animated: true, completion: nil)
+        }
+        
+        alertController.addAction(alertAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     

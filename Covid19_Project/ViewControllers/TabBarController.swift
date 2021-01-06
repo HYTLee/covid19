@@ -30,7 +30,7 @@ class TabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-        print(dataPass ?? 0)
+        print(dataPass ?? "Ooops")
         
  
     }
