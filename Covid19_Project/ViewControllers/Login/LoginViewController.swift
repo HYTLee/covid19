@@ -85,9 +85,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     
     @IBAction func loginAction(_ sender: UIButton) {
-        openNewsView()
-        savePasswordToKeyChain()
-        cleanTextfieldsAndDisableLoginBtn()
+       login()
+    }
+    
+    private func login() {
+        app.login(credentials: Credentials.emailPassword(email: loginTextField.text!, password: passwordTextField.text!)) { result in
+            switch result {
+            case .failure(let error):
+                print("Login failed: \(error)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "OOOps", message: "Please register your account", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            case .success(let user):
+                print("Login as \(user) succeeded!")
+                // Continue below
+                DispatchQueue.main.async {
+                    self.openNewsView()
+                    self.savePasswordToKeyChain()
+                    self.cleanTextfieldsAndDisableLoginBtn()
+                }
+            }
+        }
     }
     
     @IBAction func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
@@ -108,7 +128,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @objc func openNewsView(){
+    func openNewsView(){
         self.loginData = loginTextField.text!
         let story = UIStoryboard(name: "Main", bundle: nil)
         let controller = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
@@ -143,6 +163,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func registrationAction(_ sender: UIButton) {
         
+            if loginTextField.text != "" && passwordTextField.text != "" {
+                self.registerUser(email: loginTextField.text!, password: passwordTextField.text!)
+            } else
+            {
+                let alert = UIAlertController(title: "OOOps", message: "Please fill all fields", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
+
+    }
+    
+    private func registerUser(email: String, password: String) {
+        let client = app.emailPasswordAuth
+        client.registerUser(email: email, password: password) { (error) in
+            guard error == nil else {
+                print("Failed to register: \(error!.localizedDescription)")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "OOPs", message: "Please try again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                return
+            }
+            // Registering just registers. You can now log in.
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Success", message: "Now you can log in", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func loginWithoutAuthorithation(_ sender: Any) {
@@ -154,13 +205,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.showAlertSmthWentWrong()
                 case .success(let user):
                     print(user)
-                    self.pushNewsViewController()
+                    self.pushNewsViewControllerForAnonimousUser()
                 }
             }
         }
     }
     
-    func pushNewsViewController()  {
+    func pushNewsViewControllerForAnonimousUser()  {
         let story = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
         tabBarController.dataPass = "Anonimous"
