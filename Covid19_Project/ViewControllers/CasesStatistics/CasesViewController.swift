@@ -85,14 +85,8 @@ class CasesViewController: UIViewController {
     }
     
     @objc func handleRefreshControl() {
-       // Update your content…
         getStatisticsFromApi()
         
-       // Dismiss the refresh control.
-       DispatchQueue.main.async {
-          self.tableView.refreshControl?.endRefreshing()
-      //  print("Reload has been finished")
-       }
     }
     
     
@@ -114,9 +108,12 @@ class CasesViewController: UIViewController {
                 print(self.response.count)
                 DispatchQueue.main.async { [weak self] in
                     self?.loader.stopAnimating()
+                    // Dismiss the refresh control.
+                    self?.tableView.refreshControl?.endRefreshing()
                     self?.loader.isHidden = true
                     self?.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
                     self?.tableView.reloadData()
+                    
                 }
             } catch {
                 print(error)

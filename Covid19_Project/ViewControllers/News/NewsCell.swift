@@ -29,7 +29,6 @@ class NewsCell: UICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        backgroundView = nil
     }
 }
 

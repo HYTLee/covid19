@@ -16,6 +16,7 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var titleLabelInCell: UILabel!
     @IBOutlet weak var authorLabelInCell: UILabel!
+    
    
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
@@ -57,6 +58,8 @@ class NewsViewController: UIViewController {
         }
         dataTask.resume()
     }
+    
+ 
     
     func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
@@ -116,26 +119,37 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             else{
                 cell.authorLabel.text = "Time is unknown"
             }
-    
-        // Operation to downloadImage
-        let mainQueue = DispatchQueue.main
-        let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 1
-        let  operation = BlockOperation{ [self] in
+        
             if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
-                mainQueue.async {
+                DispatchQueue.main.async {
                     cell.imageIV.loadImage(url: url)
-                }
+                
             }
         }
-        queue.addOperation(operation)
-     
         return cell
     }
+    
+
 
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openNewsInSafari(indexPath.row)
     }
+    
+    
+     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        newsImage.stopTask()
+    }
+
+     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+      if !decelerate {
+        newsImage.continueTask()
+      }
+    }
+    
+     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        newsImage.continueTask()
+    }
+
     
 }
 
