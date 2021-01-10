@@ -15,14 +15,18 @@ class NewsCell: UICollectionViewCell {
 
     
     var imageIV = NewsImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-
+    
+    
+    override func awakeFromNib() {
+       super.awakeFromNib()
+        backgroundView = UIView()
+        backgroundView?.addSubview(imageIV)
+    }
     
     override func setNeedsLayout() {
         layer.borderWidth = 5
         layer.masksToBounds = true
         layer.cornerRadius = 5
-        backgroundView = UIView()
-        backgroundView?.addSubview(imageIV)
        
     }
     
