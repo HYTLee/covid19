@@ -145,6 +145,7 @@ extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
                 let casesDetails = segue.destination as! CassesDetailsViewController
                 casesDetails.countryCase = self.response[indexpath.row]
             }
+
         }
     }
         

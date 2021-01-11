@@ -130,7 +130,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     func openNewsView(){
-        self.loginData = loginTextField.text!
+        let loginStrings : [String] = loginTextField.text!.components(separatedBy: "@")
+        self.loginData = loginStrings[0]
         let story = UIStoryboard(name: "Main", bundle: nil)
         let controller = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
         controller.dataPass = self.loginData

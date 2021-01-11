@@ -26,11 +26,11 @@ class CassesDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
+    //    self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = false
+      //  self.tabBarController?.tabBar.isHidden = false
     }
     
     func setStatistics()  {
