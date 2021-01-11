@@ -254,8 +254,8 @@
             filePath = "Covid19_Project/ViewControllers/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "registrationAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "Covid19_Project/ViewControllers/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "registrationAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "Covid19_Project/ViewControllers/Login/LoginViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "registerUser(email:password:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -96,14 +96,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             case .failure(let error):
                 print("Login failed: \(error)")
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "OOOps", message: "Please register your account", preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please register your account", comment: "Please register your account"), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                     self.loginBtn.isEnabled = true
                 }
             case .success(let user):
-                print("Login as \(user) succeeded!")
-                // Continue below
                 DispatchQueue.main.async {
                     self.openNewsView()
                     self.savePasswordToKeyChain()
@@ -170,8 +168,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.registerUser(email: loginTextField.text!, password: passwordTextField.text!)
             } else
             {
-                let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: "Please fill all fields", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please fill all fields", comment: "Please fill all fields"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
 
@@ -182,18 +180,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let client = app.emailPasswordAuth
         client.registerUser(email: email, password: password) { (error) in
             guard error == nil else {
-                print("Failed to register: \(error!.localizedDescription)")
+              //  print("Failed to register: \(error!.localizedDescription)")
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: "Please try again", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please try again", comment: "Please try again"), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
                 return
             }
             // Registering just registers. You can now log in.
             DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Success", message: "Now you can log in", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("Success", comment: "Success"), message: NSLocalizedString("Now you can log in", comment: "Now you can log in"), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -224,10 +222,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func showAlertSmthWentWrong()  {
         let alertController = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"),
-                                                message: "Smth went wrong",
+                                                message: NSLocalizedString("Something went wrong", comment: "Something went wrong"),
                                                 preferredStyle: .alert)
         
-        let alertAction = UIAlertAction(title: "OK", style: .destructive) { alert in
+        let alertAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .destructive) { alert in
           alertController.dismiss(animated: true, completion: nil)
         }
         
@@ -252,7 +250,7 @@ extension LoginViewController {
 extension LoginViewController {
     func savePasswordToKeyChain() {
         let password = self.passwordTextField.text
-        print("password is \(password ?? "")")
+       //print("password is \(password ?? "")")
         
         if passwordTextField.text != nil {
             DispatchQueue.global().async {
