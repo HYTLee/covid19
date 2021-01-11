@@ -34,7 +34,7 @@ class CategoriesTableViewController: UITableViewController {
         if categories.count == 0 {
         try! realm.write() {
           let defaultCategories =
-            ["Infected", "Uninfected", "Not sure" ]
+            [NSLocalizedString("Infected", comment: "Infected"), NSLocalizedString("Uninfected", comment: "Uninfected"), NSLocalizedString("Not sure", comment: "Not sure") ]
           
           for category in defaultCategories {
             let newCategory = Category()
@@ -49,18 +49,18 @@ class CategoriesTableViewController: UITableViewController {
     }
     
     @IBAction func addNewCategoryBtnAction(_ sender: Any) {
-        let alert = UIAlertController(title: "Add category", message: "Enter new category", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("Add category", comment: "Add category"), message: NSLocalizedString("Enter new category", comment: "Enter new category"), preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Enter category"
+            textField.placeholder = NSLocalizedString("Enter category", comment: "Enter category")
         }
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
             try! self.realm.write(){
                let newCategory = Category()
                 if textField?.text != ""{
-                    newCategory.name = textField?.text ?? "Default category"
+                    newCategory.name = textField?.text ?? NSLocalizedString("Default category", comment: "Default category")
                 } else {
-                    newCategory.name = "Default category"
+                    newCategory.name = NSLocalizedString("Default category", comment: "Default category")
                 }
                 self.realm.add(newCategory)
                 self.tableView.reloadData()

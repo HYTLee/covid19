@@ -34,11 +34,11 @@ class AddNewEntryViewController: UIViewController {
         self.categoryTextField.delegate = self
         
         if let contact = contact {
-          title = "Edit \(contact.name)"
+          title = "\(NSLocalizedString("Edit", comment: "Edit")) \(contact.name)"
               
           fillTextFields()
         } else {
-          title = "Add New Contact"
+          title = NSLocalizedString("Add New Contact", comment: "Add New Contact")
         }
     }
     
@@ -47,11 +47,11 @@ class AddNewEntryViewController: UIViewController {
           nameTextField.text!.isEmpty ||
           descriptionTextFiled.text!.isEmpty ||
           selectedCategory == nil {
-        let alertController = UIAlertController(title: "Validation Error",
-                                                message: "All fields must be filled",
+        let alertController = UIAlertController(title: NSLocalizedString("Validation Error", comment: "Validation Error"),
+                                                message: NSLocalizedString("Please fill all fields", comment: "Please fill all fields"),
                                                 preferredStyle: .alert)
         
-        let alertAction = UIAlertAction(title: "OK", style: .destructive) { alert in
+            let alertAction = UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .destructive) { alert in
           alertController.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(alertAction)
@@ -94,7 +94,7 @@ class AddNewEntryViewController: UIViewController {
       try! realm.write {
         contact.name = nameTextField.text!
         contact.category = selectedCategory
-        contact.contactDescription = descriptionTextFiled.text ?? "No additional info"
+        contact.contactDescription = descriptionTextFiled.text ?? NSLocalizedString("No additional info", comment: "No additional info")
       }
     }
 

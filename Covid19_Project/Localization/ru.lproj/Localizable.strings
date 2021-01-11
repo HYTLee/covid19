@@ -39,3 +39,14 @@
 "Now you can log in" = "Теперь вы можете залогиниться";
 "Something went wrong" = "Что-то пошло не так";
 "Contacts Map" = "Карта Контактов";
+"Validation Error" = "Ошибка валидации";
+"Add New Contact" = "Добавить новый контакт";
+"Edit" = "Редактировать";
+"No additional info" = "Нет дополнительной информации";
+"Add category" = "Добавьте категорию";
+"Enter new category" = "Введите название категории";
+"Enter category" = "Введите категорию";
+"Default category" = "Дефолтная категория";
+"Infected" = "Болен";
+"Uninfected" = "Здоров";
+"Not sure" = "Нет точной информации";
