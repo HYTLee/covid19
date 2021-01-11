@@ -63,6 +63,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginTopConstarint.constant += view.bounds.height
         navigationController?.setNavigationBarHidden(true, animated: animated)
         loginTextField.text = UserDefaults.standard.value(forKey: "lastUserLogin") as? String
+        self.skipLoginBtn.isEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,14 +90,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func login() {
+        self.loginBtn.isEnabled = false
         app.login(credentials: Credentials.emailPassword(email: loginTextField.text!, password: passwordTextField.text!)) { result in
             switch result {
             case .failure(let error):
                 print("Login failed: \(error)")
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "OOOps", message: "Please register your account", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+                    self.loginBtn.isEnabled = true
                 }
             case .success(let user):
                 print("Login as \(user) succeeded!")
@@ -167,7 +170,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.registerUser(email: loginTextField.text!, password: passwordTextField.text!)
             } else
             {
-                let alert = UIAlertController(title: "OOOps", message: "Please fill all fields", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: "Please fill all fields", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -181,7 +184,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             guard error == nil else {
                 print("Failed to register: \(error!.localizedDescription)")
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "OOPs", message: "Please try again", preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: "Please try again", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -209,6 +212,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+        self.skipLoginBtn.isEnabled = false
     }
     
     func pushNewsViewControllerForAnonimousUser()  {
@@ -219,7 +223,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showAlertSmthWentWrong()  {
-        let alertController = UIAlertController(title: "OOOPs",
+        let alertController = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"),
                                                 message: "Smth went wrong",
                                                 preferredStyle: .alert)
         

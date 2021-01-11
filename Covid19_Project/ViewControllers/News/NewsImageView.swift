@@ -10,14 +10,17 @@ import UIKit
 let imageCache = NSCache<AnyObject, AnyObject>()
 class NewsImageView: UIImageView {
     var task: URLSessionTask!
-    var queue = OperationQueue()
+    
+    lazy var queue: OperationQueue = {
+      var downloadQueue = OperationQueue()
+      downloadQueue.name = "Download queue"
+      downloadQueue.maxConcurrentOperationCount = 1
+      return downloadQueue
+    }()
 
     func loadImage(url: URL)  {
-        queue.maxConcurrentOperationCount = 1
-        queue.addOperation { [self] in
-            
             OperationQueue.main.addOperation({
-                image = nil
+                self.image = nil
                    })
             
             if let task = task{
@@ -46,9 +49,13 @@ class NewsImageView: UIImageView {
                 }
             }
             task.resume()
+    
+    }
+    
+    func startDownload(url: URL) {
+        queue.addOperation { [self] in
+            loadImage(url: url)
         }
-       
-       
     }
     
     
