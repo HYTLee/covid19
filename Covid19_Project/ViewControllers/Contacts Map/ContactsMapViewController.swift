@@ -23,6 +23,7 @@ class ContactsMapViewController: UIViewController {
         super.viewDidLoad()
         self.mapView.delegate = self
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        self.navigationItem.title = NSLocalizedString("Contacts Map", comment: "Contacts Map")
     }
     
 
