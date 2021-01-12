@@ -77,7 +77,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        loginFieldValidator.checkLoginAndPasswordFields(loginTextField: loginTextField, passwordTextField: passwordTextField, loginBtn: loginBtn)
+        if (loginFieldValidator.checkLoginAndPasswordFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!) == true){
+            loginBtn.isEnabled = true
+        }
+        else { loginBtn.isEnabled = false
+        }
         }
     
     @IBAction func loginAction(_ sender: UIButton) {

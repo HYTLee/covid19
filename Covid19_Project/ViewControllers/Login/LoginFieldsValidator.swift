@@ -11,13 +11,12 @@ import UIKit
 
 class LoginFieldsValidator {
     
-    func checkLoginAndPasswordFields(loginTextField: UITextField, passwordTextField: UITextField, loginBtn: UIButton) {
-            if ((loginTextField.text != "") && (passwordTextField.text != "")){
-                loginBtn.isEnabled = true
-                
+    func checkLoginAndPasswordFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool {
+            if ((loginTextFieldText != "") && (passwordTextFieldText != "")){
+                return true
             }
             else {
-                loginBtn.isEnabled = false
+                return false
             }
         }        
         
