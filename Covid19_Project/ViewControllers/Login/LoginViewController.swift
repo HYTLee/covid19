@@ -21,42 +21,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var skipLoginBtn: UIButton!
     
     
-    let app = App(id: "application-0-tmrap")
-    var loginData: String?
-    let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
-    let keychainKeyForPassword = "userPassword"
-    
-    let loginFieldValidator = LoginFieldsValidator()
+    private let app = App(id: "application-0-tmrap")
+    private var loginData: String?
+    private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
+    private let keychainKeyForPassword = "userPassword"
+    private let loginFieldValidator = LoginFieldsValidator()
 
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLoginTextField()
-        setPasswordTextField()
-        setLastPasswordBtn()
-        setLoginBtn()
-        loginTextField.delegate = self
-        passwordTextField.delegate = self
+        self.setLoginTextField()
+        self.setPasswordTextField()
+        self.setLastPasswordBtn()
+        self.setLoginBtn()
+        self.loginTextField.delegate = self
+        self.passwordTextField.delegate = self
         }
     
-    func setLoginTextField()  {
+   private func setLoginTextField()  {
         let formatString = NSLocalizedString("Enter login",comment: "Enter login placeholder")
         loginTextField.placeholder = String.localizedStringWithFormat(formatString)
     }
     
-    func setPasswordTextField()  {
+   private func setPasswordTextField()  {
         let formatString = NSLocalizedString("Enter password",comment: "Enter password placeholder")
         passwordTextField.placeholder = String.localizedStringWithFormat(formatString)
     }
     
-    func setLoginBtn()  {
+   private func setLoginBtn()  {
         loginBtn.isEnabled = false
         loginBtn.setTitle(NSLocalizedString("Login", comment: "Login button text"), for: .normal)
     }
     
-    func setLastPasswordBtn()  {
+   private func setLastPasswordBtn()  {
         addLastSuccesPasswordBtn.setTitle(NSLocalizedString("Password", comment: "Password buttn text"), for: .normal)
     }
     
@@ -128,7 +127,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func openNewsView(){
+   private func openNewsView(){
         let loginStrings : [String] = loginTextField.text!.components(separatedBy: "@")
         self.loginData = loginStrings[0]
         let story = UIStoryboard(name: "Main", bundle: nil)
@@ -139,14 +138,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func cleanTextfieldsAndDisableLoginBtn()  {
+  private  func cleanTextfieldsAndDisableLoginBtn()  {
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
         loginBtn.isEnabled = false
     }
     
     
-    func saveLogin(loginText: String)  {
+   private func saveLogin(loginText: String)  {
         let userLoginKey = "lastUserLogin"
         UserDefaults.standard.string(forKey: userLoginKey)
         UserDefaults.standard.setValue(loginText, forKey: userLoginKey)
@@ -213,14 +212,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.skipLoginBtn.isEnabled = false
     }
     
-    func pushNewsViewControllerForAnonimousUser()  {
+  private func pushNewsViewControllerForAnonimousUser()  {
         let story = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
         tabBarController.dataPass = "Anonimous"
         self.navigationController?.pushViewController(tabBarController, animated: true)
     }
     
-    func showAlertSmthWentWrong()  {
+  private func showAlertSmthWentWrong()  {
         let alertController = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"),
                                                 message: NSLocalizedString("Something went wrong", comment: "Something went wrong"),
                                                 preferredStyle: .alert)
@@ -248,7 +247,7 @@ extension LoginViewController {
 
 
 extension LoginViewController {
-    func savePasswordToKeyChain() {
+  private func savePasswordToKeyChain() {
         let password = self.passwordTextField.text
        //print("password is \(password ?? "")")
         
@@ -266,7 +265,7 @@ extension LoginViewController {
         }
     }
     
-    func getPasswordFromKeChain() {
+   private func getPasswordFromKeChain() {
         DispatchQueue.global().async {
             do {
                 let password = try self.keychain
@@ -287,7 +286,7 @@ extension LoginViewController {
             }
         }    }
     
-    func updatePassword() {
+   private func updatePassword() {
         let password = self.passwordTextField.text ?? ""
         DispatchQueue.global().async {
             do {
@@ -302,7 +301,7 @@ extension LoginViewController {
         }
     }
     
-    func deletePasswordKeyChain()  {
+  private func deletePasswordKeyChain()  {
         do {
             try self.keychain.remove(keychainKeyForPassword)
         } catch let error {

@@ -20,7 +20,7 @@ class LoginFieldsValidator {
             }
         }
     
-    func passwordValidation(passwordTextFieldText: String) -> Bool {
+   private func passwordValidation(passwordTextFieldText: String) -> Bool {
         let passwordCharactesCount = passwordTextFieldText.count
         if passwordCharactesCount > 7 && validateUpperAndLowerCases(string: passwordTextFieldText) {
             return true
@@ -30,7 +30,7 @@ class LoginFieldsValidator {
         }
     }
     
-    func validateUpperAndLowerCases(string: String) -> Bool {
+  private func validateUpperAndLowerCases(string: String) -> Bool {
         let lowercase = CharacterSet.lowercaseLetters
         let uppercase = CharacterSet.uppercaseLetters
 
