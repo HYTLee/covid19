@@ -12,13 +12,13 @@ import RealmSwift
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginBtn: UIButton!
-    @IBOutlet weak var loginTopConstarint: NSLayoutConstraint!
-    @IBOutlet weak var addLastSuccesPasswordBtn: UIButton!
-    @IBOutlet weak var registrationBtn: UIButton!
-    @IBOutlet weak var skipLoginBtn: UIButton!
+    @IBOutlet private weak var loginTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var loginBtn: UIButton!
+    @IBOutlet private weak var loginTopConstarint: NSLayoutConstraint!
+    @IBOutlet private weak var addLastSuccesPasswordBtn: UIButton!
+    @IBOutlet private weak var registrationBtn: UIButton!
+    @IBOutlet private weak var skipLoginBtn: UIButton!
     
     
     private let app = App(id: "application-0-tmrap")
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func loginAction(_ sender: UIButton) {
+    @IBAction private func loginAction(_ sender: UIButton) {
        login()
     }
     
@@ -109,7 +109,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
+    @IBAction private func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
         getPasswordFromKeChain()
     }
     
@@ -138,7 +138,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-  private  func cleanTextfieldsAndDisableLoginBtn()  {
+  private func cleanTextfieldsAndDisableLoginBtn()  {
         self.loginTextField.text = ""
         self.passwordTextField.text = ""
         loginBtn.isEnabled = false
@@ -157,11 +157,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func unwindFromProfile(_ sender: UIStoryboardSegue) {
+    @IBAction private func unwindFromProfile(_ sender: UIStoryboardSegue) {
         
     }
     
-    @IBAction func registrationAction(_ sender: UIButton) {
+    @IBAction private func registrationAction(_ sender: UIButton) {
         
             if loginTextField.text != "" && passwordTextField.text != "" {
                 self.registerUser(email: loginTextField.text!, password: passwordTextField.text!)
@@ -196,7 +196,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func loginWithoutAuthorithation(_ sender: Any) {
+    @IBAction private func loginWithoutAuthorithation(_ sender: Any) {
         app.login(credentials: Credentials.anonymous) { result in
             DispatchQueue.main.async {
                 switch result {
