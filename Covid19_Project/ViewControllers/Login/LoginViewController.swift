@@ -25,6 +25,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var loginData: String?
     let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     let keychainKeyForPassword = "userPassword"
+    
+    let loginFieldValidator = LoginFieldsValidator()
 
 
     
@@ -75,14 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-            if ((loginTextField.text != "") && (passwordTextField.text != "")){
-                loginBtn.isEnabled = true
-                
-            }
-            else {
-                loginBtn.isEnabled = false
-                
-            }
+        loginFieldValidator.checkLoginAndPasswordFields(loginTextField: loginTextField, passwordTextField: passwordTextField, loginBtn: loginBtn)
         }
     
     @IBAction func loginAction(_ sender: UIButton) {
