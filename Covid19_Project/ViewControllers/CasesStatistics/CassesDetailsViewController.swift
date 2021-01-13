@@ -13,9 +13,9 @@ class CassesDetailsViewController: UIViewController {
     @IBOutlet weak var casesLabel: UILabel!
     var countryCase = Case()
     
-    var country = "\(NSLocalizedString("Country", comment: "Country"))"
-    var recovered = 0
-    var cases = 0
+    private var country = "\(NSLocalizedString("Country", comment: "Country"))"
+    private var recovered = 0
+    private var cases = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class CassesDetailsViewController: UIViewController {
       //  self.tabBarController?.tabBar.isHidden = false
     }
     
-    func setStatistics()  {
+    private func setStatistics()  {
         self.country = countryCase.country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))"
         self.recovered = countryCase.recovered ?? 0
         self.cases = countryCase.infected ?? 0

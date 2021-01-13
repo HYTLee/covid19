@@ -11,7 +11,6 @@ import UIKit
 class LoginTextField: UITextField {
     
     override func borderRect(forBounds bounds: CGRect) -> CGRect {
-        textColor = .green
         return bounds.inset(by: UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5))
     }
 }

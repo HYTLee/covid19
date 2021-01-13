@@ -5,8 +5,8 @@ import UserNotifications
 
 class Notification {
     
-    let center = UNUserNotificationCenter.current()
-    var dateComponents = DateComponents()
+    private let center = UNUserNotificationCenter.current()
+     var dateComponents = DateComponents()
 
     func getNotificationPermission()  {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in

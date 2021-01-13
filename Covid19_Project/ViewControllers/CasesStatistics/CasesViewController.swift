@@ -10,9 +10,9 @@ import Foundation
 
 class CasesViewController: UIViewController {
     
-    let loader = UIActivityIndicatorView()
-    @IBOutlet weak var tableView: UITableView!
-    var response = [Case]()
+    private let loader = UIActivityIndicatorView()
+    @IBOutlet private weak var tableView: UITableView!
+    private var response = [Case]()
 
     
     func setLoader()  {
@@ -76,7 +76,7 @@ class CasesViewController: UIViewController {
         self.tableView.deselectSelectedRow(animated: true)
     }
     
-    func configureRefreshControl () {
+   private func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
        tableView.refreshControl = UIRefreshControl()
        tableView.refreshControl?.addTarget(self, action:
@@ -84,14 +84,14 @@ class CasesViewController: UIViewController {
                                           for: .valueChanged)
     }
     
-    @objc func handleRefreshControl() {
+    @objc private func handleRefreshControl() {
         getStatisticsFromApi()
         
     }
     
     
     
-    func getStatisticsFromApi()  {
+    private func getStatisticsFromApi()  {
         let session = URLSession(configuration: .default)
 
         guard  let covidURL = URL(string: "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true")

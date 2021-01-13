@@ -10,17 +10,17 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    var locationManager:CLLocationManager!
-    var currentLocationStr = NSLocalizedString("Current location", comment: "Current location")
-    @IBOutlet weak var homeAdressLabel: UILabel!
-    @IBOutlet weak var notificationBtn: UIButton!
-    @IBOutlet weak var refreshBtn: UIButton!
+    private var locationManager:CLLocationManager!
+    private var currentLocationStr = NSLocalizedString("Current location", comment: "Current location")
+    @IBOutlet private weak var homeAdressLabel: UILabel!
+    @IBOutlet private weak var notificationBtn: UIButton!
+    @IBOutlet private weak var refreshBtn: UIButton!
     
     
-    var latitude: CLLocationDegrees?
-    var longitude: CLLocationDegrees?
+    private var latitude: CLLocationDegrees?
+    private var longitude: CLLocationDegrees?
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet private weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,18 +36,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-            
-            getCurrentMapAddress()
-            if latitude != nil {
-                notificationBtn.isEnabled = true
+        getCurrentMapAddress()
+        if latitude != nil {
+            notificationBtn.isEnabled = true
             }
         }
     
-    @IBAction func setChoosedAdress(_ sender: Any) {
+    @IBAction private func setChoosedAdress(_ sender: Any) {
         getCurrentMapAddress()
+        
     }
 
-    func getCurrentMapAddress()  {
+    private func getCurrentMapAddress()  {
         self.latitude = mapView.centerCoordinate.latitude
         self.longitude = mapView.centerCoordinate.longitude
         let address = CLGeocoder.init()
@@ -61,13 +61,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    func setRefreshBtn() {
+    private func setRefreshBtn() {
         refreshBtn.setTitle(NSLocalizedString("Refresh address", comment: "Refresh btn "), for: .normal)
     }
     
   
     
-    func setNotificationBtn()  {
+    private func setNotificationBtn()  {
         notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "Set notification btn title"), for: .normal)
     }
         
@@ -75,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             print("Error - locationManager: \(error.localizedDescription)")
         }
     
-    func determineCurrentLocation() {
+    private func determineCurrentLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -87,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
 
     
-    func scheduleNotification() {
+    private func scheduleNotification() {
         let geoFenceRegion:CLCircularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude ?? 20, longitude: longitude ?? 20), radius: 20, identifier: "Home")
         
         locationManager.startMonitoring(for: geoFenceRegion)
@@ -109,7 +109,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
        }
     
     
-    func postLocalNotification()  {
+    private func postLocalNotification()  {
         let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         
@@ -132,12 +132,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
 
-    @IBAction func setNotificationForCurrentLocation(_ sender: Any) {
+    @IBAction private func setNotificationForCurrentLocation(_ sender: Any) {
         scheduleNotification()
         setAlertThatNotificationEnabledForLocation()
     }
 
-    func setAlertThatNotificationEnabledForLocation()  {
+    private func setAlertThatNotificationEnabledForLocation()  {
         let alert = UIAlertController(title: "\(NSLocalizedString("Succes", comment: "Succes"))", message: "\(NSLocalizedString("Notification enabled and will remind you when you leave the house", comment: "Notification subtitile"))", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true)

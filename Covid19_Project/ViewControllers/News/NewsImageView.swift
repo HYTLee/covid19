@@ -9,9 +9,9 @@ import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 class NewsImageView: UIImageView {
-    var task: URLSessionTask!
+    private var task: URLSessionTask!
     
-    lazy var queue: OperationQueue = {
+    lazy private var queue: OperationQueue = {
       var downloadQueue = OperationQueue()
       downloadQueue.name = "Download queue"
       downloadQueue.maxConcurrentOperationCount = 1
@@ -57,7 +57,6 @@ class NewsImageView: UIImageView {
             loadImage(url: url)
         }
     }
-    
     
     func stopTask()  {
         queue.isSuspended = true

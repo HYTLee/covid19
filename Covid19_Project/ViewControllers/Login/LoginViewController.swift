@@ -212,14 +212,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.skipLoginBtn.isEnabled = false
     }
     
-  private func pushNewsViewControllerForAnonimousUser()  {
+    private func pushNewsViewControllerForAnonimousUser()  {
         let story = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
         tabBarController.dataPass = "Anonimous"
         self.navigationController?.pushViewController(tabBarController, animated: true)
     }
     
-  private func showAlertSmthWentWrong()  {
+    private func showAlertSmthWentWrong()  {
         let alertController = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"),
                                                 message: NSLocalizedString("Something went wrong", comment: "Something went wrong"),
                                                 preferredStyle: .alert)
@@ -277,7 +277,9 @@ extension LoginViewController {
                     if password != nil{
                     self.passwordTextField.text = password
                         if self.loginTextField.text != "" {
-                    self.loginBtn.isEnabled = true
+                            if self.loginFieldValidator.checkLoginAndPasswordFields(loginTextFieldText: self.loginTextField.text ?? "", passwordTextFieldText: self.passwordTextField.text ?? ""){
+                                    self.loginBtn.isEnabled = true
+                            }
                         }
                     }
                 }

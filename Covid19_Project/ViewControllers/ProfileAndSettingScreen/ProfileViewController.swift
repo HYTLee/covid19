@@ -12,21 +12,19 @@ class ProfileViewController: UIViewController {
 
     var profileName:String!
     
-    @IBOutlet weak var profileNameLabel: UILabel!
-    @IBOutlet weak var logoutBtn: UIButton!
-    @IBOutlet weak var notificationBtn: UIButton!
-    @IBOutlet weak var telegramBtn: UIButton!
-    @IBOutlet weak var shareBtn: UIButton!
-    @IBOutlet weak var notificationTextField: UITextField!
-    @IBOutlet weak var setNotificationLabel: UILabel!
-    @IBOutlet weak var homeLocationBtn: UIButton!
+    @IBOutlet private weak var profileNameLabel: UILabel!
+    @IBOutlet private weak var logoutBtn: UIButton!
+    @IBOutlet private weak var notificationBtn: UIButton!
+    @IBOutlet private weak var telegramBtn: UIButton!
+    @IBOutlet private weak var shareBtn: UIButton!
+    @IBOutlet private weak var notificationTextField: UITextField!
+    @IBOutlet private weak var setNotificationLabel: UILabel!
+    @IBOutlet private weak var homeLocationBtn: UIButton!
     
-    let timePicker = UIDatePicker()
-    let toolBar = UIToolbar()
-    
-    let notification = Notification()
-    
-    var dateFromPicker = Date()
+    private let timePicker = UIDatePicker()
+    private let toolBar = UIToolbar()
+    private let notification = Notification()
+    private var dateFromPicker = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,17 +55,17 @@ class ProfileViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    func setShareBtn()  {
+    private func setShareBtn()  {
         shareBtn.setTitle(NSLocalizedString("Share", comment: "Share"), for: .normal)
         shareBtn.layer.cornerRadius = 0.1 * logoutBtn.bounds.size.width
         shareBtn.clipsToBounds = true
     }
     
-    func setNotificationLabelFunc()  {
+    private func setNotificationLabelFunc()  {
         setNotificationLabel.text = NSLocalizedString("Set notification", comment: "Set notification")
     }
     
-    func setTelegramBtn()  {
+    private func setTelegramBtn()  {
         if let image = UIImage(named: "telegram.png"){
             
             telegramBtn.setBackgroundImage(image, for: .normal)
@@ -78,16 +76,16 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func setHomeLocationBtn()  {
+    private func setHomeLocationBtn()  {
         homeLocationBtn.setTitle(NSLocalizedString("Home location", comment: "Home location btn title"), for: .normal)
     }
     
-    func setDatePicker()  {
+    private func setDatePicker()  {
         timePicker.datePickerMode = .time
         timePicker.preferredDatePickerStyle = .wheels
     }
     
-    func setToolBar()  {
+    private func setToolBar()  {
         let okBtn = UIBarButtonItem(title: "Ok", style: .done, target: self, action: #selector(okAction))
         let cancelBtn = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancelAction))
         toolBar.setItems([okBtn, cancelBtn], animated: true)
@@ -95,19 +93,19 @@ class ProfileViewController: UIViewController {
 
     }
     
-    func setLogoutButton()  {
+    private func setLogoutButton()  {
         logoutBtn.layer.cornerRadius = 0.2 * logoutBtn.bounds.size.width
         logoutBtn.setTitle(NSLocalizedString("Logout", comment: "You like the result?"), for: .normal)
         logoutBtn.clipsToBounds = true
     }
     
-    func setNotificationTextField()  {
+    private func setNotificationTextField()  {
         notificationTextField.inputView = timePicker
         notificationTextField.inputAccessoryView = toolBar
         notificationTextField.placeholder = NSLocalizedString("Notification time", comment: "Notification time")
     }
     
-    func setNotificationBtn()  {
+    private func setNotificationBtn()  {
         notificationBtn.layer.cornerRadius = 0.2 * logoutBtn.bounds.size.width
         notificationBtn.clipsToBounds = true
         notificationBtn.isEnabled = false
@@ -115,21 +113,21 @@ class ProfileViewController: UIViewController {
         notificationBtn.setTitle(NSLocalizedString("Set Notification", comment: "Set notification"), for: .normal)
     }
     
-    func setTimeForNotification()  {
+    private func setTimeForNotification()  {
         let date = dateFromPicker
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         notification.dateComponents.hour = components.hour ?? 10
         notification.dateComponents.minute = components.minute ?? 0
     }
     
-    @IBAction func setNotification(_ sender: UIButton){
+    @IBAction private func setNotification(_ sender: UIButton){
         notification.remodeAllScheduledNotifications()
         setTimeForNotification()
         notification.scheduleNotification()
     }
     
     
-    @objc func okAction(){
+    @objc private func okAction(){
         let dateFormater = DateFormatter()
         dateFormater.timeStyle = .short
         dateFromPicker = timePicker.date
@@ -139,14 +137,14 @@ class ProfileViewController: UIViewController {
     }
     
     
-    @objc func cancelAction(){
+    @objc private func cancelAction(){
         self.view.endEditing(true)
     }
     
-    @IBAction func openShareScreen(_ sender: UIButton) {
+    @IBAction private func openShareScreen(_ sender: UIButton) {
     }
     
-    @IBAction func openTelegramLink(_ sender: Any) {
+    @IBAction private func openTelegramLink(_ sender: Any) {
         if let url = URL(string: "tg://resolve?domain=G_Hytl") {
             UIApplication.shared.open(url)
         }
@@ -154,7 +152,7 @@ class ProfileViewController: UIViewController {
     
 
     
-    @IBAction func openMapView(_ sender: Any) {
+    @IBAction private func openMapView(_ sender: Any) {
     }
     
     

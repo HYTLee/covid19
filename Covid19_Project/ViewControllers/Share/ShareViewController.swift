@@ -13,17 +13,14 @@ import MessageUI
 
 class ShareViewController: UIViewController, CNContactPickerDelegate {
 
-    @IBOutlet weak var shareBtn: UIButton!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet private weak var shareBtn: UIButton!
+    @IBOutlet private weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    @IBAction func openUIContacts(_ sender: UIButton) {
+    @IBAction private func openUIContacts(_ sender: UIButton) {
         let contacVC = CNContactPickerViewController()
         contacVC.delegate = self
         self.present(contacVC, animated: true, completion: nil)
@@ -39,27 +36,26 @@ class ShareViewController: UIViewController, CNContactPickerDelegate {
     shareBtn.isEnabled = true
    }
 
-   func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
        self.dismiss(animated: true, completion: nil)
    }
     
-    @IBAction func shareWithChoosedEmail(_ sender: UIButton) {
+    @IBAction private func shareWithChoosedEmail(_ sender: UIButton) {
         showEmailForm()
     }
     
-    func showEmailForm()  {
+    private func showEmailForm()  {
         guard MFMailComposeViewController.canSendMail() else {
             // show alert that user can't sent email
             print("OOps you can't sent email")
             return
         }
-        
         let composer = MFMailComposeViewController()
         composer.mailComposeDelegate = self
         composer.setToRecipients([emailLabel.text ?? "hytl1971@gmail.com"])
         composer.setSubject("Check my new Covid 19 app")
         composer.setMessageBody("You can download it here https://github.com/HYTLee/covid19", isHTML: false)
-        
+    
         present(composer, animated: true)
     }   
     

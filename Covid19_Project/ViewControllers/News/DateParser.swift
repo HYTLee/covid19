@@ -10,7 +10,7 @@ import Foundation
 
 class DateParser {
     
-    var date = Date()
+    private var date = Date()
     var dateString = String()
     
     
@@ -20,17 +20,11 @@ class DateParser {
          date = dateFormatter.date(from:dateString)!
     }
     
-    
-    
     func convertDateToTimeStringShort()  {
         let dateFormatter = DateFormatter()
       //  dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
-        
-        dateString = dateFormatter.string(from: date)
-        print(dateString)
+        self.dateString = dateFormatter.string(from: date)
     }
-    
-    
     
 }
