@@ -77,12 +77,14 @@ PODS:
   - Realm/Headers (10.5.0)
   - RealmSwift (10.5.0):
     - Realm (= 10.5.0)
+  - Swinject (2.7.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
   - KeychainAccess
   - RealmSwift
+  - Swinject
 
 SPEC REPOS:
   trunk:
@@ -100,6 +102,7 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
+    - Swinject
 
 SPEC CHECKSUMS:
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
@@ -116,7 +119,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Realm: e1c22c3d83b229afb70ebc10e1771c91e9542d12
   RealmSwift: 6fc078d9d3fd7e58c71bfdbb694e252462f112a5
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: b075bd842082a33bfbfc6041953b9a20818062af
+PODFILE CHECKSUM: 5135053975a895ed8726bb98489fef80d5c81e96
 
 COCOAPODS: 1.10.0

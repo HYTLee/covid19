@@ -8,6 +8,8 @@ pod 'Firebase/Analytics'
 pod 'Firebase/Crashlytics'
 pod 'KeychainAccess'
 pod 'RealmSwift'
+pod 'Swinject'
+
 
 
   # Pods for Covid19_Project
