@@ -21,11 +21,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var skipLoginBtn: UIButton!
     
     
+    private var fieldValidator: FieldValidator?
+    
     private let app = App(id: "application-0-tmrap")
     private var loginData: String?
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"
-    private let loginFieldValidator = LoginFieldsValidator()
+    private let loginFieldValidator = ComplexLoginAndPasswordFieldsValidator()
 
 
     
@@ -76,7 +78,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (loginFieldValidator.checkLoginAndPasswordFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!)){
+        if (loginFieldValidator.validateFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!)){
             loginBtn.isEnabled = true
         }
         else { loginBtn.isEnabled = false
@@ -277,7 +279,7 @@ extension LoginViewController {
                     if password != nil{
                     self.passwordTextField.text = password
                         if self.loginTextField.text != "" {
-                            if self.loginFieldValidator.checkLoginAndPasswordFields(loginTextFieldText: self.loginTextField.text ?? "", passwordTextFieldText: self.passwordTextField.text ?? ""){
+                            if self.loginFieldValidator.validateFields(loginTextFieldText: self.loginTextField.text ?? "", passwordTextFieldText: self.passwordTextField.text ?? ""){
                                     self.loginBtn.isEnabled = true
                             }
                         }
