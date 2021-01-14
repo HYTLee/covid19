@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private var loginData: String?
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"
-    private let loginFieldValidator = ComplexLoginAndPasswordFieldsValidator()
+    private let loginFieldValidator: FieldValidator = ComplexLoginAndPasswordFieldsValidator()
 
 
     
