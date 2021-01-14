@@ -7,6 +7,7 @@
 import UIKit
 import Firebase
 import CoreLocation
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,15 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let center = UNUserNotificationCenter.current()
     let locationManager = CLLocationManager()
     static let geoCoder = CLGeocoder()
+    
+    static var container = ContainerDependancies()
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         FirebaseApp.configure()
-        /*center.requestAuthorization(options: [.alert, .sound]) { granted, error in
-        } */
-     //   locationManager.requestAlwaysAuthorization()
+        
+        
+        let container = Container()
+        container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
+        ContainerDependancies.container = container
         
         return true
     }

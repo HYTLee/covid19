@@ -28,6 +28,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"
     private let loginFieldValidator: FieldValidator = ComplexLoginAndPasswordFieldsValidator()
+    
+    private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
 
 
     
@@ -78,7 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (loginFieldValidator.validateFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!)){
+        if (containerFieldValidator?.validateFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!) == true){
             loginBtn.isEnabled = true
         }
         else { loginBtn.isEnabled = false

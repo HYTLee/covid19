@@ -18,6 +18,8 @@
 		8010292825A2379200962BE4 /* LogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010292725A2379200962BE4 /* LogCell.swift */; };
 		8010292D25A238E700962BE4 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010292C25A238E700962BE4 /* Contact.swift */; };
 		8010293225A2390C00962BE4 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010293125A2390C00962BE4 /* Category.swift */; };
+		8010A7D725B0A9C70045E895 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010A7D625B0A9C70045E895 /* FieldValidator.swift */; };
+		8010A7F825B0C2A00045E895 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010A7F725B0C2A00045E895 /* Container.swift */; };
 		80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
@@ -45,7 +47,8 @@
 		80BBBB6A2566578A00757FA1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBB692566578A00757FA1 /* Article.swift */; };
 		80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBB802566B64B00757FA1 /* NewsImageView.swift */; };
 		80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBC222567C70400757FA1 /* UIImageExtentions.swift */; };
-		80C198F625AE0580009EB758 /* LoginFieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C198F525AE0580009EB758 /* LoginFieldsValidator.swift */; };
+		80C198F625AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */; };
+		80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C198FA25AE2656009EB758 /* LoginTextField.swift */; };
 		80C7965025811071006D8459 /* DateParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C7964F25811071006D8459 /* DateParser.swift */; };
 		B00A02A15B91BBDD901D88E6 /* Pods_Covid19_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4A1FC240253A132C8BA50F /* Pods_Covid19_Project.framework */; };
 		DBF7E3CB39B65205C341F3D7 /* Pods_Covid19_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F612F9BDEF9616159C2D3A7 /* Pods_Covid19_ProjectTests.framework */; };
@@ -84,6 +87,8 @@
 		8010292725A2379200962BE4 /* LogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogCell.swift; sourceTree = "<group>"; };
 		8010292C25A238E700962BE4 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		8010293125A2390C00962BE4 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8010A7D625B0A9C70045E895 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
+		8010A7F725B0C2A00045E895 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtention.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +126,8 @@
 		80BBBB692566578A00757FA1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		80BBBB802566B64B00757FA1 /* NewsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageView.swift; sourceTree = "<group>"; };
 		80BBBC222567C70400757FA1 /* UIImageExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtentions.swift; sourceTree = "<group>"; };
-		80C198F525AE0580009EB758 /* LoginFieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFieldsValidator.swift; sourceTree = "<group>"; };
+		80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexLoginAndPasswordValidator.swift; sourceTree = "<group>"; };
+		80C198FA25AE2656009EB758 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		80C7964F25811071006D8459 /* DateParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateParser.swift; sourceTree = "<group>"; };
 		81F2FD7A796F2CD3F651CB59 /* Pods_Covid19_Project_Covid19_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid19_Project_Covid19_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9153F91C90D15DED6AAA58EA /* Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-Covid19_Project-Covid19_ProjectUITests/Pods-Covid19_Project-Covid19_ProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +175,14 @@
 			path = "Contacts Map";
 			sourceTree = "<group>";
 		};
+		8010A7F625B0C2880045E895 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				8010A7F725B0C2A00045E895 /* Container.swift */,
+			);
+			name = Container;
+			sourceTree = "<group>";
+		};
 		806F13142586106A006C74C9 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +216,7 @@
 		80B66F12254C247400DAB0CB /* Covid19_Project */ = {
 			isa = PBXGroup;
 			children = (
+				8010A7F625B0C2880045E895 /* Container */,
 				80B9910D256C211200E10855 /* Localization */,
 				80BBBC212567C6CD00757FA1 /* ExtentionsForDefaultClasses */,
 				80B66F61254C51ED00DAB0CB /* DataStructures */,
@@ -276,7 +291,9 @@
 			isa = PBXGroup;
 			children = (
 				80B66F17254C247400DAB0CB /* LoginViewController.swift */,
-				80C198F525AE0580009EB758 /* LoginFieldsValidator.swift */,
+				80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */,
+				80C198FA25AE2656009EB758 /* LoginTextField.swift */,
+				8010A7D625B0A9C70045E895 /* FieldValidator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -617,6 +634,7 @@
 				80C7965025811071006D8459 /* DateParser.swift in Sources */,
 				806F131025861059006C74C9 /* ShareViewController.swift in Sources */,
 				80B990DA256A714900E10855 /* Notification.swift in Sources */,
+				8010A7D725B0A9C70045E895 /* FieldValidator.swift in Sources */,
 				80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */,
 				8010292025A2310900962BE4 /* LogTableViewController.swift in Sources */,
 				8010292825A2379200962BE4 /* LogCell.swift in Sources */,
@@ -625,6 +643,7 @@
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
 				80038D82258F53F9008BD6CF /* Location.swift in Sources */,
 				8010291125A2241E00962BE4 /* AddNewEntryViewController.swift in Sources */,
+				80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */,
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
 				80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */,
 				8010291625A22DEB00962BE4 /* CategoryTableViewController.swift in Sources */,
@@ -634,11 +653,12 @@
 				8010290C25A2217E00962BE4 /* ContactAnnotation.swift in Sources */,
 				8010290325A21D6A00962BE4 /* ContactsMapViewController.swift in Sources */,
 				8010293225A2390C00962BE4 /* Category.swift in Sources */,
-				80C198F625AE0580009EB758 /* LoginFieldsValidator.swift in Sources */,
+				80C198F625AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift in Sources */,
 				80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */,
 				80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */,
 				80B66F70254DC48C00DAB0CB /* Case.swift in Sources */,
 				80B66F16254C247400DAB0CB /* SceneDelegate.swift in Sources */,
+				8010A7F825B0C2A00045E895 /* Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
