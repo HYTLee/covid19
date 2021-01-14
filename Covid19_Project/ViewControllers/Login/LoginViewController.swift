@@ -26,9 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let app = App(id: "application-0-tmrap")
     private var loginData: String?
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
-    private let keychainKeyForPassword = "userPassword"
-    private let loginFieldValidator: FieldValidator = ComplexLoginAndPasswordFieldsValidator()
-    
+    private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
 
 
@@ -276,12 +274,11 @@ extension LoginViewController {
                     .authenticationPrompt("Authenticate to login to server")
                     .get(self.keychainKeyForPassword)
 
-            //    print("password is: \(password ?? "")")
                 DispatchQueue.main.async {
                     if password != nil{
                     self.passwordTextField.text = password
                         if self.loginTextField.text != "" {
-                            if self.loginFieldValidator.validateFields(loginTextFieldText: self.loginTextField.text ?? "", passwordTextFieldText: self.passwordTextField.text ?? ""){
+                            if self.containerFieldValidator?.validateFields(loginTextFieldText: self.loginTextField.text!, passwordTextFieldText: self.passwordTextField.text!) == true {
                                     self.loginBtn.isEnabled = true
                             }
                         }
