@@ -21,6 +21,8 @@
 		8010A7D725B0A9C70045E895 /* FieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010A7D625B0A9C70045E895 /* FieldValidator.swift */; };
 		8010A7F825B0C2A00045E895 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8010A7F725B0C2A00045E895 /* Container.swift */; };
 		80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */; };
+		803B881A25B20C1C006EB56E /* NewsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881925B20C1C006EB56E /* NewsImageDownloader.swift */; };
+		803B881F25B20E9A006EB56E /* OperationQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881E25B20E9A006EB56E /* OperationQueueController.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -90,6 +92,8 @@
 		8010A7D625B0A9C70045E895 /* FieldValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldValidator.swift; sourceTree = "<group>"; };
 		8010A7F725B0C2A00045E895 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtention.swift; sourceTree = "<group>"; };
+		803B881925B20C1C006EB56E /* NewsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageDownloader.swift; sourceTree = "<group>"; };
+		803B881E25B20E9A006EB56E /* OperationQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueController.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				80B66F6A254C66F300DAB0CB /* NewsCell.swift */,
 				80B66F4F254C286000DAB0CB /* NewsViewController.swift */,
 				80C7964F25811071006D8459 /* DateParser.swift */,
+				803B881925B20C1C006EB56E /* NewsImageDownloader.swift */,
+				803B881E25B20E9A006EB56E /* OperationQueueController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -628,6 +634,7 @@
 				806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */,
 				80BBBB6A2566578A00757FA1 /* Article.swift in Sources */,
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
+				803B881F25B20E9A006EB56E /* OperationQueueController.swift in Sources */,
 				80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
@@ -641,6 +648,7 @@
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
+				803B881A25B20C1C006EB56E /* NewsImageDownloader.swift in Sources */,
 				80038D82258F53F9008BD6CF /* Location.swift in Sources */,
 				8010291125A2241E00962BE4 /* AddNewEntryViewController.swift in Sources */,
 				80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */,
