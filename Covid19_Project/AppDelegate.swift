@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let container = Container()
         container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
+        container.register(ImageDownloader.self) { _ in NewsImageDownloader() }
         ContainerDependancies.container = container
         
         return true

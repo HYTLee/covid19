@@ -21,16 +21,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var skipLoginBtn: UIButton!
     
     
-    private var fieldValidator: FieldValidator?
-    
     private let app = App(id: "application-0-tmrap")
     private var loginData: String?
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
-
-
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
-        getPasswordFromKeChain()
+        getPasswordFromKeyChain()
     }
     
     
@@ -267,7 +262,7 @@ extension LoginViewController {
         }
     }
     
-   private func getPasswordFromKeChain() {
+   private func getPasswordFromKeyChain() {
         DispatchQueue.global().async {
             do {
                 let password = try self.keychain

@@ -23,6 +23,7 @@
 		80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */; };
 		803B881A25B20C1C006EB56E /* NewsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881925B20C1C006EB56E /* NewsImageDownloader.swift */; };
 		803B881F25B20E9A006EB56E /* OperationQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881E25B20E9A006EB56E /* OperationQueueController.swift */; };
+		803B882825B447E8006EB56E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B882725B447E8006EB56E /* ImageDownloader.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -94,6 +95,7 @@
 		80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtention.swift; sourceTree = "<group>"; };
 		803B881925B20C1C006EB56E /* NewsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageDownloader.swift; sourceTree = "<group>"; };
 		803B881E25B20E9A006EB56E /* OperationQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueController.swift; sourceTree = "<group>"; };
+		803B882725B447E8006EB56E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,15 @@
 			name = Container;
 			sourceTree = "<group>";
 		};
+		803B882625B44799006EB56E /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				803B882725B447E8006EB56E /* ImageDownloader.swift */,
+				8010A7D625B0A9C70045E895 /* FieldValidator.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
 		806F13142586106A006C74C9 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +231,7 @@
 		80B66F12254C247400DAB0CB /* Covid19_Project */ = {
 			isa = PBXGroup;
 			children = (
+				803B882625B44799006EB56E /* protocols */,
 				8010A7F625B0C2880045E895 /* Container */,
 				80B9910D256C211200E10855 /* Localization */,
 				80BBBC212567C6CD00757FA1 /* ExtentionsForDefaultClasses */,
@@ -297,7 +309,6 @@
 				80B66F17254C247400DAB0CB /* LoginViewController.swift */,
 				80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */,
 				80C198FA25AE2656009EB758 /* LoginTextField.swift */,
-				8010A7D625B0A9C70045E895 /* FieldValidator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -662,6 +673,7 @@
 				8010290325A21D6A00962BE4 /* ContactsMapViewController.swift in Sources */,
 				8010293225A2390C00962BE4 /* Category.swift in Sources */,
 				80C198F625AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift in Sources */,
+				803B882825B447E8006EB56E /* ImageDownloader.swift in Sources */,
 				80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */,
 				80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */,
 				80B66F70254DC48C00DAB0CB /* Case.swift in Sources */,

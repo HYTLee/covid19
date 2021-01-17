@@ -8,24 +8,13 @@
 import Foundation
 import UIKit
 
-class NewsImageDownloader {
+let imageCache = NSCache<AnyObject, AnyObject>()
+
+class NewsImageDownloader: ImageDownloader {
+    
     private var task: URLSessionTask!
     
-    func loadImage(url: URL, imageView: UIImageView)  {
-            OperationQueue.main.addOperation({
-                imageView.image = nil
-                   })
-            
-            if let task = task{
-            task.cancel()
-            }
-            
-            if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
-                OperationQueue.main.addOperation({
-                    imageView.image = imageFromCache.image(alpha: 0.2)
-                       })
-                return
-            }
+    func loadImage(url: URL, imageView: UIImageView, completion: @escaping (_ newImage: UIImage) -> ())  {
             
              task = URLSession.shared.dataTask(with: url){ (data, response, error) in
                 guard
@@ -38,7 +27,7 @@ class NewsImageDownloader {
                 imageCache.setObject(newImage, forKey: url.absoluteString as AnyObject)
 
                 DispatchQueue.main.async {
-                    imageView.image = newImage.image(alpha: 0.2)
+                    completion(newImage)
                 }
             }
             task.resume()

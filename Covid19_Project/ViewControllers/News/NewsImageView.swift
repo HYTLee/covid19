@@ -7,15 +7,31 @@
 
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
 class NewsImageView: UIImageView {
     
-    private let imageDownloader = NewsImageDownloader()
-    
-    
+    private let containerImageDownloader = ContainerDependancies.container.resolve(ImageDownloader.self)
+    private var task: URLSessionTask!
+
 
     func setImageToImageView(url: URL)  {
-        imageDownloader.loadImage(url: url, imageView: self)
+        OperationQueue.main.addOperation({
+            self.image = nil
+               })
+        
+        if let task = task{
+        task.cancel()
+        }
+        
+        if let imageFromCache = imageCache.object(forKey: url.absoluteString as AnyObject) as? UIImage {
+            OperationQueue.main.addOperation({
+                self.image = imageFromCache.image(alpha: 0.2)
+                   })
+            return
+        }
+        containerImageDownloader?.loadImage(url: url, imageView: self, completion: { (newsImage) in
+            self.image = newsImage.image(alpha: 0.2)
+
+        })
     }
     
   
