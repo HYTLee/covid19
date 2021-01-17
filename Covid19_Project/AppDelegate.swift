@@ -23,13 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         FirebaseApp.configure()
-        
-        
-        let container = Container()
-        container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
-        container.register(ImageDownloader.self) { _ in NewsImageDownloader() }
-        ContainerDependancies.container = container
-        
         return true
     }
 

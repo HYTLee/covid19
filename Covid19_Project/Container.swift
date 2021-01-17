@@ -11,7 +11,12 @@ import Swinject
 
 class ContainerDependancies{
     
-static var container: Container!
+    static var container: Container! = {
+        let container = Container()
+        container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
+        container.register(ImageDownloader.self) { _ in NewsImageDownloader()}
+        return container
+    }()
     
     
 }
