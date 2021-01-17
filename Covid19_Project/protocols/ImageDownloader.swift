@@ -10,6 +10,6 @@ import UIKit
 
 protocol ImageDownloader {
     
-    func loadImage(url: URL, imageView: UIImageView,completion: @escaping (_ newImage: UIImage) -> () )
+    func loadImage(url: URL, imageView: UIImageView,completion: @escaping (_ newImage: UIImage) -> ())
     
 }

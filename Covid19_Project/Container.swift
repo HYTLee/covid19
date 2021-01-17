@@ -15,6 +15,7 @@ class ContainerDependancies{
         let container = Container()
         container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
         container.register(ImageDownloader.self) { _ in NewsImageDownloader()}
+        container.register(ImageCacheChecker.self) { _ in CheckNewsImageForCache()}
         return container
     }()
     

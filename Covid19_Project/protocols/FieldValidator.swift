@@ -9,5 +9,7 @@ import Foundation
 
 
 protocol FieldValidator {
-    func validateFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool 
+    
+    func validateFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool
+    
 }

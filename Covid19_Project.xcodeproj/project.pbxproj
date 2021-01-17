@@ -24,6 +24,8 @@
 		803B881A25B20C1C006EB56E /* NewsImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881925B20C1C006EB56E /* NewsImageDownloader.swift */; };
 		803B881F25B20E9A006EB56E /* OperationQueueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B881E25B20E9A006EB56E /* OperationQueueController.swift */; };
 		803B882825B447E8006EB56E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B882725B447E8006EB56E /* ImageDownloader.swift */; };
+		803B883A25B49456006EB56E /* CheckNewsImageForCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B883925B49456006EB56E /* CheckNewsImageForCache.swift */; };
+		803B884225B495B5006EB56E /* ImageCacheChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B884125B495B5006EB56E /* ImageCacheChecker.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -96,6 +98,8 @@
 		803B881925B20C1C006EB56E /* NewsImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageDownloader.swift; sourceTree = "<group>"; };
 		803B881E25B20E9A006EB56E /* OperationQueueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueueController.swift; sourceTree = "<group>"; };
 		803B882725B447E8006EB56E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		803B883925B49456006EB56E /* CheckNewsImageForCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNewsImageForCache.swift; sourceTree = "<group>"; };
+		803B884125B495B5006EB56E /* ImageCacheChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheChecker.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			children = (
 				803B882725B447E8006EB56E /* ImageDownloader.swift */,
 				8010A7D625B0A9C70045E895 /* FieldValidator.swift */,
+				803B884125B495B5006EB56E /* ImageCacheChecker.swift */,
 			);
 			path = protocols;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				80C7964F25811071006D8459 /* DateParser.swift */,
 				803B881925B20C1C006EB56E /* NewsImageDownloader.swift */,
 				803B881E25B20E9A006EB56E /* OperationQueueController.swift */,
+				803B883925B49456006EB56E /* CheckNewsImageForCache.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -651,10 +657,12 @@
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
 				80C7965025811071006D8459 /* DateParser.swift in Sources */,
 				806F131025861059006C74C9 /* ShareViewController.swift in Sources */,
+				803B883A25B49456006EB56E /* CheckNewsImageForCache.swift in Sources */,
 				80B990DA256A714900E10855 /* Notification.swift in Sources */,
 				8010A7D725B0A9C70045E895 /* FieldValidator.swift in Sources */,
 				80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */,
 				8010292025A2310900962BE4 /* LogTableViewController.swift in Sources */,
+				803B884225B495B5006EB56E /* ImageCacheChecker.swift in Sources */,
 				8010292825A2379200962BE4 /* LogCell.swift in Sources */,
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
