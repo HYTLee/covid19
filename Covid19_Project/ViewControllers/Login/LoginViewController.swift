@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
-
+    private let containerTimeCheck = ContainerDependancies.container.resolve(TimeCheck.self)
 
     
     override func viewDidLoad() {
@@ -43,21 +43,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     func setStyleForLoginScreen()  {
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
+        
 
-        if hour <= 18 && hour >= 8 {
-            let containerAppStyle = ContainerDependancies.container.resolve(ApplicationStyle.self, name: "Day")
-            self.view.backgroundColor = containerAppStyle?.appBackGroundColor
-            self.loginTextField.textColor = containerAppStyle?.appTextColor
+        let containerAppStyle: ApplicationStyle?
+        
+        if ((containerTimeCheck?.checkForDayOrNight()) == true) {
+             containerAppStyle = ContainerDependancies.container.resolve(ApplicationStyle.self, name: "Day")
+      
         } else
         {
-            let containerAppStyle = ContainerDependancies.container.resolve(ApplicationStyle.self, name: "Night")
-            self.view.backgroundColor = containerAppStyle?.appBackGroundColor
-            self.loginTextField.textColor = containerAppStyle?.appTextColor
-            
+             containerAppStyle = ContainerDependancies.container.resolve(ApplicationStyle.self, name: "Night")
         }
+        self.view.backgroundColor = containerAppStyle?.appBackGroundColor
+        self.loginTextField.textColor = containerAppStyle?.appTextColor
+        self.passwordTextField.textColor = containerAppStyle?.appTextColor
     }
     
    private func setLoginTextField()  {
