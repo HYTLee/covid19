@@ -26,6 +26,11 @@
 		803B882825B447E8006EB56E /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B882725B447E8006EB56E /* ImageDownloader.swift */; };
 		803B883A25B49456006EB56E /* CheckNewsImageForCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B883925B49456006EB56E /* CheckNewsImageForCache.swift */; };
 		803B884225B495B5006EB56E /* ImageCacheChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B884125B495B5006EB56E /* ImageCacheChecker.swift */; };
+		803B88E625B741DA006EB56E /* ApplicationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88E525B741DA006EB56E /* ApplicationStyle.swift */; };
+		803B88EF25B74323006EB56E /* DayStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88EE25B74323006EB56E /* DayStyle.swift */; };
+		803B88F425B7435B006EB56E /* NightStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88F325B7435B006EB56E /* NightStyle.swift */; };
+		803B88F925B74404006EB56E /* DayNightStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88F825B74404006EB56E /* DayNightStyleProvider.swift */; };
+		803B88FE25B74BD4006EB56E /* StyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88FD25B74BD4006EB56E /* StyleProvider.swift */; };
 		806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F123B25812736006C74C9 /* UITableViewExtention.swift */; };
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
@@ -100,6 +105,11 @@
 		803B882725B447E8006EB56E /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		803B883925B49456006EB56E /* CheckNewsImageForCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckNewsImageForCache.swift; sourceTree = "<group>"; };
 		803B884125B495B5006EB56E /* ImageCacheChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheChecker.swift; sourceTree = "<group>"; };
+		803B88E525B741DA006EB56E /* ApplicationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationStyle.swift; sourceTree = "<group>"; };
+		803B88EE25B74323006EB56E /* DayStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayStyle.swift; sourceTree = "<group>"; };
+		803B88F325B7435B006EB56E /* NightStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStyle.swift; sourceTree = "<group>"; };
+		803B88F825B74404006EB56E /* DayNightStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightStyleProvider.swift; sourceTree = "<group>"; };
+		803B88FD25B74BD4006EB56E /* StyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleProvider.swift; sourceTree = "<group>"; };
 		806F123B25812736006C74C9 /* UITableViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtention.swift; sourceTree = "<group>"; };
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
@@ -193,14 +203,26 @@
 			name = Container;
 			sourceTree = "<group>";
 		};
-		803B882625B44799006EB56E /* protocols */ = {
+		803B882625B44799006EB56E /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				803B882725B447E8006EB56E /* ImageDownloader.swift */,
 				8010A7D625B0A9C70045E895 /* FieldValidator.swift */,
 				803B884125B495B5006EB56E /* ImageCacheChecker.swift */,
+				803B88E525B741DA006EB56E /* ApplicationStyle.swift */,
+				803B88FD25B74BD4006EB56E /* StyleProvider.swift */,
 			);
-			path = protocols;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		803B88EA25B74307006EB56E /* ApplicationStyle */ = {
+			isa = PBXGroup;
+			children = (
+				803B88EE25B74323006EB56E /* DayStyle.swift */,
+				803B88F325B7435B006EB56E /* NightStyle.swift */,
+				803B88F825B74404006EB56E /* DayNightStyleProvider.swift */,
+			);
+			path = ApplicationStyle;
 			sourceTree = "<group>";
 		};
 		806F13142586106A006C74C9 /* Share */ = {
@@ -236,7 +258,8 @@
 		80B66F12254C247400DAB0CB /* Covid19_Project */ = {
 			isa = PBXGroup;
 			children = (
-				803B882625B44799006EB56E /* protocols */,
+				803B88EA25B74307006EB56E /* ApplicationStyle */,
+				803B882625B44799006EB56E /* Protocols */,
 				8010A7F625B0C2880045E895 /* Container */,
 				80B9910D256C211200E10855 /* Localization */,
 				80BBBC212567C6CD00757FA1 /* ExtentionsForDefaultClasses */,
@@ -651,9 +674,11 @@
 				806F123C25812736006C74C9 /* UITableViewExtention.swift in Sources */,
 				80BBBB6A2566578A00757FA1 /* Article.swift in Sources */,
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
+				803B88FE25B74BD4006EB56E /* StyleProvider.swift in Sources */,
 				803B881F25B20E9A006EB56E /* OperationQueueController.swift in Sources */,
 				80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
+				803B88E625B741DA006EB56E /* ApplicationStyle.swift in Sources */,
 				80B66F4B254C275A00DAB0CB /* TabBarController.swift in Sources */,
 				80C7965025811071006D8459 /* DateParser.swift in Sources */,
 				806F131025861059006C74C9 /* ShareViewController.swift in Sources */,
@@ -667,15 +692,18 @@
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
+				803B88F425B7435B006EB56E /* NightStyle.swift in Sources */,
 				803B881A25B20C1C006EB56E /* NewsImageDownloader.swift in Sources */,
 				80038D82258F53F9008BD6CF /* Location.swift in Sources */,
 				8010291125A2241E00962BE4 /* AddNewEntryViewController.swift in Sources */,
 				80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */,
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
+				803B88EF25B74323006EB56E /* DayStyle.swift in Sources */,
 				80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */,
 				8010291625A22DEB00962BE4 /* CategoryTableViewController.swift in Sources */,
 				8010292D25A238E700962BE4 /* Contact.swift in Sources */,
 				80B66F58254C28A500DAB0CB /* CasesViewController.swift in Sources */,
+				803B88F925B74404006EB56E /* DayNightStyleProvider.swift in Sources */,
 				80B66F75254DC80300DAB0CB /* CountryTableCell.swift in Sources */,
 				8010290C25A2217E00962BE4 /* ContactAnnotation.swift in Sources */,
 				8010290325A21D6A00962BE4 /* ContactsMapViewController.swift in Sources */,
