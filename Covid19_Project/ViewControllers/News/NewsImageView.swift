@@ -20,13 +20,5 @@ class NewsImageView: UIImageView {
 
         })
     }
-    
-  
-    
-  
-    
-    
-    
-    
 }
 

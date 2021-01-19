@@ -26,6 +26,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
+    private let containerTimeCheck = ContainerDependancies.container.resolve(StyleProvider.self)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.setLoginBtn()
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
+        self.setStyleForLoginScreen()
         }
+    
+
+    
+    func setStyleForLoginScreen()  {
+    
+        self.view.backgroundColor = containerTimeCheck?.checkForDayOrNight().appBackGroundColor
+        self.loginTextField.textColor = containerTimeCheck?.checkForDayOrNight().appTextColor
+        self.passwordTextField.textColor = containerTimeCheck?.checkForDayOrNight().appTextColor
+    }
     
    private func setLoginTextField()  {
         let formatString = NSLocalizedString("Enter login",comment: "Enter login placeholder")
