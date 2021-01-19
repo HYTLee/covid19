@@ -8,8 +8,7 @@
 import Foundation
 
 
-protocol TimeCheck {
-    
-    func checkForDayOrNight() -> Bool
+protocol StyleProvider {
+    func checkForDayOrNight() -> ApplicationStyle
     
 }

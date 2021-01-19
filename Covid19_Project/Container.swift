@@ -18,7 +18,7 @@ class ContainerDependancies{
         container.register(ImageCacheChecker.self) { _ in CheckNewsImageForCache()}
         container.register(ApplicationStyle.self, name: "Day") { _ in AppDayStyle() }
         container.register(ApplicationStyle.self, name: "Night") { _ in AppNightStyle() }
-        container.register(StyleChecker.self) { _ in DayNightStyleChecker()}
+        container.register(StyleProvider.self) { _ in DayNightStyleProvider()}
 
 
         return container

@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
-    private let containerTimeCheck = ContainerDependancies.container.resolve(StyleChecker.self)
+    private let containerTimeCheck = ContainerDependancies.container.resolve(StyleProvider.self)
 
     
     override func viewDidLoad() {
