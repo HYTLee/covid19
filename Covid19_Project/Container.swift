@@ -13,14 +13,13 @@ class ContainerDependancies{
     
     static var container: Container! = {
         let container = Container()
-        container.register(FieldValidator.self) { _ in ComplexLoginAndPasswordFieldsValidator() }
+        container.register(FieldValidator.self) { _ in PasswordCounterAndLoginPasswordFieldsValidator(fieldValidator: ComplexLoginAndPasswordFieldsValidator()) }
         container.register(ImageDownloader.self) { _ in NewsImageDownloader()}
         container.register(ImageCacheChecker.self) { _ in CheckNewsImageForCache()}
         container.register(ApplicationStyle.self, name: "Day") { _ in AppDayStyle() }
         container.register(ApplicationStyle.self, name: "Night") { _ in AppNightStyle() }
         container.register(StyleProvider.self) { _ in DayNightStyleProvider()}
-
-
+        
         return container
     }()
     

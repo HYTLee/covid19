@@ -35,6 +35,7 @@
 		806F131025861059006C74C9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F130F25861059006C74C9 /* ShareViewController.swift */; };
 		8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */; };
 		8098AD5C255E787D00605806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8098AD5B255E787D00605806 /* GoogleService-Info.plist */; };
+		80A6829F25B816BA006F9EE5 /* PasswordCounterAndLoginPasswordFieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A6829E25B816BA006F9EE5 /* PasswordCounterAndLoginPasswordFieldsValidator.swift */; };
 		80B66F14254C247400DAB0CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F13254C247400DAB0CB /* AppDelegate.swift */; };
 		80B66F16254C247400DAB0CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F15254C247400DAB0CB /* SceneDelegate.swift */; };
 		80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B66F17254C247400DAB0CB /* LoginViewController.swift */; };
@@ -114,6 +115,7 @@
 		806F130F25861059006C74C9 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		8077461E254EADAA00C0C851 /* CassesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassesDetailsViewController.swift; sourceTree = "<group>"; };
 		8098AD5B255E787D00605806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		80A6829E25B816BA006F9EE5 /* PasswordCounterAndLoginPasswordFieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCounterAndLoginPasswordFieldsValidator.swift; sourceTree = "<group>"; };
 		80B66F10254C247400DAB0CB /* Covid19_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B66F13254C247400DAB0CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80B66F15254C247400DAB0CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				80B66F17254C247400DAB0CB /* LoginViewController.swift */,
 				80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */,
 				80C198FA25AE2656009EB758 /* LoginTextField.swift */,
+				80A6829E25B816BA006F9EE5 /* PasswordCounterAndLoginPasswordFieldsValidator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				803B884225B495B5006EB56E /* ImageCacheChecker.swift in Sources */,
 				8010292825A2379200962BE4 /* LogCell.swift in Sources */,
 				80B66F50254C286000DAB0CB /* NewsViewController.swift in Sources */,
+				80A6829F25B816BA006F9EE5 /* PasswordCounterAndLoginPasswordFieldsValidator.swift in Sources */,
 				8077461F254EADAA00C0C851 /* CassesDetailsViewController.swift in Sources */,
 				80B66F63254C521100DAB0CB /* News.swift in Sources */,
 				803B88F425B7435B006EB56E /* NightStyle.swift in Sources */,
