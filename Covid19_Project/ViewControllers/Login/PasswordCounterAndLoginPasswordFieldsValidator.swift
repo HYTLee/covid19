@@ -12,6 +12,9 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     
     let fieldValidator: FieldValidator
     
+    let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
+
+    
     init(fieldValidator: FieldValidator) {
         self.fieldValidator = fieldValidator
     }
@@ -19,18 +22,26 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     var numberOfAtempts = 0
     
     func validateFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool {
-        
-        if numberOfAtempts < 6 {
+        let numberOfAtemptsFromUserDefaults =  UserDefaults.standard.integer(forKey: userNumberOfAtemptsKey)
+
+        if numberOfAtemptsFromUserDefaults < 6 {
             if fieldValidator.validateFields(loginTextFieldText: loginTextFieldText, passwordTextFieldText: passwordTextFieldText) == true{
                 return true
             }
             else {
                 numberOfAtempts += 1
+                saveNumberOfAtemptsToUserDefaults()
                 return false
             }
         }
         else {
             return false
         }
+    }
+    
+    
+    func saveNumberOfAtemptsToUserDefaults()  {
+        UserDefaults.standard.string(forKey: userNumberOfAtemptsKey)
+        UserDefaults.standard.setValue(numberOfAtempts, forKey: userNumberOfAtemptsKey)
     }
 }
