@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func logOutAction(_ sender: Any) {
-        EventListnerManager.singleton.notify()
+        EventListnerManager.singleton.notify(event: .logout)
     }
     
     

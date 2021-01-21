@@ -7,10 +7,8 @@
 
 import Foundation
 
-class LogoutListner: Listners {
+class LogoutListner: Listner {
     func update() {
         print("Log out")
-    }
-    
-    
+    }    
 }

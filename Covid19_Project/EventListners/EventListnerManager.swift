@@ -10,20 +10,25 @@ import Foundation
 class  EventListnerManager: EventListner{
     static var singleton = EventListnerManager()
     
-    private var listners = [Listners]()
     
-    func subscribe(listner: Listners) {
-        listners.append(listner)
+
+    var listners = [EventListnerWithType]()
+    
+    func subscribe(listner: Listner, event: EventType) {
+        var listnerWithType = EventListnerWithType(eventListner: listner, eventType: event)
+        
+        listners.append(listnerWithType)
     }
     
-    func notify() {
-        for listner in listners{
-            listner.update()
+    func notify(event: EventType) {
+        var listOfListnersToBeNotified = [EventListnerWithType]()
+        for listner in listners {
+            if listner.eventType == event {
+                listOfListnersToBeNotified.append(listner)
+            }
+        }
+        for listner in listOfListnersToBeNotified{
+            listner.eventListner.update()
         }
     }
-    
-    
-    
-    
-   
 }
