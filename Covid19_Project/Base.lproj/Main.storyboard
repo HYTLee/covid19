@@ -261,6 +261,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="logOutAction:" destination="mVE-Bu-Zkj" eventType="touchUpInside" id="T29-Oa-Spd"/>
                                     <segue destination="ukw-Zr-bgu" kind="unwind" unwindAction="unwindFromProfile:" id="ycZ-SO-ioG"/>
                                 </connections>
                             </button>

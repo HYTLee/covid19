@@ -12,6 +12,8 @@ class ProfileViewController: UIViewController {
 
     var profileName:String!
     
+    
+
     @IBOutlet private weak var profileNameLabel: UILabel!
     @IBOutlet private weak var logoutBtn: UIButton!
     @IBOutlet private weak var notificationBtn: UIButton!
@@ -104,6 +106,11 @@ class ProfileViewController: UIViewController {
         notificationTextField.inputAccessoryView = toolBar
         notificationTextField.placeholder = NSLocalizedString("Notification time", comment: "Notification time")
     }
+    
+    @IBAction func logOutAction(_ sender: Any) {
+        EventListnerManager.singleton.notify()
+    }
+    
     
     private func setNotificationBtn()  {
         notificationBtn.layer.cornerRadius = 0.2 * logoutBtn.bounds.size.width

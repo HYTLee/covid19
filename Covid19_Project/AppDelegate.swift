@@ -12,6 +12,8 @@ import Swinject
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+  
+    
     let center = UNUserNotificationCenter.current()
     let locationManager = CLLocationManager()
     static let geoCoder = CLGeocoder()
@@ -22,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let fontAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0)]
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
+        let logOutListner = LogoutListner()
         FirebaseApp.configure()
+        EventListnerManager.singleton.subscribe(listner: logOutListner)
         return true
     }
 
