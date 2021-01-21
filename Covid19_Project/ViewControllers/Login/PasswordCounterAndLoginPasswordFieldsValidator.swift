@@ -23,18 +23,19 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     
     func validateFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool {
         let numberOfAtemptsFromUserDefaults =  UserDefaults.standard.integer(forKey: userNumberOfAtemptsKey)
-
+        print(numberOfAtemptsFromUserDefaults)
         if numberOfAtemptsFromUserDefaults < 6 {
             if fieldValidator.validateFields(loginTextFieldText: loginTextFieldText, passwordTextFieldText: passwordTextFieldText) == true{
                 return true
             }
             else {
-                numberOfAtempts += 1
-                saveNumberOfAtemptsToUserDefaults()
+                self.numberOfAtempts += 1
+                self.saveNumberOfAtemptsToUserDefaults()
                 return false
             }
         }
         else {
+            self.timerForNumberOfAtemptsReset()
             return false
         }
     }
@@ -43,5 +44,16 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     func saveNumberOfAtemptsToUserDefaults()  {
         UserDefaults.standard.string(forKey: userNumberOfAtemptsKey)
         UserDefaults.standard.setValue(numberOfAtempts, forKey: userNumberOfAtemptsKey)
+    }
+    
+    
+    func timerForNumberOfAtemptsReset()  {
+        Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
+    }
+    
+    
+    @objc func fireTimer(){
+        self.numberOfAtempts = 0
+        self.saveNumberOfAtemptsToUserDefaults()
     }
 }
