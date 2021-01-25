@@ -14,21 +14,30 @@ class  EventListnerManager: EventListner{
 
     var listners = [EventListnerWithType]()
     
-    func subscribe(listner: Listner, event: EventType) {
-        var listnerWithType = EventListnerWithType(eventListner: listner, eventType: event)
-        
+    func subscribe(listner: Listner, event: EventType, eventId: Int) {
+        let listnerWithType = EventListnerWithType(eventListner: listner, eventType: event, eventId: eventId)
         listners.append(listnerWithType)
     }
     
+    func unsubscribe(eventId: Int)  {
+        for listner in listners {
+            if listner.eventId == eventId {
+                let eventIdentifier = eventId
+                if let i = listners.firstIndex(where: { $0.eventId == eventIdentifier}) {
+                    listners.remove(at: i)
+                }
+                }
+        
+        }
+    }
+    
+
+    
     func notify(event: EventType) {
-        var listOfListnersToBeNotified = [EventListnerWithType]()
         for listner in listners {
             if listner.eventType == event {
-                listOfListnersToBeNotified.append(listner)
+                listner.eventListner.update()
             }
-        }
-        for listner in listOfListnersToBeNotified{
-            listner.eventListner.update()
         }
     }
 }

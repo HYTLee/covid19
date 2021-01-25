@@ -8,6 +8,9 @@
 import Foundation
 
 struct EventListnerWithType {
-   var eventListner: Listner
-   var eventType: EventType
+  
+    
+    var eventListner: Listner
+    var eventType: EventType
+    var eventId: Int
 }

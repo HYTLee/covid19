@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          UITabBarItem.appearance().setTitleTextAttributes(fontAttributes, for: .normal)
         let logOutListner = LogoutListner()
         FirebaseApp.configure()
-        EventListnerManager.singleton.subscribe(listner: logOutListner, event: .logout)
+        EventListnerManager.singleton.subscribe(listner: logOutListner, event: .logout, eventId: 1)
         return true
     }
 

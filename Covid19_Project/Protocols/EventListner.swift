@@ -9,7 +9,7 @@ import Foundation
 
 protocol EventListner{
 
-    func subscribe(listner:Listner, event: EventType)
+    func subscribe(listner:Listner, event: EventType, eventId: Int)
     func notify(event: EventType)
 }
 
