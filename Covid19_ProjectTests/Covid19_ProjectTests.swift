@@ -9,14 +9,13 @@ import XCTest
 @testable import Covid19_Project
 
 class Covid19_ProjectTests: XCTestCase {
-    var fieldsValdator: ComplexLoginAndPasswordFieldsValidator!
+    var fieldsValdator: PasswordCounterAndLoginPasswordFieldsValidator!
 
     override func setUpWithError() throws {
-        fieldsValdator = ComplexLoginAndPasswordFieldsValidator()
+        fieldsValdator = PasswordCounterAndLoginPasswordFieldsValidator(fieldValidator: ComplexLoginAndPasswordFieldsValidator() as FieldValidator)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testFullFilledLoginAndPasswordFiedlsCorrectly() throws {
@@ -57,7 +56,9 @@ class Covid19_ProjectTests: XCTestCase {
     }
     
     func testUserEnteredWrongPasswordFourTimesAndThenEnterredRightPassword() throws {
-        for _ in 1...4{
+        let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
+        UserDefaults.standard.setValue( 0, forKey: userNumberOfAtemptsKey)
+        for _ in 1...3{
             let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
             XCTAssertFalse(result)
         }
@@ -65,5 +66,15 @@ class Covid19_ProjectTests: XCTestCase {
         XCTAssertTrue(result)
     }
     
+    func testUserEnteredWrongPasswordFiveTimesAndThenEnteredRightPassword() throws {
+        let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
+        UserDefaults.standard.setValue( 0, forKey: userNumberOfAtemptsKey)
+        for _ in 1...6{
+            let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
+            XCTAssertFalse(result)
+        }
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTest")
+        XCTAssertFalse(result)
+    }
     
 }
