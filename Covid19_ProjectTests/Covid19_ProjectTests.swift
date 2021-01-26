@@ -9,25 +9,61 @@ import XCTest
 @testable import Covid19_Project
 
 class Covid19_ProjectTests: XCTestCase {
+    var fieldsValdator: ComplexLoginAndPasswordFieldsValidator!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        fieldsValdator = ComplexLoginAndPasswordFieldsValidator()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testFullFilledLoginAndPasswordFiedlsCorrectly() throws {
+      let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTest")
+        assert(result)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testLoginFieldDidntFullFilled() throws {
+        let result = fieldsValdator.validateFields(loginTextFieldText: "", passwordTextFieldText: "TestTest")
+        XCTAssertFalse(result)
+    }
+    
+    func testPasswordFieldDidntFullFilled() throws {
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "")
+        XCTAssertFalse(result)
+    }
+    
+    func testPasswordFieldDidntContainUpperCase() throws {
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "testtest")
+        XCTAssertFalse(result)
+    }
+    
+    func testPasswordFieldDidntContainLowerCase() throws {
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TESTTEST")
+        XCTAssertFalse(result)
+    }
+    
+    func testPasswordFieldDidntContainEnoughCharacters() throws {
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
+        XCTAssertFalse(result)
+    }
+    
+    func testUserEnteredWrongPasswordFiveTimes() throws {
+        for _ in 1...5{
+            let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
+            XCTAssertFalse(result)
         }
     }
-
+    
+    func testUserEnteredWrongPasswordFourTimesAndThenEnterredRightPassword() throws {
+        for _ in 1...4{
+            let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
+            XCTAssertFalse(result)
+        }
+        let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTest")
+        XCTAssertTrue(result)
+    }
+    
+    
 }
