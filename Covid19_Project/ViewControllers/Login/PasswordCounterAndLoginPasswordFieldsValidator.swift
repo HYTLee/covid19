@@ -11,26 +11,25 @@ import UIKit
 class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     
     let fieldValidator: FieldValidator
+    var numberOfAttemptsSaver: NumberOfAttemptsSaver
     
-    let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
-
-    
-    init(fieldValidator: FieldValidator) {
+    init(fieldValidator: FieldValidator, numberOfAttemptsSaver: NumberOfAttemptsSaver) {
         self.fieldValidator = fieldValidator
+        self.numberOfAttemptsSaver = numberOfAttemptsSaver
     }
     
-    var numberOfAtempts = 0
+
     
     func validateFields(loginTextFieldText: String, passwordTextFieldText: String) -> Bool {
-        let numberOfAtemptsFromUserDefaults =  UserDefaults.standard.integer(forKey: userNumberOfAtemptsKey)
+        let numberOfAtemptsFromUserDefaults: Int =  numberOfAttemptsSaver.checkForCurrentAttemptsCount()
         print(numberOfAtemptsFromUserDefaults)
         if numberOfAtemptsFromUserDefaults < 6 {
             if fieldValidator.validateFields(loginTextFieldText: loginTextFieldText, passwordTextFieldText: passwordTextFieldText) == true{
                 return true
             }
             else {
-                self.numberOfAtempts += 1
-                self.saveNumberOfAtemptsToUserDefaults()
+                numberOfAttemptsSaver.numberOfAtempts += 1
+                numberOfAttemptsSaver.saveAttempts()
                 return false
             }
         }
@@ -41,19 +40,13 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     }
     
     
-    func saveNumberOfAtemptsToUserDefaults()  {
-        UserDefaults.standard.string(forKey: userNumberOfAtemptsKey)
-        UserDefaults.standard.setValue(numberOfAtempts, forKey: userNumberOfAtemptsKey)
-    }
-    
-    
     func timerForNumberOfAtemptsReset()  {
         Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
     }
     
     
     @objc func fireTimer(){
-        self.numberOfAtempts = 0
-        self.saveNumberOfAtemptsToUserDefaults()
+        numberOfAttemptsSaver.numberOfAtempts = 0
+        numberOfAttemptsSaver.saveAttempts()
     }
 }

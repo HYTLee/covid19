@@ -11,16 +11,19 @@ import XCTest
 
 class TestPassowrdCounter: XCTestCase {
     var fieldsValdator: PasswordCounterAndLoginPasswordFieldsValidator!
-    var mock = MockComplexLoginAndPasswordFieldsValidator()
-
+    var mockComplexLoginAndPasswordFieldsValidator: MockComplexLoginAndPasswordFieldsValidator!
+    var mockNumberOfAttemptsSaver: MockNumberOfAttemptsSaver!
     
     
     override func setUpWithError() throws {
-        fieldsValdator = PasswordCounterAndLoginPasswordFieldsValidator(fieldValidator: mock)
+        mockComplexLoginAndPasswordFieldsValidator = MockComplexLoginAndPasswordFieldsValidator()
+        mockNumberOfAttemptsSaver = MockNumberOfAttemptsSaver()
+        fieldsValdator = PasswordCounterAndLoginPasswordFieldsValidator(fieldValidator: mockComplexLoginAndPasswordFieldsValidator, numberOfAttemptsSaver: mockNumberOfAttemptsSaver)
     }
 
     override func tearDownWithError() throws {
-        mock.validateResult = false
+        mockComplexLoginAndPasswordFieldsValidator.validateResult = false
+        mockNumberOfAttemptsSaver.numberOfAtempts = 0
     }
 
     func testUserEnteredWrongPasswordFiveTimes() throws {
@@ -31,25 +34,21 @@ class TestPassowrdCounter: XCTestCase {
     }
     
     func testUserEnteredWrongPasswordFourTimesAndThenEnterredRightPassword() throws {
-        let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
-        UserDefaults.standard.setValue( 0, forKey: userNumberOfAtemptsKey)
-        for _ in 1...3{
+        for _ in 1...5{
             let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
             XCTAssertFalse(result)
         }
-        mock.validateResult = true
+        mockComplexLoginAndPasswordFieldsValidator.validateResult = true
         let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTest")
         XCTAssertTrue(result)
     }
     
     func testUserEnteredWrongPasswordFiveTimesAndThenEnteredRightPassword() throws {
-        let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
-        UserDefaults.standard.setValue( 0, forKey: userNumberOfAtemptsKey)
         for _ in 1...6{
             let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTes")
             XCTAssertFalse(result)
         }
-        mock.validateResult = true
+        mockComplexLoginAndPasswordFieldsValidator.validateResult = true
         let result = fieldsValdator.validateFields(loginTextFieldText: "test", passwordTextFieldText: "TestTest")
         XCTAssertFalse(result)
     }
