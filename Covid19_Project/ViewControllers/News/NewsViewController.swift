@@ -21,6 +21,7 @@ class NewsViewController: UIViewController {
     
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
+    var photoRecords: [PhotoRecord] = []
     
     private let operationQueueController = OperationQueueController()
 
@@ -35,11 +36,17 @@ class NewsViewController: UIViewController {
         configureRefreshControl()
     }
     
+    func createPhotoRecords() {
+        for article in newses!.articles {
+            photoRecords.append(PhotoRecord.init(name: article.title, url:URL(string: article.urlToImage ?? "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8")!))
+        }
+    }
+    
     func getNewses()  {
         let urlSessin = URLSession(configuration: .default)
         guard let newsApiUrl = URL(string: newsApiURLString) else {return}
         let request = URLRequest(url: newsApiUrl)
-       let dataTask =  urlSessin.dataTask(with: request) { (data, response, error) in
+        let dataTask =  urlSessin.dataTask(with: request) { [self] (data, response, error) in
         if error != nil {
             print(error ?? "Error is unknown")
             }
@@ -51,6 +58,7 @@ class NewsViewController: UIViewController {
                 DispatchQueue.main.async { [self] in
                     self.collectionView.reloadData()
                 }
+                createPhotoRecords()
             }
             catch {
                 print(error)
