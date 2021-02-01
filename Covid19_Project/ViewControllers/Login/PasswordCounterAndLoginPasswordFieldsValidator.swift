@@ -28,8 +28,7 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
                 return true
             }
             else {
-                numberOfAttemptsSaver.numberOfAtempts += 1
-                numberOfAttemptsSaver.saveAttempts()
+                numberOfAttemptsSaver.saveAttempts(numberOfAtempts: numberOfAttemptsSaver.checkForCurrentAttemptsCount() + 1 )
                 return false
             }
         }
@@ -46,7 +45,6 @@ class PasswordCounterAndLoginPasswordFieldsValidator: FieldValidator {
     
     
     @objc func fireTimer(){
-        numberOfAttemptsSaver.numberOfAtempts = 0
-        numberOfAttemptsSaver.saveAttempts()
+        numberOfAttemptsSaver.saveAttempts(numberOfAtempts: 0)
     }
 }

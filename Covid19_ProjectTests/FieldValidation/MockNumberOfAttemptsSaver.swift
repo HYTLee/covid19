@@ -10,14 +10,18 @@ import Foundation
 
 
 class MockNumberOfAttemptsSaver: NumberOfAttemptsSaver {
-    var numberOfAtempts: Int = 0
     
-    func saveAttempts() {
+    var attempts = 0
+
+    func saveAttempts(numberOfAtempts: Int) {
+        attempts += 1
     }
+    
+
     
     func checkForCurrentAttemptsCount() -> Int {
-        return self.numberOfAtempts
+        return attempts
     }
     
-    
+
 }

@@ -9,9 +9,7 @@ import Foundation
 
 protocol NumberOfAttemptsSaver {
     
-    var numberOfAtempts: Int { get set }
     
-    func saveAttempts()
-    
+    func saveAttempts(numberOfAtempts: Int)
     func checkForCurrentAttemptsCount() -> Int
 }

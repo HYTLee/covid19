@@ -23,7 +23,7 @@ class TestPassowrdCounter: XCTestCase {
 
     override func tearDownWithError() throws {
         mockComplexLoginAndPasswordFieldsValidator.validateResult = false
-        mockNumberOfAttemptsSaver.numberOfAtempts = 0
+        mockNumberOfAttemptsSaver.attempts = 0
     }
 
     func testUserEnteredWrongPasswordFiveTimes() throws {

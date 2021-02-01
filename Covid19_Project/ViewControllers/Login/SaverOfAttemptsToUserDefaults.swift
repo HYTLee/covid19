@@ -11,7 +11,7 @@ import Foundation
 class SaverOfAttemptsToUserDafaults: NumberOfAttemptsSaver {
     
     let userNumberOfAtemptsKey = "NumberOfAtemptsKey"
-    var numberOfAtempts = 0
+   // var numberOfAtempts = 0
 
     func checkForCurrentAttemptsCount() -> Int {
         let numberOfAtemptsFromUserDefaults =  UserDefaults.standard.integer(forKey: userNumberOfAtemptsKey)
@@ -19,7 +19,7 @@ class SaverOfAttemptsToUserDafaults: NumberOfAttemptsSaver {
         return numberOfAtemptsFromUserDefaults
     }
     
-    func saveAttempts() {
+    func saveAttempts(numberOfAtempts: Int) {
         UserDefaults.standard.string(forKey: userNumberOfAtemptsKey)
         UserDefaults.standard.setValue(numberOfAtempts, forKey: userNumberOfAtemptsKey)
     }
