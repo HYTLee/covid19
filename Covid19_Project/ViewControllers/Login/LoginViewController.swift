@@ -26,7 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private let keychain = Keychain(service: "com.hramiashkevich.Covid19-Project")
     private let keychainKeyForPassword = "userPassword"    
     private let containerFieldValidator = ContainerDependancies.container.resolve(FieldValidator.self)
-    private let containerTimeCheck = ContainerDependancies.container.resolve(StyleProvider.self)
+    
+    private let loginViewModel = ContainerDependancies.container.resolve(LoginViewModel.self)
+
 
     
     override func viewDidLoad() {
@@ -37,43 +39,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.setLoginBtn()
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
-        self.setStyleForLoginScreen()
+
+        self.loginViewModel?.setStyleForLoginScreen(colorsForStyle: {[weak self] appStyle in
+            self?.view.backgroundColor = appStyle.appBackGroundColor
+            self?.loginTextField.textColor = appStyle.appTextColor
+            self?.passwordTextField.textColor = appStyle.appTextColor
+        })
         }
     
-
-    
-    func setStyleForLoginScreen()  {
-    
-        self.view.backgroundColor = containerTimeCheck?.checkForDayOrNight().appBackGroundColor
-        self.loginTextField.textColor = containerTimeCheck?.checkForDayOrNight().appTextColor
-        self.passwordTextField.textColor = containerTimeCheck?.checkForDayOrNight().appTextColor
+    private func setLoginTextField()  {
+    loginTextField.placeholder = loginViewModel?.loginTextfieldPlaceholder
     }
     
-   private func setLoginTextField()  {
-        let formatString = NSLocalizedString("Enter login",comment: "Enter login placeholder")
-        loginTextField.placeholder = String.localizedStringWithFormat(formatString)
+    private func setPasswordTextField()  {
+    passwordTextField.placeholder = loginViewModel?.passwordTexttieldPlaceholder
     }
     
-   private func setPasswordTextField()  {
-        let formatString = NSLocalizedString("Enter password",comment: "Enter password placeholder")
-        passwordTextField.placeholder = String.localizedStringWithFormat(formatString)
+    private func setLoginBtn()  {
+        loginBtn.isEnabled = (loginViewModel?.isLoginButtonEnable == true)
+        loginBtn.setTitle(loginViewModel?.loginButtonTitle, for: .normal)
     }
     
-   private func setLoginBtn()  {
-        loginBtn.isEnabled = false
-        loginBtn.setTitle(NSLocalizedString("Login", comment: "Login button text"), for: .normal)
-    }
-    
-   private func setLastPasswordBtn()  {
-        addLastSuccesPasswordBtn.setTitle(NSLocalizedString("Password", comment: "Password buttn text"), for: .normal)
+    private func setLastPasswordBtn()  {
+    addLastSuccesPasswordBtn.setTitle(loginViewModel?.lastPasswordButtonTitle, for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loginTopConstarint.constant += view.bounds.height
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        loginTextField.text = UserDefaults.standard.value(forKey: "lastUserLogin") as? String
-        self.skipLoginBtn.isEnabled = true
+        loginTextField.text = loginViewModel?.setLoginFromUserDefaults()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,11 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if (containerFieldValidator?.validateFields(loginTextFieldText: loginTextField.text!, passwordTextFieldText: passwordTextField.text!) == true){
-            loginBtn.isEnabled = true
-        }
-        else { loginBtn.isEnabled = false
-        }
+        loginBtn.isEnabled = (loginViewModel?.checkThatLoginAndPasswordFieldsAreFullfilled(loginText: loginTextField.text ?? "", passwordText: passwordTextField.text ?? "") == true)
     }
     
     @IBAction private func loginAction(_ sender: UIButton) {
@@ -101,7 +92,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         app.login(credentials: Credentials.emailPassword(email: loginTextField.text!, password: passwordTextField.text!)) { result in
             switch result {
             case .failure(let error):
-                print("Login failed: \(error)")
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please register your account", comment: "Please register your account"), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
@@ -111,15 +101,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.openNewsView()
-                    self.savePasswordToKeyChain()
-                    self.cleanTextfieldsAndDisableLoginBtn()
+                    self.loginViewModel?.savePasswordToKeyChain(passwordText: self.passwordTextField.text ?? "")
+                    self.loginViewModel?.cleanTextfieldsAndDisableLoginBtn(buttonDisabling: { (loginText, passwordText) in
+                        self.loginTextField.text = loginText
+                        self.passwordTextField.text = passwordText
+                        self.loginBtn.isEnabled = false
+                    })
                 }
             }
         }
     }
     
     @IBAction private func tryToSetLastSuccessPasswordAction(_ sender: UIButton) {
-        getPasswordFromKeyChain()
+        self.loginViewModel?.getPasswordFromKeyChain(addPasswordToField: { (password) in
+            if password != "" {
+            self.passwordTextField.text = password
+                if self.loginTextField.text != "" {
+                    if self.containerFieldValidator?.validateFields(loginTextFieldText: self.loginTextField.text!, passwordTextFieldText: self.passwordTextField.text!) == true {
+                            self.loginBtn.isEnabled = true
+                    }
+                }
+            }
+        })
     }
     
     
@@ -143,22 +146,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let controller = story.instantiateViewController(identifier: "TabBarController") as! TabBarController
         controller.dataPass = self.loginData
         self.navigationController?.pushViewController(controller, animated: true)
-        saveLogin(loginText: self.loginTextField.text!)
-        
+        loginViewModel?.saveLogin(loginText: self.loginTextField.text!)
     }
     
-  private func cleanTextfieldsAndDisableLoginBtn()  {
-        self.loginTextField.text = ""
-        self.passwordTextField.text = ""
-        loginBtn.isEnabled = false
-    }
-    
-    
-   private func saveLogin(loginText: String)  {
-        let userLoginKey = "lastUserLogin"
-        UserDefaults.standard.string(forKey: userLoginKey)
-        UserDefaults.standard.setValue(loginText, forKey: userLoginKey)
-    }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -171,40 +162,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func registrationAction(_ sender: UIButton) {
+        self.loginViewModel?.startRegistrationProcess(loginText: loginTextField.text ?? "", passwordText: passwordTextField.text ?? "",
+                                                      failAlert: {
+            let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please try again", comment: "Please try again"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        },
+                                                      showSucessAlert: {
+            let alert = UIAlertController(title: NSLocalizedString("Success", comment: "Success"), message: NSLocalizedString("Now you can log in", comment: "Now you can log in"), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        })
+
+    }
         
-            if loginTextField.text != "" && passwordTextField.text != "" {
-                self.registerUser(email: loginTextField.text!, password: passwordTextField.text!)
-            } else
-            {
-                let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please fill all fields", comment: "Please fill all fields"), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-
-
-    }
-    
-    private func registerUser(email: String, password: String) {
-        let client = app.emailPasswordAuth
-        client.registerUser(email: email, password: password) { (error) in
-            guard error == nil else {
-              //  print("Failed to register: \(error!.localizedDescription)")
-                DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("OOOps", comment: "OOOps"), message: NSLocalizedString("Please try again", comment: "Please try again"), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                return
-            }
-            // Registering just registers. You can now log in.
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("Success", comment: "Success"), message: NSLocalizedString("Now you can log in", comment: "Now you can log in"), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Ok"), style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
     @IBAction private func loginWithoutAuthorithation(_ sender: Any) {
         app.login(credentials: Credentials.anonymous) { result in
             DispatchQueue.main.async {
@@ -218,7 +189,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-        self.skipLoginBtn.isEnabled = false
     }
     
     private func pushNewsViewControllerForAnonimousUser()  {
@@ -238,7 +208,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         alertController.addAction(alertAction)
-        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -255,68 +224,3 @@ extension LoginViewController {
 }
 
 
-extension LoginViewController {
-  private func savePasswordToKeyChain() {
-        let password = self.passwordTextField.text
-       //print("password is \(password ?? "")")
-        
-        if passwordTextField.text != nil {
-            DispatchQueue.global().async {
-                do {    
-                    // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
-                    try self.keychain
-                        .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
-                        .set( password ?? "", key: self.keychainKeyForPassword)
-                } catch let error {
-                    print(error)
-                }
-            }
-        }
-    }
-    
-   private func getPasswordFromKeyChain() {
-        DispatchQueue.global().async {
-            do {
-                let password = try self.keychain
-                    .authenticationPrompt("Authenticate to login to server")
-                    .get(self.keychainKeyForPassword)
-
-                DispatchQueue.main.async {
-                    if password != nil{
-                    self.passwordTextField.text = password
-                        if self.loginTextField.text != "" {
-                            if self.containerFieldValidator?.validateFields(loginTextFieldText: self.loginTextField.text!, passwordTextFieldText: self.passwordTextField.text!) == true {
-                                    self.loginBtn.isEnabled = true
-                            }
-                        }
-                    }
-                }
-            } catch let error {
-                print(error)
-            }
-        }    }
-    
-   private func updatePassword() {
-        let password = self.passwordTextField.text ?? ""
-        DispatchQueue.global().async {
-            do {
-                // Should be the secret invalidated when passcode is removed? If not then use `.WhenUnlocked`
-                try self.keychain
-                    .accessibility(.whenPasscodeSetThisDeviceOnly, authenticationPolicy: .userPresence)
-                    .authenticationPrompt("Authenticate to update your access token")
-                    .set(password, key: self.keychainKeyForPassword)
-            } catch let error {
-                print(error)
-            }
-        }
-    }
-    
-  private func deletePasswordKeyChain()  {
-        do {
-            try self.keychain.remove(keychainKeyForPassword)
-        } catch let error {
-            print(error)
-        }
-    }
-
-}
