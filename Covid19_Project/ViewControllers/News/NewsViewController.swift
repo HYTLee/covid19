@@ -22,8 +22,7 @@ class NewsViewController: UIViewController {
     var newsApiURLString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=a05c63a1c38c497babb576e49676a0d1&category=health"
     var newses: News?
     var photoRecords: [PhotoRecord] = []
-    
-    private let operationQueueController = OperationQueueController()
+    let pendingOperations = PendingOperations()
 
 
 
@@ -41,6 +40,109 @@ class NewsViewController: UIViewController {
             photoRecords.append(PhotoRecord.init(name: article.title, url:URL(string: article.urlToImage ?? "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8")!))
         }
     }
+    
+    func startOperations(for photoRecord: PhotoRecord, at indexPath: IndexPath) {
+      switch (photoRecord.state) {
+      case .new:
+        startDownload(for: photoRecord, at: indexPath)
+      case .downloaded:
+        startFiltration(for: photoRecord, at: indexPath)
+      default:
+        NSLog("do nothing")
+      }
+    }
+
+    func startDownload(for photoRecord: PhotoRecord, at indexPath: IndexPath) {
+      //1
+      guard pendingOperations.downloadsInProgress[indexPath] == nil else {
+        return
+      }
+          
+      //2
+      let downloader = ImageForNewsesDownloader(photoRecord)
+      
+      //3
+      downloader.completionBlock = {
+        if downloader.isCancelled {
+          return
+        }
+
+        DispatchQueue.main.async {
+          self.pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+            self.collectionView.reloadData()
+        }
+      }
+      
+      
+      pendingOperations.downloadsInProgress[indexPath] = downloader
+      
+      pendingOperations.downloadQueue.addOperation(downloader)
+    }
+        
+    func startFiltration(for photoRecord: PhotoRecord, at indexPath: IndexPath) {
+      guard pendingOperations.filtrationsInProgress[indexPath] == nil else {
+          return
+      }
+          
+      let filterer = ImageFiltration(photoRecord)
+      filterer.completionBlock = {
+        if filterer.isCancelled {
+          return
+        }
+        
+        DispatchQueue.main.async {
+          self.pendingOperations.filtrationsInProgress.removeValue(forKey: indexPath)
+            self.collectionView.reloadData()
+        }
+      }
+      
+      pendingOperations.filtrationsInProgress[indexPath] = filterer
+      pendingOperations.filtrationQueue.addOperation(filterer)
+    }
+    
+    func suspendAllOperations() {
+      pendingOperations.downloadQueue.isSuspended = true
+      pendingOperations.filtrationQueue.isSuspended = true
+    }
+
+    func resumeAllOperations() {
+      pendingOperations.downloadQueue.isSuspended = false
+      pendingOperations.filtrationQueue.isSuspended = false
+    }
+
+    func loadImagesForOnscreenCells() {
+      
+        let pathsArray = collectionView.indexPathsForVisibleItems
+        var allPendingOperations = Set(pendingOperations.downloadsInProgress.keys)
+        allPendingOperations.formUnion(pendingOperations.filtrationsInProgress.keys)
+          
+        var toBeCancelled = allPendingOperations
+        let visiblePaths = Set(pathsArray)
+        toBeCancelled.subtract(visiblePaths)
+        
+        var toBeStarted = visiblePaths
+        toBeStarted.subtract(allPendingOperations)
+          
+        
+        for indexPath in toBeCancelled {
+          if let pendingDownload = pendingOperations.downloadsInProgress[indexPath] {
+            pendingDownload.cancel()
+          }
+          pendingOperations.downloadsInProgress.removeValue(forKey: indexPath)
+          if let pendingFiltration = pendingOperations.filtrationsInProgress[indexPath] {
+            pendingFiltration.cancel()
+          }
+          pendingOperations.filtrationsInProgress.removeValue(forKey: indexPath)
+        }
+          
+        
+        for indexPath in toBeStarted {
+          let recordToProcess = photoRecords[indexPath.row]
+          startOperations(for: recordToProcess, at: indexPath)
+        }
+      
+    }
+
     
     func getNewses()  {
         let urlSessin = URLSession(configuration: .default)
@@ -118,7 +220,6 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.authorLabel.text = "Author is unknown"
         }
         
-        // get time from api and put it in cell label
         dateParser.convertStringToDate(dateString: newses?.articles[indexPath.row].publishedAt ?? "2016-04-14T10:44:00+0000")
         dateParser.convertDateToTimeStringShort()
         
@@ -129,12 +230,22 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 cell.authorLabel.text = "Time is unknown"
             }
         
+         
+         let photoDetails = photoRecords[indexPath.row]
+        
       
-            if let url = URL(string: newses?.articles[indexPath.row].urlToImage ??  "https://i.picsum.photos/id/634/200/300.jpg?hmac=dHnJDi4giQORL4vMes_SpKmSA_edpLoLAu-c-jsNFh8"){
-                operationQueueController.queue.addOperation {
-                    cell.imageIV.setImageToImageView(url: url)
-                }
-        }
+        cell.imageIV.image = photoDetails.image
+         
+         switch (photoDetails.state) {
+         case .filtered:
+            print("Filtered")
+         case .failed:
+           print("Failed to load")
+         case .new, .downloaded:
+            if !collectionView.isDragging && !collectionView.isDecelerating {
+              startOperations(for: photoDetails, at: indexPath)
+            }
+         }
         return cell
     }
     
@@ -146,21 +257,22 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     
      func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        operationQueueController.stopTask()
+        suspendAllOperations()
     }
 
      func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-      if !decelerate {
-        operationQueueController.continueTask()
-      }
+        if !decelerate {
+           loadImagesForOnscreenCells()
+           resumeAllOperations()
+         }
     }
     
      func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        operationQueueController.continueTask()
+        loadImagesForOnscreenCells()
+        resumeAllOperations()
     }
-
-    
 }
+
 
 
 
