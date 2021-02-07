@@ -9,6 +9,8 @@ pod 'Firebase/Crashlytics'
 pod 'KeychainAccess'
 pod 'RealmSwift'
 pod 'Swinject'
+pod 'RxSwift', '6.0.0'
+pod 'RxCocoa', '6.0.0'
 
 
 

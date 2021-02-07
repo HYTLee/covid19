@@ -20,6 +20,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-re-etE" userLabel="Enter login" customClass="LoginTextField" customModule="Covid19_Project" customModuleProvider="target">
                                 <rect key="frame" x="94" y="208" width="226" height="34"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="0J1-pi-nwc"/>
                                     <constraint firstAttribute="width" constant="226" id="uQI-cR-EhL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -134,10 +135,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="dLF-Ev-XZS" id="D2r-ww-i3j"/>
-                                    <outlet property="delegate" destination="dLF-Ev-XZS" id="rve-Z4-VVW"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O0u-7r-g6V"/>
@@ -314,7 +311,6 @@
                             <constraint firstItem="3KF-Ff-1hs" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="1hV-03-Ctf"/>
                             <constraint firstItem="ggf-Sk-bTa" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="57v-MH-qoU"/>
                             <constraint firstItem="VQR-Ya-NCq" firstAttribute="trailing" secondItem="eLA-dI-jfG" secondAttribute="trailing" constant="20" id="CZn-sa-lAJ"/>
-                            <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="VQR-Ya-NCq" secondAttribute="top" constant="400" id="GLd-Hx-gs7"/>
                             <constraint firstItem="T0d-Iv-bZZ" firstAttribute="top" secondItem="eLA-dI-jfG" secondAttribute="bottom" constant="30" id="HV3-IC-xaD"/>
                             <constraint firstItem="pFc-42-i5h" firstAttribute="leading" secondItem="VQR-Ya-NCq" secondAttribute="leading" constant="33" id="JUD-aO-qHb"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="top" secondItem="dk8-Fd-y8Y" secondAttribute="bottom" constant="54" id="OiL-f4-tgH"/>
@@ -323,6 +319,7 @@
                             <constraint firstItem="pFc-42-i5h" firstAttribute="top" secondItem="cF9-zR-55P" secondAttribute="bottom" constant="27" id="X31-kc-ZzN"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="cI9-ek-fCH"/>
                             <constraint firstItem="3KF-Ff-1hs" firstAttribute="top" secondItem="ggf-Sk-bTa" secondAttribute="bottom" constant="29" id="idU-t7-B5Y"/>
+                            <constraint firstItem="eLA-dI-jfG" firstAttribute="top" secondItem="cF9-zR-55P" secondAttribute="bottom" constant="36.5" id="nSE-3L-nds"/>
                             <constraint firstItem="T0d-Iv-bZZ" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="p4B-15-xvu"/>
                             <constraint firstItem="dk8-Fd-y8Y" firstAttribute="top" secondItem="ioF-6z-ad2" secondAttribute="bottom" constant="50" id="swM-lF-KY8"/>
                             <constraint firstItem="cF9-zR-55P" firstAttribute="centerX" secondItem="VQR-Ya-NCq" secondAttribute="centerX" id="x0A-Bo-Xqc"/>

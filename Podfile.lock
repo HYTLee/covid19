@@ -77,6 +77,12 @@ PODS:
   - Realm/Headers (10.5.1)
   - RealmSwift (10.5.1):
     - Realm (= 10.5.1)
+  - RxCocoa (6.0.0):
+    - RxRelay (= 6.0.0)
+    - RxSwift (= 6.0.0)
+  - RxRelay (6.0.0):
+    - RxSwift (= 6.0.0)
+  - RxSwift (6.0.0)
   - Swinject (2.7.1)
 
 DEPENDENCIES:
@@ -84,6 +90,8 @@ DEPENDENCIES:
   - Firebase/Crashlytics
   - KeychainAccess
   - RealmSwift
+  - RxCocoa (= 6.0.0)
+  - RxSwift (= 6.0.0)
   - Swinject
 
 SPEC REPOS:
@@ -102,6 +110,9 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Swinject
 
 SPEC CHECKSUMS:
@@ -119,8 +130,11 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Realm: 77fcb4e0b9f2963ea06f584749a0d7dc9cab95e1
   RealmSwift: 6abe6aa6cd8b70cc1a87afcb9232cabea74ff1ac
+  RxCocoa: 3f79328fafa3645b34600f37c31e64c73ae3a80e
+  RxRelay: 8d593be109c06ea850df027351beba614b012ffb
+  RxSwift: c14e798c59b9f6e9a2df8fd235602e85cc044295
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
 
-PODFILE CHECKSUM: 5135053975a895ed8726bb98489fef80d5c81e96
+PODFILE CHECKSUM: 232b600b7c01e700c1129bc91498de2464def781
 
 COCOAPODS: 1.10.0
