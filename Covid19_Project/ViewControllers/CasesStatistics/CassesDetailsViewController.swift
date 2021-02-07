@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class CassesDetailsViewController: UIViewController {
 
-    @IBOutlet weak var deathLabel: UILabel!
+    @IBOutlet weak var recoverLabel: UILabel!
     @IBOutlet weak var casesLabel: UILabel!
     var countryCase = Case()
     
@@ -20,7 +22,7 @@ class CassesDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatistics()
-        deathLabel.text = "\(NSLocalizedString("Recovered", comment: "Recovered")): \(String(recovered))"
+        recoverLabel.text = "\(NSLocalizedString("Recovered", comment: "Recovered")): \(String(recovered))"
         casesLabel.text = "\(NSLocalizedString("Cases", comment: "Cases")): \(cases)"
         self.title = country
     }

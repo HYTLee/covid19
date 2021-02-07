@@ -11,7 +11,6 @@ import RxCocoa
 
 protocol CaseViewModel {
     var cases: Observable<[Case]> { get }
-    var selectedCase: PublishSubject<Case> { get }
     var refresh: PublishSubject<Void> { get }
     
 }

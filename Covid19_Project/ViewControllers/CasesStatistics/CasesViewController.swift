@@ -14,8 +14,7 @@ class CasesViewController: UIViewController {
     
     private let loader = UIActivityIndicatorView()
     @IBOutlet private weak var tableView: UITableView!
-    private let casesDownloader = ContainerDependancies.container.resolve(CaseDownloader.self)
-    private let casesVM = CasesViewModelImplementation()
+    private let casesViewModel = CasesViewModelImplementation()
     private let disposeBag = DisposeBag()
     
     func setLoader()  {
@@ -72,7 +71,7 @@ class CasesViewController: UIViewController {
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         setDataForTableView()
         configureRefreshControl()
-       
+        selectRowFromTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,9 +88,7 @@ class CasesViewController: UIViewController {
     }
     
     @objc private func handleRefreshControl() {
-        casesDownloader?.getStatisticsFromApi { [self] in
-            tableViewRefreshAfterPositiveResponse()
-        }
+        casesViewModel.refresh?.onNext(setDataForTableView())
     }
     
     private func tableViewRefreshAfterPositiveResponse(){
@@ -103,8 +100,8 @@ class CasesViewController: UIViewController {
     }
     
     private func setDataForTableView() {
-        casesVM.getDataForTableView { [self] in
-            casesVM.cases?
+        casesViewModel.getDataForTableView { [self] in
+            casesViewModel.cases?
                     .bind(to: tableView
                       .rx
                       .items(cellIdentifier: "CountryCell",
@@ -116,35 +113,22 @@ class CasesViewController: UIViewController {
         }
     }
        
-    func setupCellTapHandling() {
-      tableView
-        .rx
-        .modelSelected(Case.self) //1
-        .subscribe(onNext: { [unowned self] chocolate in // 2
-         
-          if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
-          } //4
-        })
-        .disposed(by: disposeBag) //5
+    func selectRowFromTableView()  {
+        tableView
+            .rx
+            .modelSelected(Case.self)
+            .subscribe(onNext: {[weak self] aCase in
+                guard let strongSelf = self else {return}
+                guard let caseDetailsVC = strongSelf.storyboard?.instantiateViewController(identifier: "CaseDetailsViewController") as? CassesDetailsViewController else {
+                    fatalError("Task not found")
+                }
+                strongSelf.navigationController?.pushViewController(caseDetailsVC, animated: true)
+                caseDetailsVC.countryCase = aCase
+            }).disposed(by: disposeBag)
     }
 }
 
 
-extension CasesViewController {
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ShowDetails" {
-//            if let indexpath = self.tableView.indexPathForSelectedRow{
-//                let casesDetails = segue.destination as! CassesDetailsViewController
-//                casesDetails.countryCase = (casesDownloader?.response)
-//            }
-//
-//        }
-//    }
-    
-        
-    
-}
+
 
 
