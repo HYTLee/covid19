@@ -130,9 +130,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="oIo-md-11S" kind="show" identifier="ShowDetails" id="rPe-iM-364"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -158,19 +155,19 @@
         <!--Casses Details View Controller-->
         <scene sceneID="WYa-go-hYA">
             <objects>
-                <viewController id="oIo-md-11S" customClass="CassesDetailsViewController" customModule="Covid19_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CaseDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oIo-md-11S" customClass="CassesDetailsViewController" customModule="Covid19_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lh4-H6-c0a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirmed: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0u-SM-CZc">
-                                <rect key="frame" x="20" y="120" width="374" height="21"/>
+                                <rect key="frame" x="20" y="76" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Death: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHL-gV-cFn">
-                                <rect key="frame" x="20" y="164" width="374" height="21"/>
+                                <rect key="frame" x="20" y="120" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -190,7 +187,7 @@
                     <navigationItem key="navigationItem" id="cpk-2V-lc7"/>
                     <connections>
                         <outlet property="casesLabel" destination="C0u-SM-CZc" id="y5E-1E-Arl"/>
-                        <outlet property="deathLabel" destination="FHL-gV-cFn" id="Jfz-u8-AY3"/>
+                        <outlet property="recoverLabel" destination="FHL-gV-cFn" id="Jfz-u8-AY3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UGd-fu-9pW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
