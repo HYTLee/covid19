@@ -7,13 +7,16 @@
 
 import UIKit
 import Foundation
+import RxCocoa
+import RxSwift
 
 class CasesViewController: UIViewController {
     
     private let loader = UIActivityIndicatorView()
     @IBOutlet private weak var tableView: UITableView!
-    private var response = [Case]()
-
+    private let casesDownloader = ContainerDependancies.container.resolve(CaseDownloader.self)
+    private let casesVM = CasesViewModelImplementation()
+    private let disposeBag = DisposeBag()
     
     func setLoader()  {
         self.view.addSubview(loader)
@@ -67,8 +70,9 @@ class CasesViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Statistics", comment: "You like the result?")
         setLoader()
         self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        getStatisticsFromApi()
+        setDataForTableView()
         configureRefreshControl()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,69 +89,60 @@ class CasesViewController: UIViewController {
     }
     
     @objc private func handleRefreshControl() {
-        getStatisticsFromApi()
-        
+        casesDownloader?.getStatisticsFromApi { [self] in
+            tableViewRefreshAfterPositiveResponse()
+        }
     }
     
-    
-    
-    private func getStatisticsFromApi()  {
-        let session = URLSession(configuration: .default)
-
-        guard  let covidURL = URL(string: "https://api.apify.com/v2/key-value-stores/tVaYRsPHLjNdNBu7S/records/LATEST?disableRedirect=true")
-        else {return}
-        let urlRequest = URLRequest(url: covidURL)
-       let dataTask = session.dataTask(with: urlRequest) { (data, response, error) in
-            if let error = error{
-                print(error)
-        }
-        
-        if let data = data {
-            do {
-                self.response = try JSONDecoder().decode([Case].self, from: data)
-                print(self.response.count)
-                DispatchQueue.main.async { [weak self] in
-                    self?.loader.stopAnimating()
-                    // Dismiss the refresh control.
-                    self?.tableView.refreshControl?.endRefreshing()
-                    self?.loader.isHidden = true
-                    self?.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
-                    self?.tableView.reloadData()
-                    
-                }
-            } catch {
-                print(error)
-            }
-        }
-        }
-        dataTask.resume()
+    private func tableViewRefreshAfterPositiveResponse(){
+        self.loader.stopAnimating()
+        self.tableView.refreshControl?.endRefreshing()
+        self.loader.isHidden = true
+        self.tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
+        self.tableView.reloadData()
     }
     
+    private func setDataForTableView() {
+        casesVM.getDataForTableView { [self] in
+            casesVM.cases?
+                    .bind(to: tableView
+                      .rx
+                      .items(cellIdentifier: "CountryCell",
+                             cellType: CountryTableCell.self)) { row, response, cell in
+                        cell.textLabel?.text = "\(response.country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))")  \(NSLocalizedString("Cases", comment: "Cases")): \(response.infected ?? 0)  \(NSLocalizedString("Recovered", comment: "Recovered")): \(response.recovered ?? 0) "
+                    }
+                    .disposed(by: disposeBag)
+            self.tableViewRefreshAfterPositiveResponse()
+        }
+    }
+       
+    func setupCellTapHandling() {
+      tableView
+        .rx
+        .modelSelected(Case.self) //1
+        .subscribe(onNext: { [unowned self] chocolate in // 2
+         
+          if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
+          } //4
+        })
+        .disposed(by: disposeBag) //5
+    }
 }
 
 
-extension CasesViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return response.count
-    }
+extension CasesViewController {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as! CountryTableCell
-
-        cell.textLabel?.text = "\(response[indexPath.row].country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))")  \(NSLocalizedString("Cases", comment: "Cases")): \(response[indexPath.row].infected ?? 0)  \(NSLocalizedString("Recovered", comment: "Recovered")): \(response[indexPath.row].recovered ?? 0) "
-        return cell
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "ShowDetails" {
+//            if let indexpath = self.tableView.indexPathForSelectedRow{
+//                let casesDetails = segue.destination as! CassesDetailsViewController
+//                casesDetails.countryCase = (casesDownloader?.response)
+//            }
+//
+//        }
+//    }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetails" {
-            if let indexpath = self.tableView.indexPathForSelectedRow{
-                let casesDetails = segue.destination as! CassesDetailsViewController
-                casesDetails.countryCase = self.response[indexpath.row]
-            }
-
-        }
-    }
         
     
 }

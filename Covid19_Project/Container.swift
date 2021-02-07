@@ -18,6 +18,9 @@ class ContainerDependancies{
         container.register(ApplicationStyle.self, name: "Night") { _ in AppNightStyle() }
         container.register(StyleProvider.self) { _ in DayNightStyleProvider()}
         container.register(LoginViewModel.self) { _ in LogiViewModelImplementation()}
+        container.register(CaseDownloader.self) { _ in CasesDataDownloader()}
+  //     container.register(CaseViewModel.self) { _ in casesViewModelImplementation()}
+
 
         return container
     }()
