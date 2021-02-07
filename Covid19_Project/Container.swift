@@ -19,7 +19,7 @@ class ContainerDependancies{
         container.register(StyleProvider.self) { _ in DayNightStyleProvider()}
         container.register(LoginViewModel.self) { _ in LogiViewModelImplementation()}
         container.register(CaseDownloader.self) { _ in CasesDataDownloader()}
-  //     container.register(CaseViewModel.self) { _ in casesViewModelImplementation()}
+        container.register(CaseViewModel.self) { _ in CasesViewModelImplementation()}
 
 
         return container

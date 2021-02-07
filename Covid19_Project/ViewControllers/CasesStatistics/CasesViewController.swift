@@ -14,7 +14,8 @@ class CasesViewController: UIViewController {
     
     private let loader = UIActivityIndicatorView()
     @IBOutlet private weak var tableView: UITableView!
-    private let casesViewModel = CasesViewModelImplementation()
+    
+    private let casesViewModel = ContainerDependancies.container.resolve(CaseViewModel.self)
     private let disposeBag = DisposeBag()
     
     func setLoader()  {
@@ -81,15 +82,16 @@ class CasesViewController: UIViewController {
     
    private func configureRefreshControl () {
        // Add the refresh control to your UIScrollView object.
-       tableView.refreshControl = UIRefreshControl()
-       tableView.refreshControl?.addTarget(self, action:
-                                          #selector(handleRefreshControl),
-                                          for: .valueChanged)
-    }
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.rx.controlEvent(.valueChanged)
+            .subscribe(onNext: {[weak self] in
+                        self?.casesViewModel?.getDataForTableView {
+                        }
+                    self?.tableView.refreshControl?.endRefreshing()}
+        ).disposed(by: disposeBag)
+   }
     
-    @objc private func handleRefreshControl() {
-        casesViewModel.refresh?.onNext(setDataForTableView())
-    }
+  
     
     private func tableViewRefreshAfterPositiveResponse(){
         self.loader.stopAnimating()
@@ -100,8 +102,8 @@ class CasesViewController: UIViewController {
     }
     
     private func setDataForTableView() {
-        casesViewModel.getDataForTableView { [self] in
-            casesViewModel.cases?
+        casesViewModel?.getDataForTableView { [self] in
+            casesViewModel?.cases?
                     .bind(to: tableView
                       .rx
                       .items(cellIdentifier: "CountryCell",

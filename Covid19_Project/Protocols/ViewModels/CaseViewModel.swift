@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol CaseViewModel {
-    var cases: Observable<[Case]> { get }
-    var refresh: PublishSubject<Void> { get }
+    var cases: Observable<[Case]>? { get }
     
+    func getDataForTableView(completion:@escaping () -> ())
 }
