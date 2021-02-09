@@ -27,14 +27,6 @@ class CassesDetailsViewController: UIViewController {
         self.title = country
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-    //    self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-      //  self.tabBarController?.tabBar.isHidden = false
-    }
-    
     private func setStatistics()  {
         self.country = countryCase.country ?? "\(NSLocalizedString("Unknown country", comment: "Unknown country"))"
         self.recovered = countryCase.recovered ?? 0

@@ -53,15 +53,10 @@ class NewsViewController: UIViewController {
     }
 
     func startDownload(for photoRecord: PhotoRecord, at indexPath: IndexPath) {
-      //1
       guard pendingOperations.downloadsInProgress[indexPath] == nil else {
         return
       }
-          
-      //2
       let downloader = ImageForNewsesDownloader(photoRecord)
-      
-      //3
       downloader.completionBlock = {
         if downloader.isCancelled {
           return
@@ -72,10 +67,7 @@ class NewsViewController: UIViewController {
             self.collectionView.reloadData()
         }
       }
-      
-      
       pendingOperations.downloadsInProgress[indexPath] = downloader
-      
       pendingOperations.downloadQueue.addOperation(downloader)
     }
         
@@ -156,7 +148,6 @@ class NewsViewController: UIViewController {
         if let data = data {
             do {
                 self.newses = try JSONDecoder().decode(News.self, from: data)
-                print(self.newses?.articles.count ?? "Number of articless is 0")
                 DispatchQueue.main.async { [self] in
                     self.collectionView.reloadData()
                 }
@@ -191,7 +182,6 @@ class NewsViewController: UIViewController {
         if let url = URL(string: newses?.articles[which].url ?? "https://www.raywenderlich.com/5293-operation-and-operationqueue-tutorial-in-swift") {
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
-
             let vc = SFSafariViewController(url: url, configuration: config)
             present(vc, animated: true)
         }

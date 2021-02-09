@@ -27,7 +27,6 @@ class CasesViewModelImplementation: CaseViewModel {
  }
     func filterSearchText(query: Event<ControlProperty<String>.Element>, completion:() -> ())  {
         let filteredText = casesDownloader?.response.search(query: query)
-        print(filteredText)
         cases = Observable<[Case]>.just(filteredText ?? [])
         completion()
     }

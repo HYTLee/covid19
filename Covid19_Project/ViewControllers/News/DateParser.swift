@@ -22,7 +22,6 @@ class DateParser {
     
     func convertDateToTimeStringShort()  {
         let dateFormatter = DateFormatter()
-      //  dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         self.dateString = dateFormatter.string(from: date)
     }

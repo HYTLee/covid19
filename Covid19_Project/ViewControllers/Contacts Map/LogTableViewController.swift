@@ -10,26 +10,15 @@ import RealmSwift
 
 class LogTableViewController: UITableViewController {
 
-    
-    //
-    // MARK: - Variables And Properties
-    //
     var contact = try! Realm().objects(Contact.self)
       .sorted(byKeyPath: "name", ascending: true)
     
     let realm = try! Realm()
 
-    //
-    // MARK: - IBActions
-    //
     @IBAction func scopeChanged(sender: Any) {
       
     }
     
-    
-    //
-    // MARK: - View Controller
-    //
     override func viewDidLoad() {
       super.viewDidLoad()
       
@@ -50,11 +39,6 @@ class LogTableViewController: UITableViewController {
     }
   }
 
-
-
-  //
-  // MARK: - Search Results Updatings
-  //
   extension LogTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
       let searchResultsController = searchController.searchResultsController as! UITableViewController
@@ -62,8 +46,6 @@ class LogTableViewController: UITableViewController {
     }
   }
 
-  //
-  // MARK: - Table View Data Source
   extension LogTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = self.tableView.dequeueReusableCell(withIdentifier: "LogCell") as! LogCell

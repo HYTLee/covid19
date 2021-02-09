@@ -9,20 +9,12 @@ import UIKit
 import RealmSwift
 
 
-//
-// MARK: - Categories Table View Controller
-//
 class CategoriesTableViewController: UITableViewController {
-  //
-  // MARK: - Variables And Properties
-  //
+    
     let realm = try! Realm()
     lazy var categories: Results<Category> = { self.realm.objects(Category.self) }()
     var selectedCategory: Category!
 
-  //
-  // MARK: - View Controller
-  //
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self

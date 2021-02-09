@@ -142,8 +142,6 @@ class ContactsMapViewController: UIViewController {
  
 }
 
-
-
 extension ContactsMapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     if let specimenAnnotation =  annotationView.annotation as? ContactAnnotation {

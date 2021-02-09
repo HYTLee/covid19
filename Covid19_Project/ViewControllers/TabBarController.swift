@@ -23,8 +23,7 @@ class TabBarController: UITabBarController {
 
         
         let navController = self.viewControllers![2] as! UINavigationController
-        let vc = navController.topViewController as! ProfileViewController
-    //    vc.profileName = dataPass
+        _ = navController.topViewController as! ProfileViewController
     
         
 

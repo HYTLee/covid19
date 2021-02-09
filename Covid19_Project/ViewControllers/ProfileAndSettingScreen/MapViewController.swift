@@ -95,16 +95,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
            for currentLocation in locations{
-               print("\(index): \(currentLocation)")
            }
-       }
-    
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-         //  print("Entered: \(region.identifier)")
        }
        
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-           print("Exited: \(region.identifier)")
            postLocalNotification()
        }
     
@@ -127,7 +121,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
             
             else {
-                print("added")
             }
         }
     }

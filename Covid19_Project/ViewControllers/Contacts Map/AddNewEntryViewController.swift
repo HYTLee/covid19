@@ -14,7 +14,6 @@ class AddNewEntryViewController: UIViewController {
     var selectedCategory: Category!
     var contact: Contact!
 
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var descriptionTextFiled: UITextField!

@@ -8,8 +8,5 @@
 import UIKit
 
 class NewsImageView: UIImageView {
-    
-
-
 }
 

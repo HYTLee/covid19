@@ -10,11 +10,6 @@ class Notification {
 
     func getNotificationPermission()  {
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("Got")
-            } else {
-                print("Didn't got")
-            }
         }
     }
     
