@@ -16,7 +16,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet private weak var notificationBtn: UIButton!
     @IBOutlet private weak var refreshBtn: UIButton!
     
-    
     private var latitude: CLLocationDegrees?
     private var longitude: CLLocationDegrees?
     

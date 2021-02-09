@@ -220,15 +220,11 @@ extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelega
                 cell.authorLabel.text = "Time is unknown"
             }
         
-         
-         let photoDetails = photoRecords[indexPath.row]
-        
-      
-        cell.imageIV.image = photoDetails.image
-         
+        let photoDetails = photoRecords[indexPath.row]
+
          switch (photoDetails.state) {
          case .filtered:
-            print("Filtered")
+            cell.newsImageView.image = photoDetails.image
          case .failed:
            print("Failed to load")
          case .new, .downloaded:

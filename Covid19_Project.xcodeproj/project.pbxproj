@@ -77,7 +77,6 @@
 		80B99111256C236500E10855 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80B99113256C236500E10855 /* Localizable.strings */; };
 		80B9912A256C2EC500E10855 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 80B9912C256C2EC500E10855 /* InfoPlist.strings */; };
 		80BBBB6A2566578A00757FA1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBB692566578A00757FA1 /* Article.swift */; };
-		80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBB802566B64B00757FA1 /* NewsImageView.swift */; };
 		80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BBBC222567C70400757FA1 /* UIImageExtentions.swift */; };
 		80C198F625AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */; };
 		80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C198FA25AE2656009EB758 /* LoginTextField.swift */; };
@@ -188,7 +187,6 @@
 		80B9912B256C2EC500E10855 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		80B99130256C2ECA00E10855 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		80BBBB692566578A00757FA1 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
-		80BBBB802566B64B00757FA1 /* NewsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsImageView.swift; sourceTree = "<group>"; };
 		80BBBC222567C70400757FA1 /* UIImageExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtentions.swift; sourceTree = "<group>"; };
 		80C198F525AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexLoginAndPasswordValidator.swift; sourceTree = "<group>"; };
 		80C198FA25AE2656009EB758 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
@@ -227,7 +225,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8010290725A21D7000962BE4 /* Contacts Map */ = {
+		8010290725A21D7000962BE4 /* ContactsMap */ = {
 			isa = PBXGroup;
 			children = (
 				8010290225A21D6A00962BE4 /* ContactsMapViewController.swift */,
@@ -236,15 +234,7 @@
 				8010291F25A2310900962BE4 /* LogTableViewController.swift */,
 				8010292725A2379200962BE4 /* LogCell.swift */,
 			);
-			path = "Contacts Map";
-			sourceTree = "<group>";
-		};
-		8010A7F625B0C2880045E895 /* Container */ = {
-			isa = PBXGroup;
-			children = (
-				8010A7F725B0C2A00045E895 /* Container.swift */,
-			);
-			name = Container;
+			path = ContactsMap;
 			sourceTree = "<group>";
 		};
 		803B882625B44799006EB56E /* Protocols */ = {
@@ -272,6 +262,37 @@
 				803B88F825B74404006EB56E /* DayNightStyleProvider.swift */,
 			);
 			path = ApplicationStyle;
+			sourceTree = "<group>";
+		};
+		8060CD6625D305EB00AA3ED2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				803B88EA25B74307006EB56E /* ApplicationStyle */,
+				80B66F4A254C275A00DAB0CB /* TabBarController.swift */,
+				8010A7F725B0C2A00045E895 /* Container.swift */,
+				80B66F13254C247400DAB0CB /* AppDelegate.swift */,
+				80B66F15254C247400DAB0CB /* SceneDelegate.swift */,
+				80B66F1E254C247500DAB0CB /* LaunchScreen.storyboard */,
+				80B66F19254C247400DAB0CB /* Main.storyboard */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8060CD7325D308D300AA3ED2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				80B990D9256A714900E10855 /* Notification.swift */,
+				80B66F5C254C291100DAB0CB /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8060CD7425D3091200AA3ED2 /* AddressMap */ = {
+			isa = PBXGroup;
+			children = (
+				80038D7C258F51F4008BD6CF /* MapViewController.swift */,
+			);
+			path = AddressMap;
 			sourceTree = "<group>";
 		};
 		80657ED225CC77AF0047F9E5 /* ViewModels */ = {
@@ -337,19 +358,13 @@
 		80B66F12254C247400DAB0CB /* Covid19_Project */ = {
 			isa = PBXGroup;
 			children = (
+				8060CD6625D305EB00AA3ED2 /* Common */,
 				80A6835225B9ECBE006F9EE5 /* EventListners */,
-				803B88EA25B74307006EB56E /* ApplicationStyle */,
 				803B882625B44799006EB56E /* Protocols */,
-				8010A7F625B0C2880045E895 /* Container */,
-				80B9910D256C211200E10855 /* Localization */,
-				80BBBC212567C6CD00757FA1 /* ExtentionsForDefaultClasses */,
+				80B9910D256C211200E10855 /* Resources */,
+				80BBBC212567C6CD00757FA1 /* Utilities */,
 				80B66F61254C51ED00DAB0CB /* DataStructures */,
-				80B66F13254C247400DAB0CB /* AppDelegate.swift */,
-				80B66F49254C272600DAB0CB /* ViewControllers */,
-				80B66F15254C247400DAB0CB /* SceneDelegate.swift */,
-				80B66F19254C247400DAB0CB /* Main.storyboard */,
-				80B66F1C254C247500DAB0CB /* Assets.xcassets */,
-				80B66F1E254C247500DAB0CB /* LaunchScreen.storyboard */,
+				80B66F49254C272600DAB0CB /* Features */,
 				80B66F21254C247500DAB0CB /* Info.plist */,
 				8098AD5B255E787D00605806 /* GoogleService-Info.plist */,
 			);
@@ -374,18 +389,17 @@
 			path = Covid19_ProjectUITests;
 			sourceTree = "<group>";
 		};
-		80B66F49254C272600DAB0CB /* ViewControllers */ = {
+		80B66F49254C272600DAB0CB /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				80BBBC1D2567C67300757FA1 /* ProfileAndSettingScreen */,
+				80BBBC1D2567C67300757FA1 /* ProfileAndSetting */,
 				80BBBC1C2567C65200757FA1 /* CasesStatistics */,
 				80BBBC1B2567C60B00757FA1 /* News */,
 				80BBBC172567C47B00757FA1 /* Login */,
-				80B66F4A254C275A00DAB0CB /* TabBarController.swift */,
 				806F13142586106A006C74C9 /* Share */,
-				8010290725A21D7000962BE4 /* Contacts Map */,
+				8010290725A21D7000962BE4 /* ContactsMap */,
 			);
-			path = ViewControllers;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		80B66F61254C51ED00DAB0CB /* DataStructures */ = {
@@ -405,13 +419,14 @@
 			path = DataStructures;
 			sourceTree = "<group>";
 		};
-		80B9910D256C211200E10855 /* Localization */ = {
+		80B9910D256C211200E10855 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				80B66F1C254C247500DAB0CB /* Assets.xcassets */,
 				80B9912C256C2EC500E10855 /* InfoPlist.strings */,
 				80B99113256C236500E10855 /* Localizable.strings */,
 			);
-			path = Localization;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		80BBBC172567C47B00757FA1 /* Login */ = {
@@ -430,7 +445,6 @@
 		80BBBC1B2567C60B00757FA1 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				80BBBB802566B64B00757FA1 /* NewsImageView.swift */,
 				80B66F6A254C66F300DAB0CB /* NewsCell.swift */,
 				80B66F4F254C286000DAB0CB /* NewsViewController.swift */,
 				80C7964F25811071006D8459 /* DateParser.swift */,
@@ -453,17 +467,16 @@
 			path = CasesStatistics;
 			sourceTree = "<group>";
 		};
-		80BBBC1D2567C67300757FA1 /* ProfileAndSettingScreen */ = {
+		80BBBC1D2567C67300757FA1 /* ProfileAndSetting */ = {
 			isa = PBXGroup;
 			children = (
-				80B66F5C254C291100DAB0CB /* ProfileViewController.swift */,
-				80B990D9256A714900E10855 /* Notification.swift */,
-				80038D7C258F51F4008BD6CF /* MapViewController.swift */,
+				8060CD7425D3091200AA3ED2 /* AddressMap */,
+				8060CD7325D308D300AA3ED2 /* Profile */,
 			);
-			path = ProfileAndSettingScreen;
+			path = ProfileAndSetting;
 			sourceTree = "<group>";
 		};
-		80BBBC212567C6CD00757FA1 /* ExtentionsForDefaultClasses */ = {
+		80BBBC212567C6CD00757FA1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				80BBBC222567C70400757FA1 /* UIImageExtentions.swift */,
@@ -472,7 +485,7 @@
 				803E4A7525D1B4660028EC25 /* StringExtention.swift */,
 				803E4A7A25D1B4AD0028EC25 /* ArrayExtention.swift */,
 			);
-			path = ExtentionsForDefaultClasses;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		888BFF5C8F65407D174385A9 /* Pods */ = {
@@ -803,7 +816,6 @@
 				80C198FB25AE2656009EB758 /* LoginTextField.swift in Sources */,
 				80B66F5D254C291100DAB0CB /* ProfileViewController.swift in Sources */,
 				803B88EF25B74323006EB56E /* DayStyle.swift in Sources */,
-				80BBBB812566B64B00757FA1 /* NewsImageView.swift in Sources */,
 				8010291625A22DEB00962BE4 /* CategoryTableViewController.swift in Sources */,
 				8010292D25A238E700962BE4 /* Contact.swift in Sources */,
 				80B66F58254C28A500DAB0CB /* CasesViewController.swift in Sources */,
