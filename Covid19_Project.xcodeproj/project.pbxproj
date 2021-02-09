@@ -28,6 +28,8 @@
 		803B88F425B7435B006EB56E /* NightStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88F325B7435B006EB56E /* NightStyle.swift */; };
 		803B88F925B74404006EB56E /* DayNightStyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88F825B74404006EB56E /* DayNightStyleProvider.swift */; };
 		803B88FE25B74BD4006EB56E /* StyleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803B88FD25B74BD4006EB56E /* StyleProvider.swift */; };
+		803E4A7625D1B4660028EC25 /* StringExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E4A7525D1B4660028EC25 /* StringExtention.swift */; };
+		803E4A7B25D1B4AD0028EC25 /* ArrayExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803E4A7A25D1B4AD0028EC25 /* ArrayExtention.swift */; };
 		80657ED425CC77C50047F9E5 /* CaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80657ED325CC77C50047F9E5 /* CaseViewModel.swift */; };
 		80657EF125CC793F0047F9E5 /* CasesViewModelImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80657EF025CC793F0047F9E5 /* CasesViewModelImplementation.swift */; };
 		80657EF625CD7A590047F9E5 /* CasesDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80657EF525CD7A590047F9E5 /* CasesDataDownloader.swift */; };
@@ -127,6 +129,8 @@
 		803B88F325B7435B006EB56E /* NightStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightStyle.swift; sourceTree = "<group>"; };
 		803B88F825B74404006EB56E /* DayNightStyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightStyleProvider.swift; sourceTree = "<group>"; };
 		803B88FD25B74BD4006EB56E /* StyleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleProvider.swift; sourceTree = "<group>"; };
+		803E4A7525D1B4660028EC25 /* StringExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtention.swift; sourceTree = "<group>"; };
+		803E4A7A25D1B4AD0028EC25 /* ArrayExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtention.swift; sourceTree = "<group>"; };
 		80657ED325CC77C50047F9E5 /* CaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseViewModel.swift; sourceTree = "<group>"; };
 		80657EF025CC793F0047F9E5 /* CasesViewModelImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasesViewModelImplementation.swift; sourceTree = "<group>"; };
 		80657EF525CD7A590047F9E5 /* CasesDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasesDataDownloader.swift; sourceTree = "<group>"; };
@@ -465,6 +469,8 @@
 				80BBBC222567C70400757FA1 /* UIImageExtentions.swift */,
 				806F123B25812736006C74C9 /* UITableViewExtention.swift */,
 				80368DB725AB393B0035A6B8 /* UICollectionViewExtention.swift */,
+				803E4A7525D1B4660028EC25 /* StringExtention.swift */,
+				803E4A7A25D1B4AD0028EC25 /* ArrayExtention.swift */,
 			);
 			path = ExtentionsForDefaultClasses;
 			sourceTree = "<group>";
@@ -760,6 +766,7 @@
 				80657EFB25CD7BA50047F9E5 /* CaseDownloader.swift in Sources */,
 				80BBBB6A2566578A00757FA1 /* Article.swift in Sources */,
 				80B66F18254C247400DAB0CB /* LoginViewController.swift in Sources */,
+				803E4A7625D1B4660028EC25 /* StringExtention.swift in Sources */,
 				803B88FE25B74BD4006EB56E /* StyleProvider.swift in Sources */,
 				80038D7D258F51F4008BD6CF /* MapViewController.swift in Sources */,
 				80B66F6B254C66F300DAB0CB /* NewsCell.swift in Sources */,
@@ -808,6 +815,7 @@
 				8010293225A2390C00962BE4 /* Category.swift in Sources */,
 				80A6836625B9F5F1006F9EE5 /* LogoutListner.swift in Sources */,
 				80C198F625AE0580009EB758 /* ComplexLoginAndPasswordValidator.swift in Sources */,
+				803E4A7B25D1B4AD0028EC25 /* ArrayExtention.swift in Sources */,
 				803B882825B447E8006EB56E /* ImageDownloader.swift in Sources */,
 				80BBBC232567C70400757FA1 /* UIImageExtentions.swift in Sources */,
 				80368DB825AB393B0035A6B8 /* UICollectionViewExtention.swift in Sources */,

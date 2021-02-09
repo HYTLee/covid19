@@ -120,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ld-1U-9YD">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="128" width="414" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" id="2Sf-cj-4hx" customClass="CountryTableCell" customModule="Covid19_Project" customModuleProvider="target">
@@ -133,18 +133,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CXT-5Y-IRq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nwB-es-eqa"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O0u-7r-g6V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="0Ld-1U-9YD" firstAttribute="bottom" secondItem="O0u-7r-g6V" secondAttribute="bottom" id="2PN-FK-kMW"/>
-                            <constraint firstItem="0Ld-1U-9YD" firstAttribute="top" secondItem="O0u-7r-g6V" secondAttribute="top" id="MW5-0O-B4J"/>
+                            <constraint firstItem="0Ld-1U-9YD" firstAttribute="top" secondItem="CXT-5Y-IRq" secondAttribute="bottom" id="KrR-Wa-eVE"/>
+                            <constraint firstItem="0Ld-1U-9YD" firstAttribute="top" secondItem="O0u-7r-g6V" secondAttribute="top" constant="40" id="MW5-0O-B4J"/>
+                            <constraint firstItem="CXT-5Y-IRq" firstAttribute="leading" secondItem="O0u-7r-g6V" secondAttribute="leading" id="ls4-0q-hX4"/>
                             <constraint firstItem="0Ld-1U-9YD" firstAttribute="leading" secondItem="O0u-7r-g6V" secondAttribute="leading" id="qhH-rY-V7H"/>
                             <constraint firstItem="0Ld-1U-9YD" firstAttribute="trailing" secondItem="O0u-7r-g6V" secondAttribute="trailing" id="r9q-Yt-NGb"/>
+                            <constraint firstItem="CXT-5Y-IRq" firstAttribute="trailing" secondItem="O0u-7r-g6V" secondAttribute="trailing" id="yZV-5D-wkG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bqJ-P9-asS"/>
                     <connections>
+                        <outlet property="searchBar" destination="CXT-5Y-IRq" id="TNE-fY-7Xo"/>
                         <outlet property="tableView" destination="0Ld-1U-9YD" id="dYK-xf-dNE"/>
                     </connections>
                 </viewController>

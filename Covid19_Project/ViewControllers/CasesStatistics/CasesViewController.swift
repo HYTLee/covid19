@@ -14,8 +14,10 @@ class CasesViewController: UIViewController {
     
     private let loader = UIActivityIndicatorView()
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    private let casesViewModel = ContainerDependancies.container.resolve(CaseViewModel.self)
+    
+    private var casesViewModel = ContainerDependancies.container.resolve(CaseViewModel.self)
     private let disposeBag = DisposeBag()
     
     func setLoader()  {
@@ -73,6 +75,7 @@ class CasesViewController: UIViewController {
         setDataForTableView()
         configureRefreshControl()
         selectRowFromTableView()
+      // setSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +104,7 @@ class CasesViewController: UIViewController {
         self.tableView.reloadData()
     }
     
+    
     private func setDataForTableView() {
         casesViewModel?.getDataForTableView { [self] in
             casesViewModel?.cases?
@@ -128,6 +132,20 @@ class CasesViewController: UIViewController {
                 caseDetailsVC.countryCase = aCase
             }).disposed(by: disposeBag)
     }
+    
+//    private func setSearchController() {
+//        searchBar.placeholder = "Search for specific country"
+//
+//        searchBar.rx.text
+//                  .orEmpty
+//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+//                  .distinctUntilChanged()
+//                  .subscribe { [unowned self] (query) in
+//                    casesViewModel?.filterSearchText(query: query, completion: {
+//                        tableView.reloadData()
+//                    })
+//                  }.disposed(by: disposeBag)
+//          }
 }
 
 

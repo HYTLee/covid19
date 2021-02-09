@@ -13,6 +13,7 @@ class CasesViewModelImplementation: CaseViewModel {
     
     private let casesDownloader = ContainerDependancies.container.resolve(CaseDownloader.self)
     var cases: Observable<[Case]>?
+    var filteredCases: Observable<[Case]>?
     
     func getDataForTableView(completion:@escaping () -> ()){
         casesDownloader?.getStatisticsFromApi { [self] in
@@ -23,7 +24,12 @@ class CasesViewModelImplementation: CaseViewModel {
                 }
             completion()
         }
-    
  }
+    func filterSearchText(query: Event<ControlProperty<String>.Element>, completion:() -> ())  {
+        let filteredText = casesDownloader?.response.search(query: query)
+        print(filteredText)
+        cases = Observable<[Case]>.just(filteredText ?? [])
+        completion()
+    }
     
 }
