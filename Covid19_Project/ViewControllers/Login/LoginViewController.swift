@@ -39,12 +39,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.setLoginBtn()
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
-
-        self.loginViewModel?.setStyleForLoginScreen(colorsForStyle: {[weak self] appStyle in
-            self?.view.backgroundColor = appStyle.appBackGroundColor
-            self?.loginTextField.textColor = appStyle.appTextColor
-            self?.passwordTextField.textColor = appStyle.appTextColor
-        })
         }
     
     private func setLoginTextField()  {
@@ -52,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setPasswordTextField()  {
-    passwordTextField.placeholder = loginViewModel?.passwordTexttieldPlaceholder
+    passwordTextField.placeholder = loginViewModel?.passwordTextfieldPlaceholder
     }
     
     private func setLoginBtn()  {

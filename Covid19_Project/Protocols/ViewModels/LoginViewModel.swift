@@ -13,7 +13,7 @@ protocol LoginViewModel {
     var loginButtonTitle: String {get}
     var isLoginButtonEnable: Bool {get set}
     var loginTextfieldPlaceholder: String {get}
-    var passwordTexttieldPlaceholder: String {get}
+    var passwordTextfieldPlaceholder: String {get}
     var lastPasswordButtonTitle: String {get}
 
     func setStyleForLoginScreen(colorsForStyle: @escaping (ApplicationStyle) -> Void)

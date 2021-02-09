@@ -18,7 +18,7 @@ class LogiViewModelImplementation: LoginViewModel {
     var isLoginButtonEnable: Bool = false
     var loginButtonTitle: String = NSLocalizedString("Login", comment: "Login button text")
     var loginTextfieldPlaceholder: String = NSLocalizedString("Enter login",comment: "Enter login placeholder")
-    var passwordTexttieldPlaceholder: String = NSLocalizedString("Enter password",comment: "Enter password placeholder")
+    var passwordTextfieldPlaceholder: String = NSLocalizedString("Enter password",comment: "Enter password placeholder")
     var lastPasswordButtonTitle: String = NSLocalizedString("Password", comment: "Password buttn text")
     private let keychainKeyForPassword = "userPassword"
 
