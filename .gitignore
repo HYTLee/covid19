@@ -7,3 +7,9 @@
 *.mode2v3
 *.perspectivev3
 *.xcuserstate
+*.xcworkspace/
+project.xcworkspace/
+xcuserdata/
+
+# Podfiles
+Pods/
