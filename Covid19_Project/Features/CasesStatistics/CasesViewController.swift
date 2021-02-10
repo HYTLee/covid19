@@ -88,8 +88,6 @@ class CasesViewController: UIViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.rx.controlEvent(.valueChanged)
             .subscribe(onNext: {[weak self] in
-                        self?.casesViewModel?.getDataForTableView {
-                        }
                     self?.tableView.refreshControl?.endRefreshing()}
         ).disposed(by: disposeBag)
    }
@@ -106,7 +104,6 @@ class CasesViewController: UIViewController {
     
     
     private func setDataForTableView() {
-        casesViewModel?.getDataForTableView { [self] in
             casesViewModel?.cases?
                     .bind(to: tableView
                       .rx
@@ -116,7 +113,6 @@ class CasesViewController: UIViewController {
                     }
                     .disposed(by: disposeBag)
             self.tableViewRefreshAfterPositiveResponse()
-        }
     }
        
     func selectRowFromTableView()  {
@@ -132,20 +128,6 @@ class CasesViewController: UIViewController {
                 caseDetailsVC.countryCase = aCase
             }).disposed(by: disposeBag)
     }
-    
-//    private func setSearchController() {
-//        searchBar.placeholder = "Search for specific country"
-//
-//        searchBar.rx.text
-//                  .orEmpty
-//            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-//                  .distinctUntilChanged()
-//                  .subscribe { [unowned self] (query) in
-//                    casesViewModel?.filterSearchText(query: query, completion: {
-//                        tableView.reloadData()
-//                    })
-//                  }.disposed(by: disposeBag)
-//          }
 }
 
 

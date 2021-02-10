@@ -396,7 +396,6 @@
 				80BBBC1C2567C65200757FA1 /* CasesStatistics */,
 				80BBBC1B2567C60B00757FA1 /* News */,
 				80BBBC172567C47B00757FA1 /* Login */,
-				806F13142586106A006C74C9 /* Share */,
 				8010290725A21D7000962BE4 /* ContactsMap */,
 			);
 			path = Features;
@@ -470,6 +469,7 @@
 		80BBBC1D2567C67300757FA1 /* ProfileAndSetting */ = {
 			isa = PBXGroup;
 			children = (
+				806F13142586106A006C74C9 /* Share */,
 				8060CD7425D3091200AA3ED2 /* AddressMap */,
 				8060CD7325D308D300AA3ED2 /* Profile */,
 			);

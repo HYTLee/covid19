@@ -12,5 +12,9 @@ import RxCocoa
 protocol CaseViewModel {
     var cases: Observable<[Case]>? { get set }
     var filteredCases: Observable<[Case]>? { get set }
-    func getDataForTableView(completion:@escaping () -> ())
-    func filterSearchText(query: Event<ControlProperty<String>.Element>, completion: @escaping () -> ())}
+    var searchText: PublishSubject<String> { get }
+    
+    func filterSearchText(query: Event<ControlProperty<String>.Element>, completion: @escaping () -> ())
+}
+
+
