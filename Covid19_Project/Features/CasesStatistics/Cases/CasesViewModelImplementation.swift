@@ -20,14 +20,13 @@ class CasesViewModelImplementation: CaseViewModel {
     init() {
         let searchText = PublishSubject<String>()
         self.searchText = searchText
-        
-        casesDownloader?.getStatisticsFromApi { [self] in
-            cases = Observable<[Case]>.create{ [self] observer -> Disposable in
-                observer.onNext(casesDownloader?.response ?? [])
-                observer.onCompleted()
-                return Disposables.create()
-            }
+        casesDownloader?.getStatisticsFromApi {}
+        cases = Observable<[Case]>.create{ [self] observer -> Disposable in
+            observer.onNext(casesDownloader?.response ?? [])
+            observer.onCompleted()
+            return Disposables.create()
         }
+
 }
     
     func filterSearchText(query: Event<ControlProperty<String>.Element>, completion:() -> ())  {
